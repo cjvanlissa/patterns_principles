@@ -1,0 +1,1370 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="description" content="Book Description">
+<title>3&nbsp; Strategic Ambiguity – Patterns to Principles</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./references.html" rel="next">
+<link href="./what_makes_a_good_theory.html" rel="prev">
+<link href="./images/logos/favicon.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-33269adcf1721b81efc5ea7fcfe7f0ee.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-5a2acb6f4ed5aeb23a104ba421924b87.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-33269adcf1721b81efc5ea7fcfe7f0ee.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-1bb825c67a2efe62597e07348eb8bcba.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-cc91bfdb7c5dfa564528353fdb34f86f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-1bb825c67a2efe62597e07348eb8bcba.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script><link href="site_libs/htmltools-fill-0.5.9/fill.css" rel="stylesheet">
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script><link href="site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="site_libs/datatables-binding-0.34.0/datatables.js"></script><script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><link href="site_libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="site_libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="site_libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script><link href="site_libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet">
+<script src="site_libs/crosstalk-1.2.2/js/crosstalk.min.js"></script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+<link rel="stylesheet" href="include/booktem.css">
+<link rel="stylesheet" href="include/webex.css">
+<link rel="stylesheet" href="include/glossary.css">
+<link rel="stylesheet" href="include/style.css">
+</head>
+<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./strategic_ambiguity.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Strategic Ambiguity</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Patterns to Principles</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/cjvanlissa/patterns_principles" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="./Patterns-to-Principles.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">General Information</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./theory_crisis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">The Theory Crisis</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./what_makes_a_good_theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">What Makes a Good Theory?</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./strategic_ambiguity.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Strategic Ambiguity</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Setup your Computer</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+    </ul>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+<li><a href="#weekly-readings" id="toc-weekly-readings" class="nav-link active" data-scroll-target="#weekly-readings"><span class="header-section-number">3.1</span> Weekly Readings</a></li>
+  <li>
+<a href="#tutorial" id="toc-tutorial" class="nav-link" data-scroll-target="#tutorial"><span class="header-section-number">3.2</span> Tutorial</a>
+  <ul class="collapse">
+<li><a href="#ambiguity-battle-30-min-2x-15" id="toc-ambiguity-battle-30-min-2x-15" class="nav-link" data-scroll-target="#ambiguity-battle-30-min-2x-15"><span class="header-section-number">3.2.1</span> Ambiguity Battle (30 min, 2x 15)</a></li>
+  <li><a href="#abstraction-vs-nuance-30-min" id="toc-abstraction-vs-nuance-30-min" class="nav-link" data-scroll-target="#abstraction-vs-nuance-30-min"><span class="header-section-number">3.2.2</span> Abstraction VS Nuance (30 min)</a></li>
+  <li><a href="#ambiguous-causal-claims-30-min" id="toc-ambiguous-causal-claims-30-min" class="nav-link" data-scroll-target="#ambiguous-causal-claims-30-min"><span class="header-section-number">3.2.3</span> Ambiguous Causal Claims (30 min)</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#homework" id="toc-homework" class="nav-link" data-scroll-target="#homework"><span class="header-section-number">3.3</span> Homework</a>
+  <ul class="collapse">
+<li><a href="#example-self-determination-theory" id="toc-example-self-determination-theory" class="nav-link" data-scroll-target="#example-self-determination-theory"><span class="header-section-number">3.3.1</span> Example: Self-Determination Theory</a></li>
+  <li><a href="#do-it-yourself" id="toc-do-it-yourself" class="nav-link" data-scroll-target="#do-it-yourself"><span class="header-section-number">3.3.2</span> Do It Yourself</a></li>
+  </ul>
+</li>
+  </ul></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title">
+<span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Strategic Ambiguity</span>
+</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header><section id="weekly-readings" class="level2" data-number="3.1"><h2 data-number="3.1" class="anchored" data-anchor-id="weekly-readings">
+<span class="header-section-number">3.1</span> Weekly Readings</h2>
+<ul>
+<li>Frankenhuis, W. E., Panchanathan, K., &amp; Smaldino, P. E. (2023). Strategic Ambiguity in the Social Sciences. Social Psychological Bulletin, 18, 1–25. https://doi.org/10.32872/spb.9923</li>
+<li>Healy, K. (2017). Fuck nuance. Sociological Theory, 35(2), 118-127.</li>
+</ul></section><section id="tutorial" class="level2" data-number="3.2"><h2 data-number="3.2" class="anchored" data-anchor-id="tutorial">
+<span class="header-section-number">3.2</span> Tutorial</h2>
+<section id="ambiguity-battle-30-min-2x-15" class="level3" data-number="3.2.1"><h3 data-number="3.2.1" class="anchored" data-anchor-id="ambiguity-battle-30-min-2x-15">
+<span class="header-section-number">3.2.1</span> Ambiguity Battle (30 min, 2x 15)</h3>
+<p>Collaborate with 4 students, divided into two duos: Theorists VS Challengers. One duo chooses one of the following phenomena and writes down a one-sentence theory to explain the phenomenon:</p>
+<ul>
+<li>Venus effect: most people may hold beliefs that are inconsistent with observable phenomena</li>
+<li>Social facilitation: people do better on tasks when they are with other people rather than when they are doing the task alone.</li>
+<li>The frequency illusion: people notice a specific concept, word, or product more frequently after recently becoming aware of it.</li>
+<li>Barnum effect: individuals give high accuracy ratings to descriptions of their personality that supposedly are tailored specifically to them, yet which are in fact vague and general enough to apply to a broad range of people. This effect can provide a partial explanation for the widespread acceptance of astrology, fortune telling, aura reading, and the Myers-Briggs “personality test”.</li>
+<li>The bystander effect: individuals are less likely to offer help to a victim in the presence of other people.</li>
+<li>Dunning–Kruger effect: people with low ability in a specific area systematically give overly positive assessments of their ability, while high performers to underestimate their skills.</li>
+<li>The Group Project Paradox: Everyone in the group feels that they did disproportionally more work than the others.</li>
+</ul>
+<p>The other duo brainstorms on “challenges” to the theory, for example:</p>
+<ul>
+<li>Can it explain a null result?</li>
+<li>Can your theory explain cross-cultural variation?</li>
+<li>Can it explain developmental change?</li>
+<li>Can it explain contradictory results in experimental versus observational/naturalistic settings?</li>
+</ul>
+<p>You may also describe a specific challenge, for example “My study found that people with high agreeableness do not display the Dunning-Kruger effect”.</p>
+<p>After each challenge, the first group may revise their theory - but without violating the constraint that it must be a single sentence.</p>
+<p>The theorists win if the challengers cannot come up with new challenges. The challengers win if the theorists cannot ammend their theory while respecting the one-sentence constraint.</p>
+<p>Switch sides after 10 minutes.</p>
+</section><section id="abstraction-vs-nuance-30-min" class="level3" data-number="3.2.2"><h3 data-number="3.2.2" class="anchored" data-anchor-id="abstraction-vs-nuance-30-min">
+<span class="header-section-number">3.2.2</span> Abstraction VS Nuance (30 min)</h3>
+<p>Starting with the one-sentence theories from the previous exercise, go around in a circle.</p>
+<ol type="1">
+<li>In turn, each student mentions their personal experience in relation to the theory (so: 3 or 4 rounds per theory).</li>
+<li>The other students vote on whether this is consistent with the theory, or whether the theory should be made “more nuanced” to accommodate it.</li>
+<li>All together, amend the theory if necessary.</li>
+</ol>
+<p>Do this for 10 minutes, so for 2-3 theories. Then discuss:</p>
+<ul>
+<li>When did each theory stop becoming better?</li>
+<li>Did any additions genuinely improved explanation?</li>
+<li>Which merely increased complexity?</li>
+</ul></section><section id="ambiguous-causal-claims-30-min" class="level3" data-number="3.2.3"><h3 data-number="3.2.3" class="anchored" data-anchor-id="ambiguous-causal-claims-30-min">
+<span class="header-section-number">3.2.3</span> Ambiguous Causal Claims (30 min)</h3>
+<p>Causal claims are an important part of (social scientific) theories. However, there are strong norms against explicit discussion of causality in the social science literature. The result is that causal language is often ambiguous. <span class="citation" data-cites="norouziCapturingCausalClaims2025">Norouzi et al. (<a href="references.html#ref-norouziCapturingCausalClaims2025" role="doc-biblioref">2025</a>)</span> showed that it is possible to automatically extract causal sentences from published papers despite this ambiguity.</p>
+<p>The sentences below are examples from te research by Norouzi and colleagues.</p>
+<p>With your group, decide for each sentence and keep notes on:</p>
+<ol type="a">
+<li>Whether it is Causal (C) or Non-causal (NC)</li>
+<li>Whether it is Ambiguous (Am) or Straightforward (S)</li>
+<li>Whether it is Nuanced (N) or Abstract (Ab)</li>
+</ol>
+<ul>
+<li>We find differences in the behavior of our experimental participants across the three countries, and we find that Hofstede’s dimensions help to explain these differences.</li>
+<li>In the standard symmetric independent private values model in which <span class="math inline">\(\omega_i (d_i) = 0\)</span>, Myerson’s (1981) revenue equivalence result shows that, given that the charity never keeps the prize, it maximizes its revenue if it always allocates the prize to the donor with the highest marginal revenue.</li>
+<li>First, models of information signaling have shown that sequential giving can have beneficial effects for voluntary public good provision when the common value of the public good is uncertain.</li>
+<li>Even though the level of regulation a facility faces does not depend on the overall size of a facility, the two factors are highly correlated.</li>
+<li>For example, in social dilemmas with random noise, people lack the ability to judge with certainty if others intended to cooperate or defect (Klapwijk &amp; Van Lange, 2009;Van Lange, Ouwerkerk, &amp; Tazelaar, 2002).</li>
+<li>The presence of a threshold constraining participants’ activities will lead participants to be less holistic in their cognitive orientations than when a threshold is not present.</li>
+<li>This result is consistent with a previous study which suggests that behaving dishonestly leads to the forgetting of rules.</li>
+<li>Violent media may cause viewers to perceive greater anger and less gratitude during a cooperative task and as such be less inclined to cooperate.</li>
+</ul>
+<div class="webex-solution">
+<button>
+Solution
+</button>
+<ul>
+<li>Violent media may cause viewers to perceive greater anger and less gratitude during a cooperative task and as such be less inclined to cooperate. C, S, Ab</li>
+<li>This result is consistent with a previous study which suggests that behaving dishonestly leads to the forgetting of rules. C, S, Ab</li>
+<li>Even though the level of regulation a facility faces does not depend on the overall size of a facility, the two factors are highly correlated. NC, S, Ab</li>
+<li>We find differences in the behavior of our experimental participants across the three countries, and we find that Hofstede’s dimensions help to explain these differences. NC, S, N</li>
+<li>The presence of a threshold constraining participants’ activities will lead participants to be less holistic in their cognitive orientations than when a threshold is not present. C, Am, N</li>
+<li>First, models of information signaling have shown that sequential giving can have beneficial effects for voluntary public good provision when the common value of the public good is uncertain. C, Am, N</li>
+<li>In the standard symmetric independent private values model in which <span class="math inline">\(\omega_i (d_i) = 0\)</span>, Myerson’s (1981) revenue equivalence result shows that, given that the charity never keeps the prize, it maximizes its revenue if it always allocates the prize to the donor with the highest marginal revenue. C, S, N</li>
+<li>For example, in social dilemmas with random noise, people lack the ability to judge with certainty if others intended to cooperate or defect (Klapwijk &amp; Van Lange, 2009;Van Lange, Ouwerkerk, &amp; Tazelaar, 2002). NC, S, N</li>
+</ul>
+</div>
+<p>Discuss:</p>
+<ul>
+<li>How would you go about writing about causality in your work, after having seen these examples?</li>
+<li>What do you think is the difference between ambiguity and nuance?</li>
+</ul></section></section><section id="homework" class="level2" data-number="3.3"><h2 data-number="3.3" class="anchored" data-anchor-id="homework">
+<span class="header-section-number">3.3</span> Homework</h2>
+<p>This week, you are going to translate your IF-THEN specifications from previous weeks into a graph - the technical name is a <strong>Directed Acyclic Graph (DAG)</strong>. In this graph, you connect concepts (propositions, in the language of PBTS) with one-sided arrows to indicate the direction of causality.</p>
+<p>Note that IF-THEN connections imply causal connections, so the statement “IF a person’s need for autonomy is satisfied THEN they experience well-being” implies a causal link of the form <code>{autonomy satisfied} -&gt; {well-being}</code>.</p>
+<section id="example-self-determination-theory" class="level3" data-number="3.3.1"><h3 data-number="3.3.1" class="anchored" data-anchor-id="example-self-determination-theory">
+<span class="header-section-number">3.3.1</span> Example: Self-Determination Theory</h3>
+<p>Let’s examine a snippet from self-determination theory, and code it for implied causality. The causes are coded in green, and outcomes in blue:</p>
+<blockquote class="blockquote">
+<p>“For these natural, active <font color="green"><strong>processes of intrinsic motivation and integration</strong></font> to operate effectively toward <font color="blue"><strong>healthy development and psychological well-being</strong></font>, human beings need particular <font color="green"><strong>nutriments</strong></font> – both biological and psychological (Ryan, 1995). In the relative absence of such <font color="green"><strong>nutriments</strong></font>, these natural <font color="blue"><strong>processes</strong></font> will be impaired, resulting in <font color="blue"><strong>experiences, development, and behaviors</strong></font> that are less than optimal” (Lange et al., 2012, p.&nbsp;417)</p>
+</blockquote>
+<p>The text is a bit ambiguous, and possibly redundant. We see that <strong>processes</strong>, in the first sentence, refers to intrinsic motivation and integration. This invites the question of the relationship between intrinsic motivation and integration - do they go hand in hand (i.e., just two examples of processes set in motion by nutriments)? Are they distinct but similarly related to other constructs? It’s not clear. Furthermore, in the second sentence, we find the word <strong>processes</strong> again, but this time without explicit reference to intrinsic motivation and integration. For now, we will assume that intrinsic motivation and integration are distinct but have similar relationships to other constructs, and that the word is used consistently across both sentences.</p>
+<p><strong>Nutriments</strong> is defined elsewhere in the text - it appears to refer to refer to the three basic needs, as well as biological necessities.</p>
+<p><strong>Experiences, development, and behaviors</strong> is not well-defined, but we might assume it refers back to <strong>healthy development and psychological well-being</strong>.</p>
+<p>In Week 2, we learned to code snippets like this for IF-THEN connections according to PBTS. This would give the following codings:</p>
+<!-- 1. IF {Processes happen (intrinsic motivation AND integration)} THEN {healthy development AND psychological well-being} (*processes of intrinsic motivation and integration [operate effectively toward] healthy development and psychological well-being*) -->
+<!-- 1. IF {Nutriments} THEN {Processes} (*human beings [need] nutriments [...] for these processes to operate etc.*) -->
+<!-- 1. IF Nutriments THEN {Processes} (*In the [absence of] nutriments [...] processes will be impaired*, negatively phrased) -->
+<!-- 1. IF {Processes} THEN  {Healthy development AND psychological well-being} (*processes will be impaired, resulting in experiences, development, and behaviors*) -->
+<!-- Note that the snippet redundantly states the same two relationships twice; once phrased in the positive and once in the negative. -->
+<!-- Let's apply the same coding procedure to all snippets: -->
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'theorytools'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:webexercises':
+
+    add_to_pkgdown, use_webex_vignette</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="datatables html-widget html-fill-item" id="htmlwidget-ca13c7fb5fe666e46c2b" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-ca13c7fb5fe666e46c2b">{"x":{"filter":"none","vertical":false,"autoHideNavigation":true,"data":[[1,2,3,4,5,6,7,8],["nutriments are absent","[intrinsic motivation OR integration] is present","needs are satisfied or thwarted","rewards given","external event is expected to thwart the basic needs","external perceived locus of causality","external event is expected to support the basic needs","internal perceived locus of causality"],["intrinsic motivation AND integration are impaired","healthy development AND psychological well-being take place","psychological well-being of all people is affected","intrinsic motivation can decrease","external perceived locus of causality","undermined intrinsic motivation","internal perceived locus of causality","enhanced intrinsic motivation"],["“For these natural, active processes of intrinsic motivation and integration to operate effectively toward healthy development and psychological well-being, human beings need particular nutriments – both biological and psychological (Ryan, 1995). In the relative absence of such nutriments, these natural processes will be impaired, resulting in experiences, development, and behaviors that are less than optimal. (Deci &amp; Ryan, 2012, p. 417)","“For these natural, active processes of intrinsic motivation and integration to operate effectively toward healthy development and psychological well-being, human beings need particular nutriments – both biological and psychological (Ryan, 1995). In the relative absence of such nutriments, these natural processes will be impaired, resulting in experiences, development, and behaviors that are less than optimal. (Deci &amp; Ryan, 2012, p. 417)","“The three basic psychological needs are universal such that their satisfaction versus thwarting affects the psychological well-being of all people.” (Deci &amp; Ryan, 2012, p. 425)","“rewards do not always motivate subsequent persistence; indeed they can undermine intrinsic motivation” (Deci &amp; Ryan, 2012, p. 417)","“[Intrinsic motivation] could be either undermined or enhanced depending on whether the social environment supported or thwarted the needs for competence and self-determination. If a reward or other external event such as threat of punishment (Deci and Cascio, 1972), positive feedback (Deci, 1971), competition (Deci and Betley et al., 1981), or choice (Zuckerman et al., 1978) were expected to thwart these basic needs, it was predicted to prompt an external perceived locus of causality and undermine intrinsic motivation; but if the event were expected to support these basic needs, it was predicted to prompt an internal perceived locus of causality and enhance intrinsic motivation.” (Deci &amp; Ryan, 2012, p. 418)","“[Intrinsic motivation] could be either undermined or enhanced depending on whether the social environment supported or thwarted the needs for competence and self-determination. If a reward or other external event such as threat of punishment (Deci and Cascio, 1972), positive feedback (Deci, 1971), competition (Deci and Betley et al., 1981), or choice (Zuckerman et al., 1978) were expected to thwart these basic needs, it was predicted to prompt an external perceived locus of causality and undermine intrinsic motivation; but if the event were expected to support these basic needs, it was predicted to prompt an internal perceived locus of causality and enhance intrinsic motivation.” (Deci &amp; Ryan, 2012, p. 418)","“[Intrinsic motivation] could be either undermined or enhanced depending on whether the social environment supported or thwarted the needs for competence and self-determination. If a reward or other external event such as threat of punishment (Deci and Cascio, 1972), positive feedback (Deci, 1971), competition (Deci and Betley et al., 1981), or choice (Zuckerman et al., 1978) were expected to thwart these basic needs, it was predicted to prompt an external perceived locus of causality and undermine intrinsic motivation; but if the event were expected to support these basic needs, it was predicted to prompt an internal perceived locus of causality and enhance intrinsic motivation.” (Deci &amp; Ryan, 2012, p. 418)","“[Intrinsic motivation] could be either undermined or enhanced depending on whether the social environment supported or thwarted the needs for competence and self-determination. If a reward or other external event such as threat of punishment (Deci and Cascio, 1972), positive feedback (Deci, 1971), competition (Deci and Betley et al., 1981), or choice (Zuckerman et al., 1978) were expected to thwart these basic needs, it was predicted to prompt an external perceived locus of causality and undermine intrinsic motivation; but if the event were expected to support these basic needs, it was predicted to prompt an internal perceived locus of causality and enhance intrinsic motivation.” (Deci &amp; Ryan, 2012, p. 418)"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>N<\/th>\n      <th>IF<\/th>\n      <th>THEN<\/th>\n      <th>Original<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":8,"columnDefs":[{"className":"dt-right","targets":0},{"name":"N","targets":0},{"name":"IF","targets":1},{"name":"THEN","targets":2},{"name":"Original","targets":3}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[8,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p>We can translate these IF-THEN statements into causal links between specific constructs.</p>
+<p>This translation reveals some ambiguities. For example, each IF-THEN relationship is often repeated twice; once phrased in the positive and once in the negative. Many propositions are repeated, once phrased in a positive way, and once phrased in a negative way. For example, <em>human beings [need] nutriments […] for these processes to operate</em> positively phrases a link from nutriments to processes, whereas <em>In the [absence of] nutriments […] processes will be impaired</em> negatively phrases the same link. This can be confusing, especially if the two phrasings differ slightly. Here, it seems safe to assume that both sentences have the same meaning.</p>
+<p>Another ambiguity is the lack of clear and consistent terminology. For example, in proposition #4, we see “rewards” are related to intrinsic motivation. However, in the remainder of the text, rewards are mentioned as just one example of “external events”. We assumed that “rewards” is used as an example of the broader class of external events (pars pro toto).</p>
+<p>Another ambiguity: we read that “If [an external event] were expected to thwart [basic needs], it [prompts] an external perceived locus of causality”. Since the theory otherwise does not explain how people might “expect” that external events will affect them, and this seems to be more of a question for cognitive than social psychology - we made a simplifying assumption: external events affect needs, and also perceived locus of causality.</p>
+<p>We applied two transformations:</p>
+<ol type="1">
+<li>Replace the original text with concept labels, e.g.&nbsp;“nutriments are present” and “needs are satisfied or thwarted” are both replaced with “needs”.</li>
+<li>After this simplification, remove redundant links</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Unique causal connections</caption>
+<thead><tr class="header">
+<th style="text-align: left;">from</th>
+<th style="text-align: left;">to</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">needs</td>
+<td style="text-align: left;">intrinsic_motivation</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">needs</td>
+<td style="text-align: left;">integration</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">intrinsic_motivation</td>
+<td style="text-align: left;">healthy_development</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">intrinsic_motivation</td>
+<td style="text-align: left;">wellbeing</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">integration</td>
+<td style="text-align: left;">healthy_development</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">integration</td>
+<td style="text-align: left;">wellbeing</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">needs</td>
+<td style="text-align: left;">wellbeing</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">external_event</td>
+<td style="text-align: left;">intrinsic_motivation</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">external_event</td>
+<td style="text-align: left;">needs</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">external_event</td>
+<td style="text-align: left;">locus_of_causality</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">locus_of_causality</td>
+<td style="text-align: left;">intrinsic_motivation</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>We translated this table to a DAG:</p>
+<p>We can plot the DAG as follows:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">plot</span>(SDT)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Plot coordinates for graph not supplied! Generating coordinates, see ?coordinates for how to set your own.</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="strategic_ambiguity_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<figcaption>Causal diagram implied by SDT</figcaption></figure>
+</div>
+</div>
+</div>
+</section><section id="do-it-yourself" class="level3" data-number="3.3.2"><h3 data-number="3.3.2" class="anchored" data-anchor-id="do-it-yourself">
+<span class="header-section-number">3.3.2</span> Do It Yourself</h3>
+<p>Following the example above, you will perform three tasks:</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Grouping plain-language propositions into a limited set of concepts</label></li>
+<li><label><input type="checkbox">Revising your <code>Step_2.csv</code> table so that it only uses that limited set of concepts</label></li>
+<li><label><input type="checkbox">Constructing a DAG in R using your revised table.</label></li>
+</ul>
+<section id="group-propositions-into-concepts" class="level4" data-number="3.3.2.1"><h4 data-number="3.3.2.1" class="anchored" data-anchor-id="group-propositions-into-concepts">
+<span class="header-section-number">3.3.2.1</span> Group Propositions into Concepts</h4>
+<p>Make a copy of your <code>Step_2.csv</code> table, and call it <code>DAG.csv</code>.</p>
+<p>With your groupmates, discuss:</p>
+<ul>
+<li>Which of the propositions (i.e., the text in the IF- and THEN-columns) are really the same? E.g.: Are “autonomy satisfaction” and “people feel more independent” really the same?</li>
+<li>Are any of them really the same, but positively vs negatively phrased (e.g., “autonomy satisfaction” and “frustration of the need for autonomy”)?</li>
+<li>How would you name them if you merged identical propositions? E.g., you could use <code>autonomy_satisfaction</code>, or you could go even more abstract and use <code>need_satisfaction</code>, in which case you would use the same label for “autonomy satisfaction”, “competence satisfaction”, and “relatedness satisfaction”.</li>
+</ul>
+<p>Obviously, these examples are based on SDT; use your own theory for this assignment.</p>
+<p><strong>Note: For technical reasons, it is preferable to use short labels without any spaces or special characters. So use</strong> <code>need_satisfaction</code> <strong>, not</strong> <code>satisfaction (of different needs, like autonomy)</code><strong>.</strong></p>
+</section><section id="revise-your-table" class="level4" data-number="3.3.2.2"><h4 data-number="3.3.2.2" class="anchored" data-anchor-id="revise-your-table">
+<span class="header-section-number">3.3.2.2</span> Revise your Table</h4>
+<p>Now go through your table, <code>DAG.csv</code>, and replace every original text with the labels you decided on in the previous step.</p>
+</section><section id="make-dag-in-r" class="level4" data-number="3.3.2.3"><h4 data-number="3.3.2.3" class="anchored" data-anchor-id="make-dag-in-r">
+<span class="header-section-number">3.3.2.3</span> Make DAG in R</h4>
+<ul class="task-list">
+<li><label><input type="checkbox">Open the folder <code>patterns_tutorials</code> you created when following the setup tutorial, <span class="quarto-unresolved-ref">?sec-setup</span>.</label></li>
+<li><label><input type="checkbox">Copy your file <code>DAG.csv</code> into this folder.</label></li>
+<li><label><input type="checkbox">Load the RStudio project file, <code>patterns_tutorials.Rproj</code>.</label></li>
+<li><label><input type="checkbox">In the bottom right panel of RStudio, click the <code>Files</code> tab, and open the file <code>make_dag.R</code>.</label></li>
+</ul>
+<p>Run the following code line by line:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">library</span>(theorytools)</span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="fu">library</span>(dagitty)</span>
+<span id="cb5-3"><a href="#cb5-3"></a>my_theory <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"DAG.csv"</span>, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)[, <span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>)]</span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="fu">names</span>(my_theory) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"from"</span>, <span class="st">"to"</span>)</span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="co"># Remove redundant statements</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a>my_theory <span class="ot">&lt;-</span> my_theory[<span class="sc">!</span><span class="fu">duplicated</span>(my_theory), ]</span>
+<span id="cb5-7"><a href="#cb5-7"></a>my_theory <span class="ot">&lt;-</span> <span class="fu">dagitty</span>(</span>
+<span id="cb5-8"><a href="#cb5-8"></a>  <span class="fu">paste0</span>(<span class="st">"dag {"</span>,</span>
+<span id="cb5-9"><a href="#cb5-9"></a>  <span class="fu">paste0</span>(my_theory<span class="sc">$</span>from, <span class="st">" -&gt; "</span>, my_theory<span class="sc">$</span>to, <span class="at">collapse =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>),</span>
+<span id="cb5-10"><a href="#cb5-10"></a>  <span class="st">"}"</span>)</span>
+<span id="cb5-11"><a href="#cb5-11"></a>)</span>
+<span id="cb5-12"><a href="#cb5-12"></a><span class="fu">plot</span>(my_theory)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
+<div id="ref-norouziCapturingCausalClaims2025" class="csl-entry" role="listitem">
+Norouzi, R., Kleinberg, B., Vermunt, J. K., &amp; Lissa, C. J. van. (2025). Capturing causal claims: <span>A</span> fine-tuned text mining model for extracting causal sentences from social science papers. <em>Research Synthesis Methods</em>, <em>16</em>(1), 139–156. <a href="https://doi.org/10.1017/rsm.2024.13">https://doi.org/10.1017/rsm.2024.13</a>
+</div>
+</div>
+</section></section></section></main><!-- /main --><script>
+// open rdrr links externally ----
+
+var exlinks = document.querySelectorAll("a[href^='https://rdrr.io']");
+var exlink_func = function(){
+  window.open(this.href);
+  return false;
+};
+for (var i = 0; i < exlinks.length; i++) {
+    exlinks[i].addEventListener('click', exlink_func, false);
+}
+
+// visible second sidebar in mobile ----
+
+function move_sidebar() {
+  var toc = document.getElementById("TOC");
+  var small_sidebar = document.querySelector("#quarto-sidebar .sidebar-menu-container");
+  var right_sidebar = document.getElementById("quarto-margin-sidebar");
+
+  if (window.innerWidth < 768) {
+    small_sidebar.append(toc);
+  } else {
+    right_sidebar.append(toc);
+  }
+}
+move_sidebar();
+window.onresize = move_sidebar;
+</script><script>
+
+/* update total correct if #webex-total_correct exists */
+update_total_correct = function() {
+  console.log("webex: update total_correct");
+
+  var t = document.getElementsByClassName("webex-total_correct");
+  for (var i = 0; i < t.length; i++) {
+    p = t[i].parentElement;
+    var correct = p.getElementsByClassName("webex-correct").length;
+    var solvemes = p.getElementsByClassName("webex-solveme").length;
+    var radiogroups = p.getElementsByClassName("webex-radiogroup").length;
+    var selects = p.getElementsByClassName("webex-select").length;
+
+    t[i].innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
+  }
+}
+
+/* webex-solution button toggling function */
+b_func = function() {
+  console.log("webex: toggle hide");
+
+  var cl = this.parentElement.classList;
+  if (cl.contains('open')) {
+    cl.remove("open");
+  } else {
+    cl.add("open");
+  }
+}
+
+/* check answers */
+check_func = function() {
+  console.log("webex: check answers");
+
+  var cl = this.parentElement.classList;
+  if (cl.contains('unchecked')) {
+    cl.remove("unchecked");
+    this.innerHTML = "Hide Answers";
+  } else {
+    cl.add("unchecked");
+    this.innerHTML = "Show Answers";
+  }
+}
+
+/* function for checking solveme answers */
+solveme_func = function(e) {
+  console.log("webex: check solveme");
+
+  var real_answers = JSON.parse(this.dataset.answer);
+  var my_answer = this.value;
+  var cl = this.classList;
+  if (cl.contains("ignorecase")) {
+    my_answer = my_answer.toLowerCase();
+  }
+  if (cl.contains("nospaces")) {
+    my_answer = my_answer.replace(/ /g, "")
+  }
+
+  if (my_answer == "") {
+    cl.remove("webex-correct");
+    cl.remove("webex-incorrect");
+  } else if (real_answers.includes(my_answer)) {
+    cl.add("webex-correct");
+    cl.remove("webex-incorrect");
+  } else {
+    cl.add("webex-incorrect");
+    cl.remove("webex-correct");
+  }
+
+  // match numeric answers within a specified tolerance
+  if(this.dataset.tol > 0){
+    var tol = JSON.parse(this.dataset.tol);
+    var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
+    if (matches.reduce((a, b) => a + b, 0) > 0) {
+      cl.add("webex-correct");
+    } else {
+      cl.remove("webex-correct");
+    }
+  }
+
+  // added regex bit
+  if (cl.contains("regex")){
+    answer_regex = RegExp(real_answers.join("|"))
+    if (answer_regex.test(my_answer)) {
+      cl.add("webex-correct");
+    }
+  }
+
+  update_total_correct();
+}
+
+/* function for checking select answers */
+select_func = function(e) {
+  console.log("webex: check select");
+
+  var cl = this.classList
+
+  /* add style */
+  cl.remove("webex-incorrect");
+  cl.remove("webex-correct");
+  if (this.value == "answer") {
+    cl.add("webex-correct");
+  } else if (this.value != "blank") {
+    cl.add("webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+/* function for checking radiogroups answers */
+radiogroups_func = function(e) {
+  console.log("webex: check radiogroups");
+
+  var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
+  var cl = checked_button.parentElement.classList;
+  var labels = checked_button.parentElement.parentElement.children;
+
+  /* get rid of styles */
+  for (i = 0; i < labels.length; i++) {
+    labels[i].classList.remove("webex-incorrect");
+    labels[i].classList.remove("webex-correct");
+  }
+
+  /* add style */
+  if (checked_button.value == "answer") {
+    cl.add("webex-correct");
+  } else {
+    cl.add("webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+window.onload = function() {
+  console.log("webex onload");
+  /* set up solution buttons */
+  var buttons = document.getElementsByTagName("button");
+
+  for (var i = 0; i < buttons.length; i++) {
+    if (buttons[i].parentElement.classList.contains('webex-solution')) {
+      buttons[i].onclick = b_func;
+    }
+  }
+
+  var check_sections = document.getElementsByClassName("webex-check");
+  console.log("check:", check_sections.length);
+  for (var i = 0; i < check_sections.length; i++) {
+    check_sections[i].classList.add("unchecked");
+
+    let btn = document.createElement("button");
+    btn.innerHTML = "Show Answers";
+    btn.classList.add("webex-check-button");
+    btn.onclick = check_func;
+    check_sections[i].appendChild(btn);
+
+    let spn = document.createElement("span");
+    spn.classList.add("webex-total_correct");
+    check_sections[i].appendChild(spn);
+  }
+
+  /* set up webex-solveme inputs */
+  var solveme = document.getElementsByClassName("webex-solveme");
+
+  for (var i = 0; i < solveme.length; i++) {
+    /* make sure input boxes don't auto-anything */
+    solveme[i].setAttribute("autocomplete","off");
+    solveme[i].setAttribute("autocorrect", "off");
+    solveme[i].setAttribute("autocapitalize", "off");
+    solveme[i].setAttribute("spellcheck", "false");
+    solveme[i].value = "";
+
+    /* adjust answer for ignorecase or nospaces */
+    var cl = solveme[i].classList;
+    var real_answer = solveme[i].dataset.answer;
+    if (cl.contains("ignorecase")) {
+      real_answer = real_answer.toLowerCase();
+    }
+    if (cl.contains("nospaces")) {
+      real_answer = real_answer.replace(/ /g, "");
+    }
+    solveme[i].dataset.answer = real_answer;
+
+    /* attach checking function */
+    solveme[i].onkeyup = solveme_func;
+    solveme[i].onchange = solveme_func;
+
+    solveme[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+  }
+
+  /* set up radiogroups */
+  var radiogroups = document.getElementsByClassName("webex-radiogroup");
+  for (var i = 0; i < radiogroups.length; i++) {
+    radiogroups[i].onchange = radiogroups_func;
+  }
+
+  /* set up selects */
+  var selects = document.getElementsByClassName("webex-select");
+  for (var i = 0; i < selects.length; i++) {
+    selects[i].onchange = select_func;
+    selects[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+  }
+
+  update_total_correct();
+}
+
+</script><script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="./what_makes_a_good_theory.html" class="pagination-link" aria-label="What Makes a Good Theory?">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">What Makes a Good Theory?</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./references.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>CC-BY (2026) Caspar J. Van Lissa</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+</body></html>

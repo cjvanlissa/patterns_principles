@@ -1,0 +1,31 @@
+# Setup your Computer {.unnumbered}
+
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+This is a tutorial on how to set up your personal computer for the course.
+It guides you through the installation of several software packages.
+This vignette does not assume a prior installation of `R`, so it is suitable for novice users.
+You only have to perform these steps once for every computer you intend to use,
+and the entire process should take approximately 30 minutes if you start from scratch.
+In case some of the software is already installed on your system, you can skip those related steps.
+
+Follow these steps in order:
+
+1. Install [R (free)](https://CRAN.R-project.org)
+1. Install ['RStudio' Desktop (Free)](https://posit.co/download/rstudio-desktop/)
+1. Open RStudio. Once it's loaded, you'll see a panel in the bottom left labeled "Console". Click there, then copy-paste the code block below this writing, line by line, and press enter. Be prepared for three contingencies:  
+    + If you receive any error saying *There is no package called [package name]*, then run the code `install.packages("package name")`  
+    + If you are prompted to update packages, just press [ENTER] to avoid updating packages. Updating packages this way in an interactive session sometimes leads to errors if the packages are loaded.  
+    + If you see a pop-up dialog asking *Do you want to install from sources the package which needs compilation?*, click *No*.
+
+
+```{r eval = FALSE, echo = TRUE}
+install.packages("theorytools", dependencies = TRUE)
+install.packages("dagitty")
+```

@@ -1,0 +1,85 @@
+project:
+  type: book
+  output-dir: docs
+  resources: resources
+execute:
+  freeze: auto
+  warnings: false
+  echo: false
+  messages: false
+book:
+  title: Patterns to Principles
+  subtitle: Theory Construction in the Social Sciences
+  author: Caspar J. Van Lissa
+  date: 4/3/2026
+  license: CC-BY
+  downloads: pdf
+  repo-url: https://github.com/cjvanlissa/patterns_principles
+  description: Book Description
+  cover-image: images/logos/logo.jpg
+  image: images/logos/logo.jpg
+  favicon: images/logos/favicon.png
+  cookie-consent: false
+  google-analytics: ''
+  page-navigation: true
+  search: true
+  sidebar:
+    title: ''
+    logo: ''
+    search: true
+    contents: ''
+    style: floating
+    background: light
+    foreground: dark
+    border: true
+    alignment: left
+    collapse-level: 3
+    pinned: true
+    header: ''
+    footer: ''
+  margin-header: ''
+  page-footer: CC-BY (2026) Caspar J. Van Lissa
+  chapters:
+  - index.qmd
+  - theory_crisis.qmd
+  - what_makes_a_good_theory.qmd
+  - strategic_ambiguity.qmd
+  - references.qmd
+  appendices:
+  - setup.qmd
+prefer-html: true
+csl: include/apa.csl
+format:
+  html:
+    theme:
+      light:
+      - flatly
+      - include/light.scss
+      dark:
+      - darkly
+      - include/dark.scss
+    css:
+    - https://use.fontawesome.com/releases/v5.13.0/css/all.css
+    - include/booktem.css
+    - include/webex.css
+    - include/glossary.css
+    - include/style.css
+    df-print: kable
+    code-link: true
+    code-fold: false
+    code-line-numbers: true
+    code-overflow: wrap
+    code-copy: hover
+    highlight-style: a11y
+    mainfont: ''
+    monofont: ''
+    include-after-body:
+    - include/script.js
+    - include/webex.js
+  pdf:
+    include-in-header: preamble.tex
+    extra_dependencies: tcolorbox
+    output-file: Patterns_Principles
+    output-ext: pdf
+bibliography: references.bib
+editor: source

@@ -1,0 +1,241 @@
+# Strategic Ambiguity
+
+## Weekly Readings
+
+```{r, results = "asis"}
+source("R/helpers.R")
+library(dagitty)
+schedule <- readODS::read_ods("schedule2.ods")
+cat(paste0("* ", strsplit(schedule$Reading[3], split = "\n")[[1]]), sep = "\n")
+```
+
+## Tutorial
+
+### Ambiguity Battle (30 min, 2x 15)
+
+Collaborate with 4 students, divided into two duos: Theorists VS Challengers.
+One duo chooses one of the following phenomena and writes down a one-sentence theory to explain the phenomenon:
+
+* Venus effect: most people may hold beliefs that are inconsistent with observable phenomena
+* Social facilitation: people do better on tasks when they are with other people rather than when they are doing the task alone.
+* The frequency illusion: people notice a specific concept, word, or product more frequently after recently becoming aware of it.
+* Barnum effect: individuals give high accuracy ratings to descriptions of their personality that supposedly are tailored specifically to them, yet which are in fact vague and general enough to apply to a broad range of people. This effect can provide a partial explanation for the widespread acceptance of astrology, fortune telling, aura reading, and the Myers-Briggs "personality test".
+* The bystander effect: individuals are less likely to offer help to a victim in the presence of other people.
+* Dunning–Kruger effect: people with low ability in a specific area systematically give overly positive assessments of their ability, while high performers to underestimate their skills. 
+* The Group Project Paradox: Everyone in the group feels that they did disproportionally more work than the others.
+
+The other duo brainstorms on "challenges" to the theory, for example:
+
+* Can it explain a null result?
+* Can your theory explain cross-cultural variation?
+* Can it explain developmental change?
+* Can it explain contradictory results in experimental versus observational/naturalistic settings?
+
+You may also describe a specific challenge, for example "My study found that people with high agreeableness do not display the Dunning-Kruger effect".
+
+After each challenge, the first group may revise their theory - but without violating the constraint that it must be a single sentence.
+
+The theorists win if the challengers cannot come up with new challenges. The challengers win if the theorists cannot ammend their theory while respecting the one-sentence constraint.
+
+Switch sides after 10 minutes.
+
+### Abstraction VS Nuance (30 min)
+
+Starting with the one-sentence theories from the previous exercise, go around in a circle.
+
+1. In turn, each student mentions their personal experience in relation to the theory (so: 3 or 4 rounds per theory).
+2. The other students vote on whether this is consistent with the theory, or whether the theory should be made "more nuanced" to accommodate it.
+3. All together, amend the theory if necessary.
+
+Do this for 10 minutes, so for 2-3 theories. Then discuss:
+
+* When did each theory stop becoming better?
+* Did any additions genuinely improved explanation?
+* Which merely increased complexity?
+
+### Ambiguous Causal Claims (30 min)
+
+Causal claims are an important part of (social scientific) theories.
+However, there are strong norms against explicit discussion of causality in the social science literature.
+The result is that causal language is often ambiguous.
+@norouziCapturingCausalClaims2025 showed that it is possible to automatically extract causal sentences from published papers despite this ambiguity.
+
+The sentences below are examples from te research by Norouzi and colleagues.
+
+With your group, decide for each sentence and keep notes on:
+
+a. Whether it is Causal (C) or Non-causal (NC)
+b. Whether it is Ambiguous (Am) or Straightforward (S)
+c. Whether it is Nuanced (N) or Abstract (Ab)
+
+* We find differences in the behavior of our experimental participants across the three countries, and we find that Hofstede’s dimensions help to explain these differences.
+* In the standard symmetric independent private values model in which $\omega_i (d_i) = 0$, Myerson's (1981) revenue equivalence result shows that, given that the charity never keeps the prize, it maximizes its revenue if it always allocates the prize to the donor with the highest marginal revenue.
+* First, models of information signaling have shown that sequential giving can have beneficial effects for voluntary public good provision when the common value of the public good is uncertain.
+* Even though the level of regulation a facility faces does not depend on the overall size of a facility, the two factors are highly correlated.
+* For example, in social dilemmas with random noise, people lack the ability to judge with certainty if others intended to cooperate or defect (Klapwijk & Van Lange, 2009;Van Lange, Ouwerkerk, & Tazelaar, 2002).
+* The presence of a threshold constraining participants' activities will lead participants to be less holistic in their cognitive orientations than when a threshold is not present.
+* This result is consistent with a previous study which suggests that behaving dishonestly leads to the forgetting of rules.
+* Violent media may cause viewers to perceive greater anger and less gratitude during a cooperative task and as such be less inclined to cooperate.
+
+`r webexercises::hide("Solution")`
+
+* Violent media may cause viewers to perceive greater anger and less gratitude during a cooperative task and as such be less inclined to cooperate. C, S, Ab
+* This result is consistent with a previous study which suggests that behaving dishonestly leads to the forgetting of rules. C, S, Ab
+* Even though the level of regulation a facility faces does not depend on the overall size of a facility, the two factors are highly correlated. NC, S, Ab
+* We find differences in the behavior of our experimental participants across the three countries, and we find that Hofstede’s dimensions help to explain these differences. NC, S, N
+* The presence of a threshold constraining participants' activities will lead participants to be less holistic in their cognitive orientations than when a threshold is not present. C, Am, N
+* First, models of information signaling have shown that sequential giving can have beneficial effects for voluntary public good provision when the common value of the public good is uncertain. C, Am, N
+* In the standard symmetric independent private values model in which $\omega_i (d_i) = 0$, Myerson's (1981) revenue equivalence result shows that, given that the charity never keeps the prize, it maximizes its revenue if it always allocates the prize to the donor with the highest marginal revenue. C, S, N
+* For example, in social dilemmas with random noise, people lack the ability to judge with certainty if others intended to cooperate or defect (Klapwijk & Van Lange, 2009;Van Lange, Ouwerkerk, & Tazelaar, 2002). NC, S, N
+
+`r webexercises::unhide()`
+
+Discuss: 
+
+- How would you go about writing about causality in your work, after having seen these examples?
+- What do you think is the difference between ambiguity and nuance?
+
+## Homework
+
+This week, you are going to translate your IF-THEN specifications from previous weeks into a graph - the technical name is a **Directed Acyclic Graph (DAG)**.
+In this graph, you connect concepts (propositions, in the language of PBTS) with one-sided arrows to indicate the direction of causality.
+
+Note that IF-THEN connections imply causal connections, so the statement "IF a person's need for autonomy is satisfied THEN they experience well-being" implies a causal link of the form `{autonomy satisfied} -> {well-being}`.
+
+### Example: Self-Determination Theory
+
+Let's examine a snippet from self-determination theory, and code it for implied causality.
+The causes are coded in green, and outcomes in blue:
+
+> "For these natural, active <font color="green">**processes of intrinsic motivation and integration**</font> to operate effectively toward <font color="blue">**healthy development and psychological well-being**</font>, human beings need particular <font color = "green">**nutriments**</font> – both biological and psychological (Ryan, 1995). In the relative absence of such <font color = "green">**nutriments**</font>, these natural <font color = "blue">**processes**</font> will be impaired, resulting in <font color = "blue">**experiences, development, and behaviors**</font> that are less than optimal" (Lange et al., 2012, p. 417)
+
+The text is a bit ambiguous, and possibly redundant. We see that **processes**, in the first sentence, refers to intrinsic motivation and integration.
+This invites the question of the relationship between intrinsic motivation and integration - do they go hand in hand (i.e., just two examples of processes set in motion by nutriments)? Are they distinct but similarly related to other constructs? It's not clear. 
+Furthermore, in the second sentence, we find the word **processes** again, but this time without explicit reference to intrinsic motivation and integration. For now, we will assume that intrinsic motivation and integration are distinct but have similar relationships to other constructs, and that the word is used consistently across both sentences.
+
+**Nutriments** is defined elsewhere in the text - it appears to refer to refer to the three basic needs, as well as biological necessities.
+
+**Experiences, development, and behaviors** is not well-defined, but we might assume it refers back to **healthy development and psychological well-being**.
+
+In Week 2, we learned to code snippets like this for IF-THEN connections according to PBTS. This would give the following codings:
+
+<!-- 1. IF {Processes happen (intrinsic motivation AND integration)} THEN {healthy development AND psychological well-being} (*processes of intrinsic motivation and integration [operate effectively toward] healthy development and psychological well-being*) -->
+<!-- 1. IF {Nutriments} THEN {Processes} (*human beings [need] nutriments [...] for these processes to operate etc.*) -->
+<!-- 1. IF Nutriments THEN {Processes} (*In the [absence of] nutriments [...] processes will be impaired*, negatively phrased) -->
+<!-- 1. IF {Processes} THEN  {Healthy development AND psychological well-being} (*processes will be impaired, resulting in experiences, development, and behaviors*) -->
+
+<!-- Note that the snippet redundantly states the same two relationships twice; once phrased in the positive and once in the negative. -->
+
+<!-- Let's apply the same coding procedure to all snippets: -->
+
+```{r}
+library(theorytools)
+SDT1 <- read.csv(system.file("sdt1.txt",package="theorytools"))
+names(SDT1) <- c("N", "IF", "THEN", "Original")
+SDT <- read.csv(system.file("sdt.txt",package="theorytools"))
+# definitions <- read.csv(system.file("sdt_definitions.csv",package="theorytools"))
+# SDT <- read.csv(system.file("sdt.txt", package="theorytools"))
+# knitr::kable(SDT[, 1:3], caption = "IF/THEN statements translated into causal connections")
+
+make_table(SDT1[, 1:4])
+```
+
+
+We can translate these IF-THEN statements into causal links between specific constructs.
+
+This translation reveals some ambiguities.
+For example, each IF-THEN relationship is often repeated twice; once phrased in the positive and once in the negative.
+Many propositions are repeated, once phrased in a positive way, and once phrased in a negative way.
+For example, *human beings [need] nutriments [...] for these processes to operate* positively phrases a link from nutriments to processes, whereas *In the [absence of] nutriments [...] processes will be impaired* negatively phrases the same link.
+This can be confusing, especially if the two phrasings differ slightly.
+Here, it seems safe to assume that both sentences have the same meaning.
+
+Another ambiguity is the lack of clear and consistent terminology.
+For example, in proposition #4, we see "rewards" are related to intrinsic motivation.
+However, in the remainder of the text, rewards are mentioned as just one example of "external events".
+We assumed that "rewards" is used as an example of the broader class of external events (pars pro toto).
+
+Another ambiguity: we read that "If [an external event] were expected to thwart [basic needs], it [prompts] an external perceived locus of causality".
+Since the theory otherwise does not explain how people might "expect" that external events will affect them,
+and this seems to be more of a question for cognitive than social psychology - we made a simplifying assumption:
+external events affect needs,
+and also perceived locus of causality.
+
+We applied two transformations:
+
+1. Replace the original text with concept labels, e.g. "nutriments are present" and "needs are satisfied or thwarted" are both replaced with "needs".
+2. After this simplification, remove redundant links
+
+```{r echo = FALSE}
+# Drop statement numbers
+SDT <- SDT[, 2:3]
+# Remove redundant statements
+SDT <- SDT[!duplicated(SDT), ]
+knitr::kable(SDT, caption = "Unique causal connections")
+```
+
+We translated this table to a DAG:
+
+```{r}
+SDT <- dagitty(
+  paste0("dag {",
+  paste0(SDT$from, " -> ", SDT$to, collapse = "\n"),
+  "}")
+)
+```
+
+We can plot the DAG as follows:
+
+```{r echo = TRUE, out.width="70%", fig.cap="Causal diagram implied by SDT"}
+plot(SDT)
+```
+
+### Do It Yourself
+
+Following the example above, you will perform three tasks:
+
+- [ ] Grouping plain-language propositions into a limited set of concepts
+- [ ] Revising your `Step_2.csv` table so that it only uses that limited set of concepts
+- [ ] Constructing a DAG in R using your revised table.
+
+#### Group Propositions into Concepts
+
+Make a copy of your `Step_2.csv` table, and call it `DAG.csv`.
+
+With your groupmates, discuss: 
+
+* Which of the propositions (i.e., the text in the IF- and THEN-columns) are really the same? E.g.: Are "autonomy satisfaction" and "people feel more independent" really the same?
+* Are any of them really the same, but positively vs negatively phrased (e.g., "autonomy satisfaction" and "frustration of the need for autonomy")?
+* How would you name them if you merged identical propositions? E.g., you could use `autonomy_satisfaction`, or you could go even more abstract and use `need_satisfaction`, in which case you would use the same label for "autonomy satisfaction", "competence satisfaction", and "relatedness satisfaction".
+
+Obviously, these examples are based on SDT; use your own theory for this assignment.
+
+**Note: For technical reasons, it is preferable to use short labels without any spaces or special characters. So use** `need_satisfaction` **, not** `satisfaction (of different needs, like autonomy)`**.**
+
+#### Revise your Table
+
+Now go through your table, `DAG.csv`, and replace every original text with the labels you decided on in the previous step.
+
+#### Make DAG in R
+
+- [ ] Open the folder `patterns_tutorials` you created when following the setup tutorial, @sec-setup.
+- [ ] Copy your file `DAG.csv` into this folder.
+- [ ] Load the RStudio project file, `patterns_tutorials.Rproj`.
+- [ ] In the bottom right panel of RStudio, click the `Files` tab, and open the file `make_dag.R`.
+
+Run the following code line by line:
+
+```{r eval = FALSE, echo = TRUE}
+library(theorytools)
+library(dagitty)
+my_theory <- read.csv("DAG.csv", stringsAsFactors = FALSE)[, c(2:3)]
+names(my_theory) <- c("from", "to")
+# Remove redundant statements
+my_theory <- my_theory[!duplicated(my_theory), ]
+my_theory <- dagitty(
+  paste0("dag {",
+  paste0(my_theory$from, " -> ", my_theory$to, collapse = "\n"),
+  "}")
+)
+plot(my_theory)
+```

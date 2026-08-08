@@ -1,0 +1,8 @@
+Component,Type,Percentage,Description
+Multiple choice exam,individual,20.00%,"During 11 lecture sessions, a 4-question multiple choice quiz is administered. Missed quizzes count for 0 points, the best 10 quizzes are used to calculate the total grade."
+Poster Presentation,group,15.00%,"During the Theory Methods Conference (October 1st-2nd), each group presents their ongoing theory specification work to obtain feedback"
+Assignment,individual,10.00%,W/rite a one-paragraph (max 500 word) summary and reflection of one of the talks you attended at the Theory Methods Conference
+Participation,individual,5.00%,"- Participate in class discussion at least every other lecture
+- Attend a timeslot during the Theory Methods Conference"
+Presentation of theory specification,group,10.00%,Present your group project to class
+Final theory report,group,20.00%,"Write a report about your final theory, and archive it as a FAIR theory"

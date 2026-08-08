@@ -1,0 +1,128 @@
+# What Makes a Good Theory?
+
+## Weekly Readings
+
+```{r, results = "asis"}
+schedule <- readODS::read_ods("schedule2.ods")
+cat(paste0("* ", strsplit(schedule$Reading[2], split = "\n")[[1]]), sep = "\n")
+```
+
+## Tutorial
+
+### Analyze Theory Using Meehl's Taxonomy
+
+In this exercise, you will evaluate the sentences you selected from a published theory using Meehl's hierarchy of progressively stronger theory specifications.
+The goal is to further your understanding of the function and level of specificity of each sentence.
+Meehl's orginal taxonomy is:
+
+I.	Type of entity postulated
+II.	Compositional, developmental, or efficient-causal connections among entities
+III.	Signs of first and second derivatives of functional dynamic laws
+IV.	Ordering relationships among the derivatives
+V.	Signs of mixed second-order partial derivatives (interactions)
+VI.	Functional forms (e.g., linear, logarithmic, exponential)
+VII.	Trans-situationality of parameters
+VIII.	Quantitative relations among parameters
+IX.	Numerical values of parameters
+
+To simplify the assignment, we simplify Meehl's taxonomy as @vanlissaBeFAIRTheory2026 did:
+
+I. statements about the types of entities postulated (i.e., ontology)
+II. statements about causal connections between those entities
+III. statements about the functional form of those connections (Levels 3–8)
+IV. statements about their specific numerical values (Level 9)
+
+#### Part 1. Classify the theory statements (15 minutes)
+
+First individually, for each selected sentence:
+
+* Read the sentence carefully.
+* Decide which of the levels it best represents.
+
+#### Part 2. Evaluate the theory (10 minutes)
+
+As a group:
+
+* Compare your classifications
+* Which levels of Meehl's hierarchy are well represented?
+* Which levels are missing?
+* How strong do you think the theory is according to Meehl's framework?
+
+#### Part 3. Compare theories (15 minutes)
+
+Each group gives one example of every level they identified in their source material,
+as well as an example of a sentence you were not able to classify (if applicable).
+Discuss with the class.
+
+### Is This Theory "Good"?
+
+Apply Olivia Guest's four-category ontology to critically evaluate a published psychological or social science theory. 
+
+#### Part 1. Evaluate Theory along Each Category (10 minutes)
+
+Each group member picks one unique category, and independently answers the guiding questions for that category in Table 1.
+
+Decide whether the theory is "good", adequate, or "bad" in your category.
+
+#### Part 2. Discuss and Prioritize (15 minutes)
+
+Discuss your findings with your groupmates.
+Make a score card for the theory, rating it as good, adequate, or bad on the four categories.
+
+Then, prioritize the four categories. How important do you think it is that the theory be "good" on each of the four categories? Use this to guide your further work on the theory during coming weeks.
+
+#### Part 3. Class discussion (15 minutes)
+
+As a class, discuss:
+
+* If you had to choose between a theory that scores highly on Meehl's hierarchy but poorly on Guest's ontology, and one that does the opposite, which would you consider the better scientific theory? Why?
+* You can pick one criterion out of Meehl's hierarchy and Guest's ontology. Which one do you pick, and why?
+
+
+## Homework
+
+This week, you will extract IF-THEN statements from the sources you selected last week.
+
+*__Credit:__ This assignment is based on the Proposition Based Theory Specification instructions [@glocknerPBTSGuidelinesTemplates2025].*
+
+### PBTS Step 2
+
+Individually, fill out [Table 2](Step_2.csv).
+Translate each source sentence
+into a set of implications (i.e., IF- THEN statements) and all included
+propositions that together fully describe the theory.
+
+a. Propositions are statements concerning measurable and non-measurable concepts that
+can be true or false, and represent an implication’s antecedence and consequence. E.g., "A person's needs are satisfied" is a proposition.
+b. Propositions can be combined by any logical or mathematical operators, qualifiers, or, if
+necessary, user-defined uncommon operators (that have to be defined and
+operationalized).
+c. It is often possible to make certain conditions of a theory either part of the propositions or
+the definition/operationalizations. To keep the propositions simple, these conditions should
+be part of the definition/operationalizations if they do not belong to the core causal relations
+of the theory.
+d. In this step, remain as close as possible to the original verbal narrative while interpreting
+the text in accordance with the authors’ intended meaning.
+(f) In the "Reference" column, reference the label of the text snippet from last week's Table, e.g. S1, S2 ... Sn.
+g. If the original specification mentions the functional form of a relationship, put this information in the Comment column.
+
+### Combining Specifications-BINGO
+
+As a group, read each other's specifications. Select one student's work to be the "starting point" for the definitive version.
+The author of this version reads each of their implications aloud.
+Other students put a check mark in front of their implications if these match the implication read by the first student.
+If they are clearly similar but there are important differences - discuss these and find agreement on which version of the implication to keep in the definitive version.
+
+When the first student is done reading all of their implications, the other students may have some remaining un-checked implications.
+That is to say: Implications that they coded, but the first student did not.
+Discuss these to check whether they should be included in the definitive version or not.
+
+The end product should be a complete table of all unique implications that all students (more or less) agree upon.
+
+If there are important disagreements - keep notes, because this is good material for the Discussion section of your final report.
+
+::: {.callout-tip title="Roll Your Own Theory"}
+
+If you are making your own theory, do the assignment as described above - but instead of coding selected sentences, each student lists all implications that *they think should be part of the theory*. The group activity then constitutes of discussing these and finding agreement about a set of implications.
+
+:::
