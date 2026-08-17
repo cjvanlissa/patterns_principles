@@ -30,11 +30,21 @@
     ]
   },
   {
+    "objectID": "index.html#study-load",
+    "href": "index.html#study-load",
+    "title": "Patterns to Principles",
+    "section": "Study Load",
+    "text": "Study Load\nThis is the breakdown of the expected study load:",
+    "crumbs": [
+      "General Information"
+    ]
+  },
+  {
     "objectID": "index.html#assessment",
     "href": "index.html#assessment",
     "title": "Patterns to Principles",
     "section": "Assessment",
-    "text": "Assessment\nYour grade for the course is based entirely on your “portfolio”, comprised of the following components:\nTab 1\n\nTab 2\n\n\n\n\n\n\n\n\n\n\nComponent\nType\nPercentage\nDescription\n\n\n\nMultiple choice exam\nindividual\n20.00%\nDuring 11 lecture sessions, a 4-question multiple choice quiz is administered. Missed quizzes count for 0 points, the best 10 quizzes are used to calculate the total grade.\n\n\nPoster Presentation\ngroup\n15.00%\nDuring the Theory Methods Conference (October 1st-2nd), each group presents their ongoing theory specification work to obtain feedback\n\n\nAssignment\nindividual\n10.00%\nW/rite a one-paragraph (max 500 word) summary and reflection of one of the talks you attended at the Theory Methods Conference\n\n\nParticipation\nindividual\n5.00%\n- Participate in class discussion at least every other lecture\n\n\n- Attend a timeslot during the Theory Methods Conference\n\n\n\n\n\nPresentation of theory specification\ngroup\n10.00%\nPresent your group project to class\n\n\nFinal theory report\ngroup\n20.00%\nWrite a report about your final theory, and archive it as a FAIR theory",
+    "text": "Assessment\nYour grade for the course is based entirely on your “portfolio”, comprised of the following components:",
     "crumbs": [
       "General Information"
     ]
@@ -45,16 +55,6 @@
     "title": "Patterns to Principles",
     "section": "Group Work",
     "text": "Group Work\nFor this course, we want to stimulate you to engage with the material, with one another, and with the teachers. Therefore, some portfolio assignments are made in groups. There are aspects of learning in groups that can really improve your knowledge, like discussion and peer feedback. Groups comprise 3-4 members and are created during the first tutorial session (Find a Group). We encourage students to reflect on their roles in group work, and to explicitly divide roles before each session or switch roles each week. At minimum, it’s useful to always have one Facilitator. If your group tends to be unanimous, appoint a Devil’s advocate. If your group tends towards disagreement, appoint an Arbitrator.\nCourse materials\nYou do not need a book for this course. This GitBook provides all relevant course materials, along with primary literature.\nCourse schedule\nAlways check the latest course schedule on TimeEdit. For an overview of the content, see below:\n\nCommunication\nCommunication about the course occurs through Canvas (Login with your student ID and password).",
-    "crumbs": [
-      "General Information"
-    ]
-  },
-  {
-    "objectID": "index.html#learning-goals",
-    "href": "index.html#learning-goals",
-    "title": "Patterns to Principles",
-    "section": "Learning goals",
-    "text": "Learning goals\nAfter completing the course, you will be able to do the following:\nAll majors\n\ncompute and interpret commonly used descriptive statistics such as the sample mean, the median, the mode, variance and standard deviation, the standard error, and the correlation coefficient.\nrecognize different probability distributions such as the normal distribution, and make computations for these probability distributions.\nexplain the essential aspects of null-hypothesis significance testing, including sampling distributions, Type I and Type II errors, one-tailed versus two-tailed testing, and statistical power.\napply different statistical tests such as the Z-test, the one sample t-test, the one way Between Subjects Analysis of Variance test, and statistical tests related to (multiple) linear regression analysis with continuous and categorical predictors; and clarify the statistical and/or methodological assumptions that apply to the techniques that are discussed in this course.\nexplain basic concepts in regression analysis, including: linear association, least-squares estimation, explained variance, Multiple R, multiple correlation, adjusted R-square, raw and standardized regression coefficients, model-comparison tests, predicted scores, residuals and the assumptions;\nchoose the appropriate analysis technique for answering a specific research problem from the range of techniques that are covered in the course.\nuse the software package SPSS to perform several statistical data analyses and be able to correctly interpret and report the output to an informed audience (e.g., Liberal arts students, researchers from the social sciences/business and economics/cognitive neuroscience).\ndraw valid conclusions from the results of empirical data analyses given specific research questions envisaged.\nMajor Business and Economics\n\napply statistical tests in the context of multiple linear regression models with interaction terms and logistic regression models; interpret the corresponding output.\ndescribe the concepts of probabilities, odds and logits; describe the relationship between the three scales; transform one into another (formulae are provided).\nMajor Cognitive Neuroscience\n\napply statistical tests in the context of factorial ANOVA, ANCOVA and Analysis of Repeated measures; interpret the corresponding output; and calculate and interpret effect size estimates relevant for these statistical techniques (e.g., (partial) eta squared)\nMajor Social Sciences\n\napply statistical tests in the context of multiple linear regression models with interaction terms and interpret the corresponding output.\ngauge the reliability of measurements from questionnaires and identify problematic items.\nexplore the dimensionality of questionnaire data.",
     "crumbs": [
       "General Information"
     ]
@@ -144,7 +144,7 @@
     "href": "what_makes_a_good_theory.html#weekly-readings",
     "title": "\n2  What Makes a Good Theory?\n",
     "section": "",
-    "text": "Meehl, P. E. (1990). Appraising and Amending Theories: The Strategy of Lakatosian Defense and Two Principles that Warrant It. Psychological Inquiry, 1(2), 108–141. https://doi.org/10.1207/s15327965pli0102_1\nGuest, O., & Martin, A. E. (2021). How Computational Modeling Can Force Theory Building in Psychological Science. Perspectives on Psychological Science, 16(4), 789–802. https://doi.org/10.1177/1745691620970585",
+    "text": "Meehl, P. E. (1990). Appraising and Amending Theories: The Strategy of Lakatosian Defense and Two Principles that Warrant It. Psychological Inquiry, 1(2), 108–141. https://doi.org/10.1207/s15327965pli0102_1\nGuest, O. (2024). What Makes a Good Theory, and How Do We Make a Theory Good? Computational Brain & Behavior. https://doi.org/10.1007/s42113-023-00193-2",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>What Makes a Good Theory?</span>"
     ]

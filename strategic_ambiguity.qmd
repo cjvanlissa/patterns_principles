@@ -218,24 +218,9 @@ Now go through your table, `DAG.csv`, and replace every original text with the l
 
 #### Make DAG in R
 
-- [ ] Open the folder `patterns_tutorials` you created when following the setup tutorial, @sec-setup.
+- [ ] Open the folder `patterns_principles_exercises` you created when following the setup tutorial, @sec-setup.
 - [ ] Copy your file `DAG.csv` into this folder.
-- [ ] Load the RStudio project file, `patterns_tutorials.Rproj`.
+- [ ] Load the RStudio project file, `patterns_principles_exercises.Rproj`.
 - [ ] In the bottom right panel of RStudio, click the `Files` tab, and open the file `make_dag.R`.
 
-Run the following code line by line:
-
-```{r eval = FALSE, echo = TRUE}
-library(theorytools)
-library(dagitty)
-my_theory <- read.csv("DAG.csv", stringsAsFactors = FALSE)[, c(2:3)]
-names(my_theory) <- c("from", "to")
-# Remove redundant statements
-my_theory <- my_theory[!duplicated(my_theory), ]
-my_theory <- dagitty(
-  paste0("dag {",
-  paste0(my_theory$from, " -> ", my_theory$to, collapse = "\n"),
-  "}")
-)
-plot(my_theory)
-```
+Run the code in that file line by line.
