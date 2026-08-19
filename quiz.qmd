@@ -1,0 +1,47 @@
+---
+title: Quiz
+format: revealjs
+---
+
+
+```{r}
+#| warning: false
+#| message: false
+#| echo: false
+#| output: asis
+
+quizfile <- "q1.bin"
+pw <- readLines("password.txt")
+qs <- safer::retrieve_object(quizfile, key = pw)
+qs <- split(qs, rep(1:(length(qs)/6), each = 6))
+names(qs) <- paste0("Question ", seq_along(qs))
+as <- lapply(qs, `[`, 6)
+qs <- lapply(qs, function(x){
+  out <- x[2:5]
+  names(out)[1] <- "answer"
+  out <- sample(out)
+  out <- list(out)
+  names(out) <- x[1]
+  out
+})
+answerkey <- sapply(qs, function(x){LETTERS[which(names(x[[1]]) == "answer")]})
+
+for (q in seq_along(qs))
+{
+  cat(glue::glue("\n\n# Question {q}\n\n"))
+  cat(paste0("**", names(qs[[q]])[1], "**\n\n"))
+  cat(paste0("**",LETTERS[seq_along(qs[[q]][[1]])], ".** ", qs[[q]][[1]]), sep = "\n\n")
+}
+cat("\n\n# Answers\n\n")
+cat(paste0("* Question ", 1:length(qs), ": ", answerkey), sep = "\n")
+cat("\n\n")
+for (q in seq_along(qs))
+{
+  cat(paste0("\n# Question ", q, " explained {.smaller}\n\n"))
+  cat(paste0("**", names(qs[[q]])[1], "**\n\n"))
+  cat(paste0("**",LETTERS[seq_along(qs[[q]][[1]])], ".** ", qs[[q]][[1]]), sep = "\n\n")
+  cat("\n")
+  cat(as[[q]])
+  cat("\n\n")
+}
+```

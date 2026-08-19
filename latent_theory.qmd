@@ -1,0 +1,39 @@
+# Latent Theory in Published Papers
+
+## Weekly Readings
+
+```{r, results = "asis"}
+schedule <- readODS::read_ods("schedule2.ods")
+cat(paste0("* ", strsplit(schedule$Reading[4], split = "\n")[[1]]), sep = "\n")
+```
+
+## Tutorial
+
+[TO DO: Rasoul]
+
+## Homework
+
+Work on your poster for the Theory Methods Conference.
+You can do so in a program like:
+
+* Google Slides or PowerPoint (really for making slides, but whatever)
+* Adobe Illustrator, PhotoShop, or GIMP (free)
+* You can even use R, for example, using [this template](https://github.com/mpimet/quarto)
+
+Make a poster to present *the current state of your work* on theory specification for this course.
+It does not matter how far along you are - just present your work in a compelling manner.
+Put any doubts, questions, or limitations that have come up during your work on the poster, to stimulate discussion with your audience.
+
+For guidance on what to cover on your poster, see the [Theory Paper Format](https://osf.io/d3jmw/files/g8jz2). This will also be your guidance for the final paper for this course.
+
+Since you are only at the beginning of the process of specifying a full theory, focus on the following sections of the Theory Paper Format:
+
+1. Introduction and Problem Definition
+2. Conceptual Outline
+3. Theory Specification, inasfar as you already have one - this can also be in draft stage.
+5.Optional: Applied Example or Case Study
+6. Discussion
+
+Note that a poster should have *very little written text*.
+Create a separate block for each section, with bullet points totalling ~50-80 words per section.
+Use images instead of text when you can.

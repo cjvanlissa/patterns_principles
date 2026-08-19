@@ -1,0 +1,240 @@
+# Formal Theory Specification
+
+## Weekly Readings
+
+```{r echo = FALSE, results = "asis"}
+schedule <- readODS::read_ods("schedule3.ods")
+cat(paste0("* ", strsplit(schedule$Reading[5], split = "\n")[[1]]), sep = "\n")
+```
+
+## Tutorial
+
+In this tutorial, you will go through some of the steps of theory formalization, following the Abductive Formal Theory Construction (AFTC) framework.
+We will use Self-Determination Theory (SDT) as a guiding example.
+
+The code chunks in this tutorial are also available in the `patterns_principles_exercises` project, in the file `tutorial_formal_theory.R`.
+
+### Stage 1: Generating Theory
+
+#### Establish the Phenomena
+
+Below are two excerpts from @ryanOxfordHandbookSelfDetermination2023:
+
+> “Deci’s early studies (e.g., 1971, 1972) were provocative in showing that contingent extrinsic rewards could have negative effects on subsequent interest and persistence (see Ryan, Ryan, & Di Domenico, 2019).”  
+“These “undermining” effects of rewards on intrinsic motivation did not occur invariantly but were conditional. As summarized in Deci and Ryan (1980a), rewards have negative effects on intrinsic motivation when used in controlling ways, that is, when applied in order to externally pressure or induce people to perform certain behaviors or meet certain standards. Such controlling reward contingencies can undermine the experience of autonomy essential to intrinsic motivation. In contrast, rewards can have more positive, or at least no negative, effects on intrinsic motivation when experienced as informational”
+
+Discuss with your group, and describe concisely in your own words, what "phenomena" this excerpt describes.
+
+#### Generate an Initial Verbal Theory
+
+You have previously worked with a DAG representing SDT.
+The vignette [Formalizing Self-Determination Theory](https://cjvanlissa.github.io/theorytools/articles/formalizing_sdt.html) describes how this FAIR theory was created based on the original Self-Determination Theory [@deciSelfDeterminationTheory2012].
+It was specified as a Directed Acyclic Graph, or DAG: a diagram that specifies the causal relations proposed by a theory.
+Such diagrams can be used to derive hypotheses, select control variables for causal inference, and conduct simulation studies (as we will do in this tutorial).
+
+```{r eval = TRUE, echo = TRUE}
+library(theorytools)
+library(dagitty)
+sdt <- dagitty("
+dag {
+external_event
+healthy_development
+integration
+intrinsic_motivation
+locus_of_causality
+needs
+wellbeing
+external_event -> intrinsic_motivation
+external_event -> locus_of_causality
+external_event -> needs
+integration -> healthy_development
+integration -> wellbeing
+intrinsic_motivation -> healthy_development
+intrinsic_motivation -> wellbeing
+locus_of_causality -> intrinsic_motivation
+needs -> integration
+needs -> intrinsic_motivation
+needs -> wellbeing
+}")
+sdt
+```
+
+We can also plot this DAG:
+
+```{r echo = TRUE, eval = TRUE, message=FALSE, warning = FALSE}
+plot(sdt)
+```
+
+
+Discuss with your group:
+
+* Which portions of the DAG are relevant to the phenomenon you've identified? 
+  - Make a simplified version of the DAG that leaves out all irrelevant components.
+* Is the simplified DAG sufficient to explain your identified phenomenon? If it helps, think of the arrows as IF/THEN links. If the causes are present, does the outcome always follow?
+  - If not: What additions would you need to make to the DAG to properly describe the phenomenon?
+
+#### Formalize the Initial Theory
+
+We will construct a very basic formalization for the section of SDT that you have selected. 
+
+First, we will simplify the DAG. You can do this by hand; suppose we are interested in studying the effect of intrinsic motivation on well-being.
+We do not need the entire theory to hypothesize about this specific relationship.
+We can simplify the DAG to derive a restricted version of the theory that includes all variables that might confound the relationship of interest between intrinsic motivation and well-being:
+
+```{r echo = TRUE}
+sdt_pruned <- dagitty("
+dag {
+intrinsic_motivation -> wellbeing
+external_event -> intrinsic_motivation
+needs -> intrinsic_motivation
+needs -> wellbeing
+}")
+sdt_pruned
+```
+
+Do the same for the phenomenon you identified.
+When you have done so, we can now create some code to generate a synthetic dataset based on this simplified DAG,
+using the `simulate_data()` function.
+This function samples random values for exogenous variables and computes endogenous variables as functions of their predictors (linear functions, by default).
+By default, regression coefficients are randomly sampled in the range `[-0.6, +0.6]` unless specific values are provided by the user.
+You might improve the model by choosing more realistic parameter values,
+for example, using the conventional values for null (0), small (.2), or medium (.4) effect sizes.
+By default, normal distributions are assumed for exogenous variables and residual error, unless other distributions are specified.
+
+Here, we first generate the code, then examine it in the console, then write it to a file, and finally, run that file to create the simulated data.
+
+```{r echo = TRUE, eval = TRUE}
+sim_code <- simulate_data(sdt_pruned, n = 100, run = FALSE)
+sim_code
+writeLines(sim_code, "formal_model.R")
+source("formal_model.R")
+```
+
+Put this code into a separate R-file. When you run it all, it will create an object called `df`, which is a table with 100 observations for all variables.
+Each exogenous variable (causes) is generated by drawing random samples from a normal distribution.
+Each endogenous variable (effects) is generated by multiplying those exogenous variables with a regression coefficient; larger values mean that the exogenous variable has a larger effect. Then, random noise is added, which represents variability due to other causes not part of your model. If you want this random variability to be smaller, change the `sd` argument of the `rnorm()` function.
+
+#### Evaluating the Initial Theory
+
+Examine the properties of the dataset using any of the following methods, or some of your own choosing:
+
+##### Examining descriptive statistics
+
+You can examine the distributions of individual variables using descriptive statistics.
+
+Do not try all of these, instead, discuss which one should capture the pattern you're looking for in the data:
+
+* Univariate distribution, or patterns related to the center and spread of the distribution of one variable: Descriptive statistics and density plots
+* Relationships between two variables: Scatter plots and bivariate regression
+* Interaction effects (the effect of one variable depends on the value of another variable): Regression with an interaction term (difficult to plot, because that would be a 3-dimensional plot)
+
+##### Univariate Distribution
+
+For example, to obtain a summary of all variables in the dataset:
+
+```{r echo = TRUE}
+worcs::descriptives(df)
+```
+
+This gives you information such as the **minimum, maximum, median, mean**.
+
+Use these statistics to look for interesting properties of the data. For example: Does a variable have a particularly high or low mean? Is there a lot of variation between observations? Are some categories much more common than others?
+
+You can also use **base R plots** to visually examine the univariate distribution of an individual variable.
+For a continuous variable, you can examine its distribution with a density plot:
+
+```{r echo = TRUE}
+plot(density(df$intrinsic_motivation))
+```
+
+Use the plots to look for interesting patterns. For example: Is a distribution symmetric or skewed? Are there possible outliers?
+
+##### Relationship between Two Variables
+
+You can test the effect of one variable on another by running a bivariate regression, e.g.:
+
+```{r echo = TRUE}
+summary(lm(intrinsic_motivation~external_event, df))
+```
+
+If the value of `Pr(>|t|)` for `external_event` is smaller than .05, the effect is significant. If the value of `Estimate` is positive, then the effect is positive - if it is negative, then the effect is negative.
+
+To plot the relationship between two continuous variables, you can use a scatterplot:
+
+```{r echo = TRUE}
+plot(df$needs, df$intrinsic_motivation)
+```
+
+You can add the regression line into this plot to make the direction of the relationship easier to see:
+
+```{r echo = TRUE}
+plot(df$needs, df$intrinsic_motivation)
+abline(lm(intrinsic_motivation ~ needs, df))
+```
+
+##### Interaction Effects
+
+You can test whether the effect of one variable on another is contingent on the value of a third variable by running multiple regression regression with an interaction effect, e.g.:
+
+```{r echo = TRUE}
+summary(lm(intrinsic_motivation~external_event*needs, df))
+```
+
+If the value of `Pr(>|t|)` for `external_event:needs` is smaller than .05, the interaction effect is significant. That means that the effect of `external_event` on `intrinsic_motivation` depends on the value of `needs`.
+
+ 
+### Stage 2: Developing Theory
+
+The final step is to make changes to your formal theory, to make it better produce the kind of data patterns that your phenomenon implies.
+
+You will probably not have time to do so, but it is possible to make changes to the file `"formal_model.R"`.
+
+For example, you can:
+
+#### Generating a binary variable
+
+You can generate a binary variable using `rbinom()`. For example, if you want to conceptualize `external_event` as the presence or absence of a reward, you could simulate a variable where approximately 50% of observations have a value of 0 and 50% have a value of 1:
+
+```{r echo = TRUE}
+external_event <- rbinom(n = n, size = 1, prob = 0.5)
+```
+
+#### Generating an interaction effect
+
+To make the effect of `external_event` on `intrinsic_motivation` depend on `needs` (e.g., does this external event satisfy needs?), add an interaction term to the equation that predicts `intrinsic_motivation`:
+
+```{r echo = TRUE}
+intrinsic_motivation <- 
+  0.56 * external_event + 
+  0.59 * needs +
+  0.80 * external_event * needs +
+  rnorm(n = n)
+```
+
+The 0.80 specifies the strength of the interaction.
+
+In this example, the effect of external_event on intrinsic_motivation becomes stronger as needs increases.
+
+
+#### Generating a quadratic effect
+
+To create a nonlinear relationship, include a squared version of a variable:
+
+```{r echo = TRUE}
+intrinsic_motivation <- 
+  0.56 * external_event +
+  0.59 * needs -
+  0.70 * needs^2 +
+  rnorm(n = n)
+``` 
+
+The negative coefficient on needs^2 creates an inverted n-shaped relationship: intrinsic motivation initially increases with needs, but at sufficiently high levels of needs it begins to decrease.
+
+A positive quadratic coefficient instead produces a u-shaped relationship.
+
+
+## Homework
+
+Apply the steps from the tutorial to the DAG you created for your own theory in @sec-makedag.
+
+Note that you do not have to apply *all* steps. Think of this week's tutorial as a palette from which you can pick the techniques you need for your specific theory.

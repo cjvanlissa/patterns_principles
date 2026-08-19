@@ -7,3 +7,7 @@ q*.txt~
 /.quarto/
 **/*.quarto_ipynb
 articles/
+password.txt
+quiz.pdf
+quiz_files/
+quiz.html

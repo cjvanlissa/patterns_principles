@@ -190,7 +190,7 @@ We can plot the DAG as follows:
 plot(SDT)
 ```
 
-### Do It Yourself
+### Do It Yourself {#sec-makedag}
 
 Following the example above, you will perform three tasks:
 

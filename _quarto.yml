@@ -44,6 +44,8 @@ book:
   - theory_crisis.qmd
   - what_makes_a_good_theory.qmd
   - strategic_ambiguity.qmd
+  - latent_theory.qmd
+  - formal_theory.qmd
   - references.qmd
   appendices:
   - setup.qmd
