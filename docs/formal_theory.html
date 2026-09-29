@@ -462,7 +462,7 @@ div.csl-indent {
 <p>Discuss with your group, and describe concisely in your own words, what “phenomena” this excerpt describes.</p>
 </section><section id="generate-an-initial-verbal-theory" class="level4" data-number="5.2.1.2"><h4 data-number="5.2.1.2" class="anchored" data-anchor-id="generate-an-initial-verbal-theory">
 <span class="header-section-number">5.2.1.2</span> Generate an Initial Verbal Theory</h4>
-<p>You have previously worked with a DAG representing SDT. The vignette <a href="https://cjvanlissa.github.io/theorytools/articles/formalizing_sdt.html">Formalizing Self-Determination Theory</a> describes how this FAIR theory was created based on the original Self-Determination Theory <span class="citation" data-cites="deciSelfDeterminationTheory2012">(<a href="references.html#ref-deciSelfDeterminationTheory2012" role="doc-biblioref">Deci &amp; Ryan, 2012</a>)</span>. It was specified as a Directed Acyclic Graph, or DAG: a diagram that specifies the causal relations proposed by a theory. Such diagrams can be used to derive hypotheses, select control variables for causal inference, and conduct simulation studies (as we will do in this tutorial).</p>
+<p>In <a href="https://cjvanlissa.github.io/patterns_principles/strategic_ambiguity.html">Week 3</a>, we specified SDT as an Directed Acyclic Graph (DAG). The vignette <a href="https://cjvanlissa.github.io/theorytools/articles/formalizing_sdt.html">Formalizing Self-Determination Theory</a> describes how this FAIR theory (See <a href="https://cjvanlissa.github.io/patterns_principles/fair_theory.html">Week 8</a> for more details) was created based on the original Self-Determination Theory <span class="citation" data-cites="deciSelfDeterminationTheory2012">(<a href="references.html#ref-deciSelfDeterminationTheory2012" role="doc-biblioref">Deci &amp; Ryan, 2012</a>)</span>. A DAG is a diagram that specifies the causal relations proposed by a theory. Such diagrams can be used to derive hypotheses, select control variables for causal inference, and conduct simulation studies (as we will do in this tutorial).</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(theorytools)</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(dagitty)</span>
@@ -565,22 +565,22 @@ needs -&gt; wellbeing
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>sim_code <span class="ot">&lt;-</span> <span class="fu">simulate_data</span>(sdt_pruned, <span class="at">n =</span> <span class="dv">100</span>, <span class="at">run =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb6-2"><a href="#cb6-2"></a>sim_code</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "# Set random seed"                                                         
- [2] "set.seed(189852883)"                                                       
- [3] "# Set simulation parameters"                                               
- [4] "n &lt;- 100"                                                                  
- [5] "# Simulate exogenous nodes"                                                
- [6] "external_event &lt;- rnorm(n = n)"                                            
- [7] "needs &lt;- rnorm(n = n)"                                                     
- [8] "# Simulate endogenous nodes"                                               
- [9] "intrinsic_motivation &lt;- 0.29 * external_event - 0.5 * needs + rnorm(n = n)"
-[10] "wellbeing &lt;- 0.11 * intrinsic_motivation + 0.53 * needs + rnorm(n = n)"    
-[11] "df &lt;- data.frame("                                                         
-[12] "external_event = external_event,"                                          
-[13] "intrinsic_motivation = intrinsic_motivation,"                              
-[14] "needs = needs,"                                                            
-[15] "wellbeing = wellbeing"                                                     
-[16] ")"                                                                         </code></pre>
+<pre><code> [1] "# Set random seed"                                                          
+ [2] "set.seed(366004894)"                                                        
+ [3] "# Set simulation parameters"                                                
+ [4] "n &lt;- 100"                                                                   
+ [5] "# Simulate exogenous nodes"                                                 
+ [6] "external_event &lt;- rnorm(n = n)"                                             
+ [7] "needs &lt;- rnorm(n = n)"                                                      
+ [8] "# Simulate endogenous nodes"                                                
+ [9] "intrinsic_motivation &lt;- 0.12 * external_event - 0.52 * needs + rnorm(n = n)"
+[10] "wellbeing &lt;- 0.24 * needs - 0.2 * intrinsic_motivation + rnorm(n = n)"      
+[11] "df &lt;- data.frame("                                                          
+[12] "external_event = external_event,"                                           
+[13] "intrinsic_motivation = intrinsic_motivation,"                               
+[14] "needs = needs,"                                                             
+[15] "wellbeing = wellbeing"                                                      
+[16] ")"                                                                          </code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">writeLines</span>(sim_code, <span class="st">"formal_model.R"</span>)</span>
 <span id="cb8-2"><a href="#cb8-2"></a><span class="fu">source</span>(<span class="st">"formal_model.R"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -604,16 +604,16 @@ needs -&gt; wellbeing
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>desc <span class="ot">&lt;-</span> worcs<span class="sc">::</span><span class="fu">descriptives</span>(df)</span>
 <span id="cb9-2"><a href="#cb9-2"></a><span class="fu">print</span>(desc, <span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>                  name    type   n missing unique   mean median   mode
-1       external_event numeric 100       0    100  0.021 -0.013 -0.013
-2 intrinsic_motivation numeric 100       0    100  0.191  0.299  0.299
-3                needs numeric 100       0    100 -0.083 -0.137 -0.137
-4            wellbeing numeric 100       0    100  0.031  0.086  0.086
+<pre><code>                  name    type   n missing unique  mean median   mode
+1       external_event numeric 100       0    100 -0.10 -0.090 -0.090
+2 intrinsic_motivation numeric 100       0    100 -0.21 -0.180 -0.180
+3                needs numeric 100       0    100  0.12  0.076  0.076
+4            wellbeing numeric 100       0    100  0.14  0.292  0.292
   mode_value   sd  v  min max range   skew skew_2se  kurt kurt_2se
-1         NA 1.08 NA -2.7 2.3   5.0 -0.018   -0.037 -0.48    -0.50
-2         NA 1.17 NA -2.7 2.8   5.5 -0.472   -0.977 -0.21    -0.22
-3         NA 0.84 NA -1.9 2.1   4.0  0.236    0.488 -0.12    -0.13
-4         NA 1.06 NA -2.5 2.2   4.8 -0.063   -0.131 -0.64    -0.67</code></pre>
+1         NA 0.92 NA -2.1 2.2   4.4  0.045    0.093 -0.14   -0.151
+2         NA 1.19 NA -3.0 2.3   5.3 -0.083   -0.173 -0.31   -0.322
+3         NA 1.02 NA -2.5 2.7   5.1  0.115    0.237  0.04    0.042
+4         NA 1.11 NA -3.6 2.6   6.2 -0.355   -0.735  0.21    0.217</code></pre>
 </div>
 </div>
 <p>This gives you information such as the <strong>minimum, maximum, median, mean</strong>.</p>
@@ -641,21 +641,21 @@ lm(formula = intrinsic_motivation ~ external_event, data = df)
 
 Residuals:
      Min       1Q   Median       3Q      Max 
--2.58847 -0.47485  0.00294  0.70878  2.33139 
+-2.90346 -0.72143 -0.02773  0.77448  2.56615 
 
 Coefficients:
-               Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)      0.1815     0.1080   1.680   0.0961 .  
-external_event   0.4285     0.1001   4.281 4.34e-05 ***
+               Estimate Std. Error t value Pr(&gt;|t|)  
+(Intercept)     -0.1994     0.1198  -1.665   0.0991 .
+external_event   0.0741     0.1305   0.568   0.5716  
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 1.08 on 98 degrees of freedom
-Multiple R-squared:  0.1575,    Adjusted R-squared:  0.1489 
-F-statistic: 18.32 on 1 and 98 DF,  p-value: 4.344e-05</code></pre>
+Residual standard error: 1.19 on 98 degrees of freedom
+Multiple R-squared:  0.003277,  Adjusted R-squared:  -0.006893 
+F-statistic: 0.3222 on 1 and 98 DF,  p-value: 0.5716</code></pre>
 </div>
 </div>
-<p>If the value of <code>Pr(&gt;|t|)</code> for <code>external_event</code> is smaller than .05, the effect is significant. If the value of <code>Estimate</code> is positive, then the effect is positive - if it is negative, then the effect is negative.</p>
+<p>If the value of <code>Pr(&gt;|t|)</code> for <code>external_event</code> is smaller than .05, the effect is statistically significant. If the value of <code>Estimate</code> is positive, then the effect is positive - if it is negative, then the effect is negative.</p>
 <p>To plot the relationship between two continuous variables, you can use a scatterplot:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">plot</span>(df<span class="sc">$</span>needs, df<span class="sc">$</span>intrinsic_motivation)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -689,23 +689,23 @@ lm(formula = intrinsic_motivation ~ external_event * needs, data = df)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--2.7940 -0.5022 -0.0107  0.6498  2.1095 
+-2.7611 -0.5529  0.0423  0.7222  2.5318 
 
 Coefficients:
                      Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)           0.15607    0.10369   1.505  0.13556    
-external_event        0.31552    0.09582   3.293  0.00139 ** 
-needs                -0.52953    0.12368  -4.281  4.4e-05 ***
-external_event:needs  0.06663    0.10705   0.622  0.53514    
+(Intercept)          -0.15219    0.10680  -1.425   0.1574    
+external_event        0.02098    0.12169   0.172   0.8635    
+needs                -0.51104    0.10360  -4.933  3.4e-06 ***
+external_event:needs  0.24876    0.12094   2.057   0.0424 *  
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 0.9958 on 96 degrees of freedom
-Multiple R-squared:  0.2986,    Adjusted R-squared:  0.2767 
-F-statistic: 13.63 on 3 and 96 DF,  p-value: 1.776e-07</code></pre>
+Residual standard error: 1.05 on 96 degrees of freedom
+Multiple R-squared:  0.2392,    Adjusted R-squared:  0.2154 
+F-statistic: 10.06 on 3 and 96 DF,  p-value: 7.948e-06</code></pre>
 </div>
 </div>
-<p>If the value of <code>Pr(&gt;|t|)</code> for <code>external_event:needs</code> is smaller than .05, the interaction effect is significant. That means that the effect of <code>external_event</code> on <code>intrinsic_motivation</code> depends on the value of <code>needs</code>.</p>
+<p>If the value of <code>Pr(&gt;|t|)</code> for <code>external_event:needs</code> is smaller than .05, the interaction effect is statistically significant. That means that the effect of <code>external_event</code> on <code>intrinsic_motivation</code> depends on the value of <code>needs</code>.</p>
 </section></section></section><section id="stage-2-developing-theory" class="level3" data-number="5.2.2"><h3 data-number="5.2.2" class="anchored" data-anchor-id="stage-2-developing-theory">
 <span class="header-section-number">5.2.2</span> Stage 2: Developing Theory</h3>
 <p>The final step is to make changes to your formal theory, to make it better produce the kind of data patterns that your phenomenon implies.</p>
