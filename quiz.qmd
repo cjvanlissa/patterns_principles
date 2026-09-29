@@ -10,7 +10,7 @@ format: revealjs
 #| echo: false
 #| output: asis
 
-quizfile <- "q1.bin"
+quizfile <- "q_theory_crisis.bin"  
 pw <- readLines("password.txt")
 qs <- safer::retrieve_object(quizfile, key = pw)
 qs <- split(qs, rep(1:(length(qs)/6), each = 6))
@@ -39,7 +39,8 @@ for (q in seq_along(qs))
 {
   cat(paste0("\n# Question ", q, " explained {.smaller}\n\n"))
   cat(paste0("**", names(qs[[q]])[1], "**\n\n"))
-  cat(paste0("**",LETTERS[seq_along(qs[[q]][[1]])], ".** ", qs[[q]][[1]]), sep = "\n\n")
+  cat(paste0("**", answerkey[q], ": ", qs[[q]][[1]]["answer"], "**\n\n"))
+  # cat(paste0("**",LETTERS[seq_along(qs[[q]][[1]])], ".** ", qs[[q]][[1]]), sep = "\n\n")
   cat("\n")
   cat(as[[q]])
   cat("\n\n")
