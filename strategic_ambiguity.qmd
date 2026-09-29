@@ -60,7 +60,7 @@ However, there are strong norms against explicit discussion of causality in the 
 The result is that causal language is often ambiguous.
 @norouziCapturingCausalClaims2025 showed that it is possible to automatically extract causal sentences from published papers despite this ambiguity.
 
-The sentences below are examples from te research by Norouzi and colleagues.
+The sentences below are examples from the research by Norouzi and colleagues.
 
 With your group, decide for each sentence and keep notes on:
 
@@ -79,14 +79,14 @@ c. Whether it is Nuanced (N) or Abstract (Ab)
 
 `r webexercises::hide("Solution")`
 
-* Violent media may cause viewers to perceive greater anger and less gratitude during a cooperative task and as such be less inclined to cooperate. C, S, Ab
-* This result is consistent with a previous study which suggests that behaving dishonestly leads to the forgetting of rules. C, S, Ab
-* Even though the level of regulation a facility faces does not depend on the overall size of a facility, the two factors are highly correlated. NC, S, Ab
 * We find differences in the behavior of our experimental participants across the three countries, and we find that Hofstede’s dimensions help to explain these differences. NC, S, N
-* The presence of a threshold constraining participants' activities will lead participants to be less holistic in their cognitive orientations than when a threshold is not present. C, Am, N
-* First, models of information signaling have shown that sequential giving can have beneficial effects for voluntary public good provision when the common value of the public good is uncertain. C, Am, N
 * In the standard symmetric independent private values model in which $\omega_i (d_i) = 0$, Myerson's (1981) revenue equivalence result shows that, given that the charity never keeps the prize, it maximizes its revenue if it always allocates the prize to the donor with the highest marginal revenue. C, S, N
+* First, models of information signaling have shown that sequential giving can have beneficial effects for voluntary public good provision when the common value of the public good is uncertain. C, Am, N
+* Even though the level of regulation a facility faces does not depend on the overall size of a facility, the two factors are highly correlated. NC, S, Ab
 * For example, in social dilemmas with random noise, people lack the ability to judge with certainty if others intended to cooperate or defect (Klapwijk & Van Lange, 2009;Van Lange, Ouwerkerk, & Tazelaar, 2002). NC, S, N
+* The presence of a threshold constraining participants' activities will lead participants to be less holistic in their cognitive orientations than when a threshold is not present. C, Am, N
+* This result is consistent with a previous study which suggests that behaving dishonestly leads to the forgetting of rules. C, S, Ab
+* Violent media may cause viewers to perceive greater anger and less gratitude during a cooperative task and as such be less inclined to cooperate. C, S, Ab
 
 `r webexercises::unhide()`
 
@@ -97,8 +97,8 @@ Discuss:
 
 ## Homework {#sec-makedag}
 
-This week, you are going to translate your IF-THEN specifications from previous weeks into a graph - the technical name is a **Directed Acyclic Graph (DAG)**.
-In this graph, you connect concepts (propositions, in the language of PBTS) with one-sided arrows to indicate the direction of causality.
+This week, you are going to translate your IF-THEN specifications from previous weeks into a graph---the technical name is a **Directed Acyclic Graph (DAG)**.
+In this graph, you connect concepts (propositions, in the language of PBTS) with one-sided arrows to indicate the direction of causality. We will return to the DAG in [Week 5](https://cjvanlissa.github.io/patterns_principles/formal_theory.html) and [Week 7](https://cjvanlissa.github.io/patterns_principles/causal_discovery.html).
 
 Note that IF-THEN connections imply causal connections, so the statement "IF a person's need for autonomy is satisfied THEN they experience well-being" implies a causal link of the form `{autonomy satisfied} -> {well-being}`.
 

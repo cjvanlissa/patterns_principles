@@ -39,11 +39,11 @@ library(theorytools)
 
 <!-- fig.width=600, fig.height=861,  -->
 
-```{r include = TRUE, eval = TRUE, echo = FALSE, fig.align='center', out.width = "70%", fig.cap="Conceptual workflow for this task."}
+```{r include = TRUE, eval = TRUE, echo = FALSE, fig.align='center', out.width = "100%", fig.cap="Conceptual workflow for this task."}
 knitr::include_graphics("https://github.com/OpenScienceMOOC/Module-5-Open-Research-Software-and-Open-Source/blob/master/content_development/images/Task2.png?raw=true")
 ```
 
-## Running Example: SDT
+### Running Example: SDT
 
 As an example, we will use a specification of Self-Determination Theory (SDT).
 Here, we use a DAG - but you can archive anything you like,
@@ -76,7 +76,7 @@ needs -> wellbeing
 ```
 
 
-## Creating a Project Folder
+### Creating a Project Folder
 
 Create an empty project folder, which will become the theory archive.
 If we want to create a new folder called `sdt` in the existing folder `~/theories/`, we can call:
@@ -87,7 +87,7 @@ dir.create(project_path)
 ```
 
 
-## Adding a Shareable Theory File to the Repository
+### Adding a Shareable Theory File to the Repository
 
 Your theory should be represented as a digital artifact, such as a structured plain-text document or a machine-readable file (e.g., 'DOT', 'JSON', 'YAML', 'R' code).
 You can simply write the text vector above to a plain text file, like so:
@@ -97,7 +97,7 @@ writeLines(theory, file.path(project_path, "theory.txt"))
 ```
 
 
-## Documenting Reusability with a LICENSE
+### Documenting Reusability with a LICENSE
 
 A license ensures that others know how they can legally reuse your work.
 We recommend a CC0 (Creative Commons Zero) license for FAIR theory, which waives all copyright protection and places your work in the public domain.
@@ -111,7 +111,7 @@ worcs::add_license_file(path = project_path, license = "cc0")
 ```
 
 
-## Documenting Interoperability with a README File
+### Documenting Interoperability with a README File
 
 A README file describes the repository's contents and purpose, making it easier for others to understand your theory's potential for interoperability and reuse.
 The `theorytools` package contains a function to generate a README file with appropriate sections for FAIR theory, which can be used like so:
@@ -124,7 +124,7 @@ theorytools::add_readme_fair_theory(title = "Self-Determination Theory",
 We encourage users to edit the resulting `README.md` file, in particular, to add relevant information about X-interoperability.
 For guidance on writing a README file for theory, see [this vignette](https://cjvanlissa.github.io/theorytools/articles/readme.html).
 
-## Adding 'Zenodo' Metadata to the Repository
+### Adding 'Zenodo' Metadata to the Repository
 
 In a later step, we will archive the theory on 'Zenodo'. 
 Creating a `.zenodo.json` file with metadata about your theory allows the project to be indexed automatically.
@@ -138,7 +138,7 @@ add_zenodo_json_theory(
 )
 ```
 
-## Version Controlling The Project Folder
+### Version Controlling The Project Folder
 
 We will use 'Git' to version control the project folder.
 This means that changes to the files are explicitly tracked, and the entire history of the theory-project is logged.
@@ -155,7 +155,7 @@ If this function shows a green checkmark, you can initialize version control in 
 gert::git_init(path = project_path)
 ```
 
-## Connecting to a Remote ('GitHub') Repository
+### Connecting to a Remote ('GitHub') Repository
 
 To make your FAIR theory accessible to collaborators and discoverable by the wider community, you must connect your local 'Git' repository to a remote repository on a platform like 'GitHub'.
 
@@ -184,7 +184,7 @@ Either way, assuming the name of that repository is `fair_sdt`, you can connect 
 worcs::git_remote_connect(project_path, remote_repo = "fair_sdt")
 ```
 
-## Pushing These Changes to the Remote Repository
+### Pushing These Changes to the Remote Repository
 
 Version control requires adding files to be tracked to the repository.
 The `worcs` function `worcs::git_update()` does this automatically, acting
@@ -195,11 +195,11 @@ worcs::git_update("First commit of my theory", repo = project_path)
 ```
 
 
-## Check Your 'GitHub' Repository
+### Check Your 'GitHub' Repository
 
 Navigate to your repository on 'GitHub' and check that all committed files, including the theory file, license, README, and 'Zenodo' metadata, are now visible in the remote repository (green box in the image below).
 
-```{r  include = TRUE, eval = TRUE, echo = FALSE, out.width = "70%", fig.cap="Front Page of a 'GitHub' Repository"}
+```{r  include = TRUE, eval = TRUE, echo = FALSE, out.width = "100%", fig.cap="Front Page of a 'GitHub' Repository"}
 knitr::include_graphics("https://github.com/cjvanlissa/theorytools/blob/master/docs/images/github.png?raw=true")
 ```
 
@@ -209,28 +209,28 @@ If you created the repository programmatically as shown above, it should already
 (see red box in the image above).
 
 
-## Login to 'Zenodo'
+### Login to 'Zenodo'
 
 Head over to [zenodo.org](https://zenodo.org). 'Zenodo' is a platform where you can permanently archive your code and other project elements. 'Zenodo' does this by assigning projects a **Digital Object Identifier** (DOI), which also helps to make the work more citable. This is different to 'GitHub', which acts as a place where the actual work on a project takes place, rather than long-term archiving of it. At 'GitHub', content can be modified, deleted, rewritten, and irreversibly changed, which makes it a bit concerning to be used for longer lasting referencing purposes. 'Zenodo' offers more security and permanence for research outputs.
 
 
-```{r include = TRUE, eval = TRUE, echo = FALSE, fig.align='center', out.width = "70%", fig.cap="Sign up for 'Zenodo'"}
+```{r include = TRUE, eval = TRUE, echo = FALSE, fig.align='center', out.width = "100%", fig.cap="Sign up for 'Zenodo'"}
 knitr::include_graphics("https://github.com/OpenScienceMOOC/Module-5-Open-Research-Software-and-Open-Source/blob/master/content_development/images/zenodo.png?raw=true")
 ```
 
 One student should create a 'Zenodo' account.
 You can **login using your 'GitHub' account** to make the registration process easy.
 
-## Authorize 'GitHub' to connect with 'Zenodo'
+### Authorize 'GitHub' to connect with 'Zenodo'
 
 On the 'Zenodo' website authorize it to connect to your 'GitHub' account in the '[Using 'GitHub'](https://zenodo.org/account/settings/github/)' section. Here, 'Zenodo' will redirect you to 'GitHub' to ask for permissions to use '[webhooks](https://developer.github.com/webhooks/)' on your repositories. You want to authorize 'Zenodo' here with the permissions it needs to form those links.
 
-```{r include = TRUE, eval = TRUE, echo = FALSE, fig.align='center', out.width = "70%", fig.cap="Authorize  to connect with 'GitHub'"}
+```{r include = TRUE, eval = TRUE, echo = FALSE, fig.align='center', out.width = "100%", fig.cap="Authorize  to connect with 'GitHub'"}
 knitr::include_graphics("https://github.com/OpenScienceMOOC/Module-5-Open-Research-Software-and-Open-Source/blob/master/content_development/images/zenodo_github.png?raw=true")
 ```
 
 
-## Select the Repository to Archive
+### Select the Repository to Archive
 
 ::: {.callout-caution}
 ## Use the Zenodo Sandbox
@@ -248,12 +248,12 @@ If your repository **does not show up** in the list, you may need to press the '
 At the time of writing, we noticed that it can take quite a while (hours?) for 'Zenodo' to detect new 'GitHub' repositories.
 If so, take a break or come back to this last step tomorrow!
 
-```{r include = TRUE, eval = TRUE, echo = FALSE, fig.align='center', out.width = "70%", fig.cap="Enable individual 'GitHub' repositories to be archived in 'Zenodo'"}
+```{r include = TRUE, eval = TRUE, echo = FALSE, fig.align='center', out.width = "100%", fig.cap="Enable individual 'GitHub' repositories to be archived in 'Zenodo'"}
 knitr::include_graphics("https://github.com/OpenScienceMOOC/Module-5-Open-Research-Software-and-Open-Source/blob/master/content_development/images/enabled_repos.png?raw=true")
 ```
 
 
-## Create a New Release
+### Create a New Release
 
 To archive a  repository on 'Zenodo', you must create a new release. 
 You can do this using the following code:
@@ -276,22 +276,22 @@ worcs::git_release_publish(repo = project_path,
                            release_name = "0.2.0")
 ```
 
-## Verify on 'Zenodo'
+### Verify on 'Zenodo'
 
 To verify that your release was archived on 'Zenodo' and assigned a DOI,
 you need to visit the [Uploads](https://sandbox.zenodo.org/deposit) tab.
 
-```{r include = TRUE, eval = TRUE, echo = FALSE, fig.align='center', out.width = "70%", fig.cap="Check the new release has been uploaded."}
+```{r include = TRUE, eval = TRUE, echo = FALSE, fig.align='center', out.width = "100%", fig.cap="Check the new release has been uploaded."}
 knitr::include_graphics("https://github.com/OpenScienceMOOC/Module-5-Open-Research-Software-and-Open-Source/blob/master/content_development/images/upload_release.png?raw=true")
 ```
 
-## Updating Meta-Data
+### Updating Meta-Data
 
 We can further document our 'Zenodo' archive as a FAIR theory by adding some extra information on 'Zenodo'.
 Note that, if you created a `.zenodo.json` file in a previous step, some of these metadata will be populated automatically.
 On 'Zenodo' click the [Upload](https://sandbox.zenodo.org/deposit) tab in the main menu, where you should find your newly uploaded repository.
 
-```{r include = TRUE, eval = TRUE, echo = FALSE, fig.align='center', out.width = "70%", fig.cap="Click the orange Edit button."}
+```{r include = TRUE, eval = TRUE, echo = FALSE, fig.align='center', out.width = "100%", fig.cap="Click the orange Edit button."}
 knitr::include_graphics("https://github.com/cjvanlissa/theorytools/blob/master/docs/images/zenodo_edit.png?raw=true")
 ```
 
@@ -309,7 +309,7 @@ Click the orange `Edit` button, and verify/supply the following information:
 
 To save these changes, click 'Publish'.
 
-## Verifying That 'Zenodo' Mints a DOI for Your Theory
+### Verifying That 'Zenodo' Mints a DOI for Your Theory
 
 After publishing a release, 'Zenodo' will archive the repository and mint a DOI. Verify this by checking the 'Zenodo' entry for your repository, where the DOI will be displayed. Include this DOI in any citations or references to your theory to enhance its discoverability and reusability.
 
@@ -317,13 +317,13 @@ The 'GitHub'/'Zenodo' integration will assign one "mother-DOI" to the project, w
 
 > **Pro-tip**: Check the `Citation` field on the 'Zenodo' page, and copy-paste it into the README file of your 'GitHub' repo to make cross-linking even easier (or refer users to the 'Zenodo' page to find the citation, which obviates the need to manually update this information). Click the DOI badge in the `Details` field to get instructions on how to add a clear highlighted DOI badge to your 'GitHub' repository, for users to see and make use of your DOI:
 
-## CONGRATULATIONS!
+### CONGRATULATIONS!
 
 Your FAIR theory is now archived in 'Zenodo', and with a DOI that can be versioned to reflect updates to the repository version through time. You should be able to see details of this on the 'GitHub' 'Zenodo' page for your repository. This also means that your archived projects can get picked up by other indexing services and search engines that use DOIs too.
 
 Providing a long-term archive and a DOI for your work is required for others to be able to properly cite it, as this provides basic citation metadata. For Open Science, it is important to be able to comprehensively cite the resources that you use in your research, including theory, and this workflow enables that to happen, in line with best practices. Making theory FAIR also helps elevate the standard of theory to that of the standard of other research outputs, like papers and software.
 
-## Checklist for citing your project
+### Checklist for citing your project
 
 So now you have a sustainably archived 'GitHub' repository in 'Zenodo' that is ready to be re-used and cited! Before continuing, make sure that you have:
 

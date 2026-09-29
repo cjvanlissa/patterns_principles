@@ -27,9 +27,8 @@ Discuss with your group, and describe concisely in your own words, what "phenome
 
 #### Generate an Initial Verbal Theory
 
-You have previously worked with a DAG representing SDT.
-The vignette [Formalizing Self-Determination Theory](https://cjvanlissa.github.io/theorytools/articles/formalizing_sdt.html) describes how this FAIR theory was created based on the original Self-Determination Theory [@deciSelfDeterminationTheory2012].
-It was specified as a Directed Acyclic Graph, or DAG: a diagram that specifies the causal relations proposed by a theory.
+In [Week 3](https://cjvanlissa.github.io/patterns_principles/strategic_ambiguity.html), we specified SDT as an Directed Acyclic Graph (DAG).
+The vignette [Formalizing Self-Determination Theory](https://cjvanlissa.github.io/theorytools/articles/formalizing_sdt.html) describes how this FAIR theory (See [Week 8](https://cjvanlissa.github.io/patterns_principles/fair_theory.html) for more details) was created based on the original Self-Determination Theory [@deciSelfDeterminationTheory2012]. A DAG is a diagram that specifies the causal relations proposed by a theory.
 Such diagrams can be used to derive hypotheses, select control variables for causal inference, and conduct simulation studies (as we will do in this tutorial).
 
 ```{r eval = TRUE, echo = TRUE}
@@ -158,7 +157,7 @@ You can test the effect of one variable on another by running a bivariate regres
 summary(lm(intrinsic_motivation~external_event, df))
 ```
 
-If the value of `Pr(>|t|)` for `external_event` is smaller than .05, the effect is significant. If the value of `Estimate` is positive, then the effect is positive - if it is negative, then the effect is negative.
+If the value of `Pr(>|t|)` for `external_event` is smaller than .05, the effect is statistically significant. If the value of `Estimate` is positive, then the effect is positive - if it is negative, then the effect is negative.
 
 To plot the relationship between two continuous variables, you can use a scatterplot:
 
@@ -181,7 +180,7 @@ You can test whether the effect of one variable on another is contingent on the 
 summary(lm(intrinsic_motivation~external_event*needs, df))
 ```
 
-If the value of `Pr(>|t|)` for `external_event:needs` is smaller than .05, the interaction effect is significant. That means that the effect of `external_event` on `intrinsic_motivation` depends on the value of `needs`.
+If the value of `Pr(>|t|)` for `external_event:needs` is smaller than .05, the interaction effect is statistically significant. That means that the effect of `external_event` on `intrinsic_motivation` depends on the value of `needs`.
 
  
 ### Stage 2: Developing Theory

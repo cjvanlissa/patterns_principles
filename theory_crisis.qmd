@@ -64,13 +64,7 @@ topic is about.
 
 #### Step 2
 
-Think of three **phenomena** [@nakEstablishingPsychologicalPhenomena2026] related to your topic you would like to explain. Describe these
-phenomena in a few sentences. List the phenomena’s components/characteristics. Indicate on what the
-material is based (e.g., a published empirical study, Wikipedia, personal experience, intuition).
-Note that you do not need to explain these phenomena yet. These phenomena should be as
-independent of theory (any theory) as possible. It could be that scientists disagree on the explanation of
-the phenomena, but this should not mean that they also disagree on the existence of the phenomena.
-
+Think of three **phenomena** [@nakEstablishingPsychologicalPhenomena2026] related to your topic you would like to explain. Describe these phenomena in a few sentences. List the phenomena’s components/characteristics. Indicate on what the material is based (e.g., a published empirical study, Wikipedia, personal experience, intuition). Note that you do not need to explain these phenomena yet. These phenomena should be as independent of theory (any theory) as possible. Scientists may disagree on how to explain a phenomenon, and even on its ontological status (e.g., whether it reflects a natural kind or a social construction). Still, they should be able to agree on the empirical pattern the phenomenon describes.
 
 #### Step 3
 
