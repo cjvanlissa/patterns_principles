@@ -565,22 +565,22 @@ needs -&gt; wellbeing
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>sim_code <span class="ot">&lt;-</span> <span class="fu">simulate_data</span>(sdt_pruned, <span class="at">n =</span> <span class="dv">100</span>, <span class="at">run =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb6-2"><a href="#cb6-2"></a>sim_code</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "# Set random seed"                                                          
- [2] "set.seed(366004894)"                                                        
- [3] "# Set simulation parameters"                                                
- [4] "n &lt;- 100"                                                                   
- [5] "# Simulate exogenous nodes"                                                 
- [6] "external_event &lt;- rnorm(n = n)"                                             
- [7] "needs &lt;- rnorm(n = n)"                                                      
- [8] "# Simulate endogenous nodes"                                                
- [9] "intrinsic_motivation &lt;- 0.12 * external_event - 0.52 * needs + rnorm(n = n)"
-[10] "wellbeing &lt;- 0.24 * needs - 0.2 * intrinsic_motivation + rnorm(n = n)"      
-[11] "df &lt;- data.frame("                                                          
-[12] "external_event = external_event,"                                           
-[13] "intrinsic_motivation = intrinsic_motivation,"                               
-[14] "needs = needs,"                                                             
-[15] "wellbeing = wellbeing"                                                      
-[16] ")"                                                                          </code></pre>
+<pre><code> [1] "# Set random seed"                                                             
+ [2] "set.seed(1970083092)"                                                          
+ [3] "# Set simulation parameters"                                                   
+ [4] "n &lt;- 100"                                                                      
+ [5] "# Simulate exogenous nodes"                                                    
+ [6] "external_event &lt;- rnorm(n = n)"                                                
+ [7] "needs &lt;- rnorm(n = n)"                                                         
+ [8] "# Simulate endogenous nodes"                                                   
+ [9] "intrinsic_motivation &lt;- -(0.16 * external_event + 0.55 * needs) + rnorm(n = n)"
+[10] "wellbeing &lt;- 0.22 * needs - 0.18 * intrinsic_motivation + rnorm(n = n)"        
+[11] "df &lt;- data.frame("                                                             
+[12] "external_event = external_event,"                                              
+[13] "intrinsic_motivation = intrinsic_motivation,"                                  
+[14] "needs = needs,"                                                                
+[15] "wellbeing = wellbeing"                                                         
+[16] ")"                                                                             </code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">writeLines</span>(sim_code, <span class="st">"formal_model.R"</span>)</span>
 <span id="cb8-2"><a href="#cb8-2"></a><span class="fu">source</span>(<span class="st">"formal_model.R"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -604,16 +604,16 @@ needs -&gt; wellbeing
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>desc <span class="ot">&lt;-</span> worcs<span class="sc">::</span><span class="fu">descriptives</span>(df)</span>
 <span id="cb9-2"><a href="#cb9-2"></a><span class="fu">print</span>(desc, <span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>                  name    type   n missing unique  mean median   mode
-1       external_event numeric 100       0    100 -0.10 -0.090 -0.090
-2 intrinsic_motivation numeric 100       0    100 -0.21 -0.180 -0.180
-3                needs numeric 100       0    100  0.12  0.076  0.076
-4            wellbeing numeric 100       0    100  0.14  0.292  0.292
-  mode_value   sd  v  min max range   skew skew_2se  kurt kurt_2se
-1         NA 0.92 NA -2.1 2.2   4.4  0.045    0.093 -0.14   -0.151
-2         NA 1.19 NA -3.0 2.3   5.3 -0.083   -0.173 -0.31   -0.322
-3         NA 1.02 NA -2.5 2.7   5.1  0.115    0.237  0.04    0.042
-4         NA 1.11 NA -3.6 2.6   6.2 -0.355   -0.735  0.21    0.217</code></pre>
+<pre><code>                  name    type   n missing unique    mean  median    mode
+1       external_event numeric 100       0    100  0.0182  0.0634  0.0634
+2 intrinsic_motivation numeric 100       0    100 -0.0088 -0.0085 -0.0085
+3                needs numeric 100       0    100  0.1346  0.1838  0.1838
+4            wellbeing numeric 100       0    100  0.0037 -0.1003 -0.1003
+  mode_value   sd  v  min max range    skew skew_2se   kurt kurt_2se
+1         NA 0.87 NA -2.1 2.3   4.4  0.0319   0.0661  0.248     0.26
+2         NA 1.18 NA -2.9 2.8   5.7  0.0037   0.0077 -0.740    -0.77
+3         NA 1.03 NA -2.8 2.3   5.1 -0.2802  -0.5804 -0.166    -0.17
+4         NA 1.18 NA -3.1 3.3   6.4  0.2267   0.4697 -0.048    -0.05</code></pre>
 </div>
 </div>
 <p>This gives you information such as the <strong>minimum, maximum, median, mean</strong>.</p>
@@ -640,19 +640,19 @@ Call:
 lm(formula = intrinsic_motivation ~ external_event, data = df)
 
 Residuals:
-     Min       1Q   Median       3Q      Max 
--2.90346 -0.72143 -0.02773  0.77448  2.56615 
+    Min      1Q  Median      3Q     Max 
+-2.8179 -0.8998  0.0100  0.8700  2.3274 
 
 Coefficients:
-               Estimate Std. Error t value Pr(&gt;|t|)  
-(Intercept)     -0.1994     0.1198  -1.665   0.0991 .
-external_event   0.0741     0.1305   0.568   0.5716  
+                Estimate Std. Error t value Pr(&gt;|t|)  
+(Intercept)    -0.003953   0.116799  -0.034   0.9731  
+external_event -0.268353   0.135171  -1.985   0.0499 *
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 1.19 on 98 degrees of freedom
-Multiple R-squared:  0.003277,  Adjusted R-squared:  -0.006893 
-F-statistic: 0.3222 on 1 and 98 DF,  p-value: 0.5716</code></pre>
+Residual standard error: 1.168 on 98 degrees of freedom
+Multiple R-squared:  0.03866,   Adjusted R-squared:  0.02885 
+F-statistic: 3.941 on 1 and 98 DF,  p-value: 0.04991</code></pre>
 </div>
 </div>
 <p>If the value of <code>Pr(&gt;|t|)</code> for <code>external_event</code> is smaller than .05, the effect is statistically significant. If the value of <code>Estimate</code> is positive, then the effect is positive - if it is negative, then the effect is negative.</p>
@@ -689,20 +689,20 @@ lm(formula = intrinsic_motivation ~ external_event * needs, data = df)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--2.7611 -0.5529  0.0423  0.7222  2.5318 
+-2.9667 -0.7487  0.1283  0.7567  1.7738 
 
 Coefficients:
                      Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)          -0.15219    0.10680  -1.425   0.1574    
-external_event        0.02098    0.12169   0.172   0.8635    
-needs                -0.51104    0.10360  -4.933  3.4e-06 ***
-external_event:needs  0.24876    0.12094   2.057   0.0424 *  
+(Intercept)           0.07411    0.10300   0.720   0.4735    
+external_event       -0.24737    0.11791  -2.098   0.0385 *  
+needs                -0.57608    0.10342  -5.570 2.32e-07 ***
+external_event:needs -0.02938    0.13011  -0.226   0.8218    
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 1.05 on 96 degrees of freedom
-Multiple R-squared:  0.2392,    Adjusted R-squared:  0.2154 
-F-statistic: 10.06 on 3 and 96 DF,  p-value: 7.948e-06</code></pre>
+Residual standard error: 1.018 on 96 degrees of freedom
+Multiple R-squared:  0.2842,    Adjusted R-squared:  0.2618 
+F-statistic:  12.7 on 3 and 96 DF,  p-value: 4.625e-07</code></pre>
 </div>
 </div>
 <p>If the value of <code>Pr(&gt;|t|)</code> for <code>external_event:needs</code> is smaller than .05, the interaction effect is statistically significant. That means that the effect of <code>external_event</code> on <code>intrinsic_motivation</code> depends on the value of <code>needs</code>.</p>

@@ -61,6 +61,28 @@ tab_ass <- read.csv("assessment.csv")
 make_table(tab_ass)
 ```
 
+### Final Theory Report
+
+Your final report should follow the structure of the [Theory Paper Format](https://osf.io/d3jmw/files/g8jz2).
+
+The following sections are graded (word limits in parentheses):
+
+1. Introduction and Problem Definition (500 words)
+2. Conceptual Outline (200 words)
+3. Theory Specification and documentation thereof (no strict word limit; you'll probably use an augmented DAG, PBTS tables, a diagram, or similar)
+4. Evaluation of Theory Implications (500 words)
+5. *Skip this: Applied example / Case study*
+6. Discussion (500 words)
+
+Each of those section will be graded on a 3-point scale (0: unacceptable, 1: good, 2: excellent).
+
+Additionally, we will grade (on the same scale):
+
+* Writing quality
+* Independence/creativity (did you just follow along with the course, or did you do something unique?)
+
+The final grade is just a sum of all these grades, divided by the total possible number of points and rescaled to 0-10 point scale.
+
 ## Group Work
 
 For this course, we want to stimulate you to engage with the material, with one another, and with the teachers. Therefore, some portfolio assignments are made in groups.
