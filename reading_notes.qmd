@@ -1,0 +1,179 @@
+# Reading Notes {#sec-readingnotes}
+
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+A few articles are exceptionally long and/or complex. Below are my reading notes, highlighting (what I consider to be) the most important parts of these papers. Note that these do not substitute reading of the paper, but they provide a general overview and conceptual understanding that you can enrich by referring back to the paper itself.
+
+## Meehl (1990) - Appraising and Amending Theories: The Strategy of Lakatosian Defense and Two Principles that Warrant It
+
+"In social science, everything is somewhat correlated with everything ("crud factor"), so whether H0 is refuted depends solely on statistical power. In psychology, the directional counternull of interest, H\*, is not equivalent to the substantive theory T, there being many plausible alternative explanations of a mere directional trend (weak use of significance tests). Testing against a predicted point value (the strong use of significant tests) can discorroborate T by refuting H\*. If used thus to abandon T forthwith, it is too strong, not allowing for theoretical verisimilitude as distinguished from truth. Defense and amendment of an apparently falsified T are appropriate strategies only when T has accumulated a good track record ("money in the bank") by making successful or near-miss predictions of low prior probability (Salmon’s "damn strange coincidences"). Two rough indexes are proposed for numerifying the track record, by considering jointly how intolerant (risky) and how close (accurate) are its predictions." (Meehl, 1990, p. 108) 
+
+"In physics, one typically compares the observed numerical value with the theoretically predicted one, so a significant difference refutes the theory." (Meehl, 1990, p. 108)
+
+"In social science, the theory being too weak to predict a numerical value, the difference examined is that between the observed value and a null ("chance") value, so statistical significance speaks for the theory. Holding the meta-theoretical views of Sir Karl Popper, I argued that this was an unhealthy state of affairs in that it did not provide the psychological researcher with strong ("risky," "dangerous," and hence highly corroborative) tests." (Meehl, 1990, p. 108)
+
+"Serlin and Lapsley (1985), who advanced discussion of the issue by correcting my overly Popperian stance ("strict falsificationism") and pointing out that it is more realistic to think of theories as being good enough [even if, literally, false]" than to set up a rigid true/false dichotomy" (Meehl, 1990, p. 108)
+
+"Theory Appraisal in Current Metatheory" (Meehl, 1990, p. 109)
+
+"1. A scientific theory is a set of statements in general form which are interconnected in the sense that they contain overlapping terms that designate the constructs of the theory. In the nomological network metaphor (Cronbach & Meehl, 1955), the nodes of the net are the theoretical constructs (entities) and the strands of the net are the functional or compositional laws relating them to one another." (Meehl, 1990, p. 109)
+
+"Contrary to simplistic operationism, it is not required that all the theoretical constructs be operationally defined. Only a proper subset are linked in a direct way to observational predicates or statements. In idealization, the theory consists of a formal calculus and an embedding text that provides the interpretation of expressions in the formalism (cf, Suppe, 1977)." (Meehl, 1990, p. 109)
+
+"The empirical meaning of the theoretical terms is given partly by "upward seepage" from the subset that are operationally tied to the data base." (Meehl, 1990, p. 109)
+
+"2. In conducting an empirical test of a substantive theory T (which it is imperative to distinguish from a test of the statistical hypothesis H) the logical form is the following: (T . At . Cp . Ai . Cn) → (O1 ̈ O2) where T is the theory of interest, At the conjunction of auxiliary theories needed to make the derivation to observations go through, Cp is a ceteris paribus clause ("all other things being equal"), Ai is an auxiliary theory regarding instruments, and Cn is a statement about experimentally realized conditions (particulars). The arrow denotes deduction (entailment), and on the right is a material conditional (horseshoe) which says that if you observe O1 you will observe O2. (O1 and O2 are not, of course, related by strict entailment.)" (Meehl, 1990, p. 109)
+
+"If in the laboratory, or in our clinic files, or in our field study, we observe the conjunction (O1 . ~O2) which falsifies the right-hand conditional, the left-hand conjunction is falsified modus tollens (Popper, 1935/1959, 1962; Schilpp, 1974; cf. O’Hear, 1980)." (Meehl, 1990, p. 109)
+
+"3. Although modus tollens is a valid figure of the implicative syllogism, the neatness of Popper’s classic falsifyability concept is fuzzed up by the fact that negating the lefthand conjunction is logically equivalent to stating a disjunction of the negations, so that what we have achieved by our laboratory or correlational "falsification" is a falsification of the combined claims T . At . Cp . Ai . Cp, which is not what we had in mind when we did the experiment. What happens next is therefore not a matter of formal logic, but of scientific strategy. All the logician can tell us here is that if we accept the observational conjunction (O1 . ~O2), then we will necessarily deny the fivefold conjunction on the left (Meehl, 1978, 1990c)." (Meehl, 1990, p. 109)
+
+"4. If this falsification does not occur, we say that the theory has been corroborated, which for Popper means that it has been subjected to a test and has not failed it. Whatever affirmative meaning (reliance? "animal faith"? rational scientific belief?) we give to corroboration derives from a further statement, namely, that absent the theory T, the antecedent probability of O2 conditional upon O1 is "small." If that is not so, our corroboration (pre-Popperians called it confirmation, a term that Popper avoids as being justificationist) is weak, some say negligible. Because if we say that the left is proved because the right-hand side is empirically correct, this inference is formally invalid, being the fallacy of "affirming the consequent." The logicians’ old joke here, attributed to Morris Raphael Cohen, makes the point: "All logic texts are divided into two parts. In the first part, on deductive logic, the fallacies are explained; in the second part, on inductive logic, they are committed." When we speak of the theory as "taking a risk," as "surmounting a high hurdle," as not being flunked "despite a dangerous test," these locutions refer to the notion that on some basis (prior experience, other theory, or common knowledge and intuition), absent the theory T we have our eye on, we see no reason for thinking that O2 has a high probability conditional upon O1." (Meehl, 1990, p. 110)
+
+"5. The obvious way in which we warrant a belief that O2 has a low prior probability conditional upon O1 absent the theory is when O2 refers to a point value" (Meehl, 1990, p. 110)
+
+"a theory predicting observations "in detail," "very specifically," or "very precisely" gains plausibility from its ability to do this" (Meehl, 1990, p. 110)
+
+"6. By the instrumental auxiliaries Ai I mean the accepted theory of devices of control" (Meehl, 1990, p. 110)
+
+"or of observation." (Meehl, 1990, p. 110)
+
+"It is not necessary for what follows, and I do not wish to maintain that it is always possible, to make a clean distinction between T and At, but I have some suggestions to make along those lines." (Meehl, 1990, p. 110)
+
+"Lakatos (1970) lumped all the conjuncts on the left except T as part of the "protective belt," (Meehl, 1990, p. 110)
+
+"8. In the presence of what appears to be a falsifying protocol, the Lakatosian methodology prescribes a strategic retreat (a Lakatosian defense, I call it). When adoption of this strategy is warranted, instead of confessing immediately that T has been falsified and should be abandoned, remains to be discussed: In what follows immediately I consider the literal truth of T, because we can’t discuss everything at once." (Meehl, 1990, p. 110)
+
+"a sensible psychologist would take it for granted that T itself is almost certainly imperfect, either in (a) the weak sense that it is incomplete or (b) the strong sense that it is, when taken literally, false. This involves the problem of verisimilitude, and the important Lakatosian distinction between saying that a theory is falsified and saying that one ought rationally to abandon it." (Meehl, 1990, p. 110)
+
+"theories when falsified are not abandoned prior to a Kuhnian revolution (Kuhn, 1970), but are appraised as to their degree of verisimilitude, and attempts are made to patch them up." (Meehl, 1990, p. 110)
+
+"In our strategic retreat we may choose not to admit the falsifying protocol, a tactic that may include doubts regarding the instrumental auxiliaries Ai." (Meehl, 1990, p. 111)
+
+"If we admit the falsifying protocol, accepting the instrumental auxiliary, we may then elect to challenge Cp. This is a plausible proceeding in psychology because we believe with near certainty that there are missing systematic factors." (Meehl, 1990, p. 111)
+
+"The ceteris paribus clause amounts to a very strong and highly improbable negative assertion, to wit, nothing else is at work except factors that are totally random and therefore subject to being dealt with by our statistical methods." (Meehl, 1990, p. 111)
+
+"11. This strategic retreat—beginning with the reluctant admission of the falsifying protocol, then cooking up new auxiliaries by denial of the ceteris paribus clause in troublesome domains, and then challenging some of the former auxiliaries themselves—may finally result in recognizing that the program begins to look somewhat "degenerate," as Lakatos called it. If pursuing the positive heuristic leads to an excessive amount of ad hockery (any of Lakatos’s, 1970, three kinds of ad hoc) the research program is called degenerating. If the adjustments made in the protective belt are content increasing, empirically successful, and in some sense inspired by the leading ideas of the theory (rather than alien elements pasted on), the research program is said to be progressive. Feyerabend (1970) criticized this because one does not have an objective cutting score for how long an appearance of degeneration should continue before deciding to abandon the negative heuristic and challenge the hard core, but I do not find this persuasive." (Meehl, 1990, p. 111)
+
+"As more and more ad hockery piles up in the program, the psychological threshold (which will show individual differences from one scientist to another) for grave scepticism as to the hard core will be increasingly often passed, inducing an increasing number of able intellects to become suspicious about the hard core and to start thinking about a radically new theory." (Meehl, 1990, p. 112)
+
+"12. Like the concept of verisimilitude, the metaconcept of core or central portions of a theory has not been given rigorous definition, and I am not able to offer one. It is obvious that some such distinction must, however loosely, be made." (Meehl, 1990, p. 112)
+
+"some texts are more verisimilar than others." (Meehl, 1990, p. 113)
+
+"If a newspaper account describes an automobile accident and gets everything right except the middle initial of one of the participants, we say that it has very high verisimilitude. If it describes an accident that occurred, but gets one of the names wrong, as well as the numbering of the intersection, we think of it as a poor story but still containing some truth. If it’s totally made up out of whole cloth by Dr. Goebbels, as the hoked up Polish attack on the Gleiwitz radio transmitter, we say it has zero verisimilitude" (Meehl, 1990, p. 113)
+
+"every scientist in the back of his mind takes it for granted that even the best theory is likely to be an approximation to the true state of affairs. For this reason, a falsification of T does not necessarily result in an abandonment of T" (Meehl, 1990, p. 113)
+
+"This is a rational strategy to the extent that there are grounds for thinking that the theory, although literally false, possesses high verisimilitude." (Meehl, 1990, p. 113)
+
+"verisimilitude is correlated, in the long run, with evidentiary support" (Meehl, 1990, p. 113)
+
+"Suppose we have a theory T1 and another theory T2 and we ask how similar they are to one another." (Meehl, 1990, p. 113)
+
+"Theory Specifications I. II. III. IV. V. VI. VII. VIII. IX. Type of entity postulated (substance, structure, event, state, disposition, field) Compositional, developmental, or efficient-causal connections between the entities in (I) Signs of first and second derivatives of functional dynamic laws in (II) Ordering relationships among the derivatives in (II) Signs of mixed second order partial derivatives ("interactions") in (II) Function forms (e.g., linear? logarithmic? exponential?) in (II) Trans-situationality of parameters in (VI) Quantitative relations among parameters in (VI) Numerical values of parameters in (VI) Figure 1. Progressively stronger specifications in comparing two theories (similitude)." (Meehl, 1990, p. 114)
+
+"Two Principles That Warrant Lakatosian Defense of a Theory" (Meehl, 1990, p. 114)
+
+"a theory’s merit is a matter of degree rather than a yes-or-no question (as it is treated in null hypothesis refutation and in some but not all of Popper)," (Meehl, 1990, p. 114)
+
+"falsification is not the crux, because we know the theory is imperfect." (Meehl, 1990, p. 114)
+
+"All psychological theories are imperfect (defective), at least in the sense of being incomplete. Most of them are, in addition, false as far as they go, almost certainly false when they go to the point of stating a mathematical law." (Meehl, 1990, p. 114)
+
+"hat happened historically was surprise at finding the paradigm of all scientific theories, which everybody tried to emulate, namely Newton’s, to be literally false. It was natural to think that if this great paradigm and paragon of scientific theorizing could turn out after a couple of successful centuries to be false, then probably all theories are false, if "only a little bit" so." (Meehl, 1990, p. 114)
+
+"But Newton’s theory took the grave risks of (a) being cosmological, and (b) stating strict quantitative laws, and therefore ultimately was falsified. If we consider, say, Crick and Watson’s theory of the gene, does anybody seriously think that will ever be falsified?" (Meehl, 1990, p. 114)
+
+"Let me try to explain why such objections are beside the point. One may rationally stick to a degenerating programme until it is overtaken by a rival and even after. What one must not do is to deny its poor public record. Both Feyerabend and Kuhn conflate methodological appraisal of a programme with firm heuristic advice about what to do. ...It is perfectly rational to play a risky game: what is irrational is to deceive oneself about the risk. (Lakatos, 1971, p. 117)" (Meehl, 1990, p. 115)
+
+"we want to equate "good enough" with some such notion as "having enough verisimilitude to warrant continued effort at testing it, amending it" (Meehl, 1990, p. 115)
+
+"The first one might be called the "track record" or "money in the bank" principle." (Meehl, 1990, p. 115)
+
+"The second is the "damn strange coincidence" criterion" (Meehl, 1990, p. 115)
+
+"The main way a theory gets money in the bank is by predicting facts that, absent the theory, would be antecedently improbable." (Meehl, 1990, p. 115)
+
+"That is how Karl Pearson’s original invention of chi square at the turn of the century worked. His idea of chi square was as an indicator of frequency discordance, asking for example, does an observed distribution depart significantly from the frequencies in class intervals as given by the Gaussian (or other theoretical) function? This I call the strong use of a significance test. But then occurs a development in the use of chi square, at Pearson’s own hands admittedly, in which the "theoretical" or "expected" values of cell frequencies, rather than being positively generated by an affirmative substantive theory generating a certain mathematical form, are instead specified by the hypothesis that two variables are not related to one another." (Meehl, 1990, p. 116)
+
+"There is, of course, nothing wrong with the mathematics of that procedure. But social scientists seem unaware of the great shift methodologically that takes place in that reverse-direction use of a significance test, where now the substantive theory is supported by the achievement of significance in departing from the "empty" hypothesis that two things are unrelated. In the strong use of a significance test, the more precise the experiment, the more dangerous for the theory. Whereas the social scientist’s use of chi square in a fourfold table, where H0 is that "These things are not related," I call the weak use. Here, getting a significant result depends solely on the statistical power function, because the null hypothesis is always literally false." (Meehl, 1990, p. 116)
+
+"it is important to keep in mind the fundamental distinction between a substantive theory T and a statistical hypothesis H. Textbooks and lecturers on statistics do not stress the distinction, and some do not even mention it by so much as a single monitory sentence. This grave pedagogical omission results in the tendency of students to conflate refuting H0 with proving the counternull, –H0, which then is immediately identified in their minds with "proving T."" (Meehl, 1990, p. 116)
+
+"In sciences where individuals differ, for known or unknown reasons, and even in sciences where individual differences play no role but measurements are subject to error, the observed numerical values, whether of degree (metric) or of frequency (count, rate), are subject to fluctuation, so we call in the statistician to help us with that part of the problem. If there were a science having infallible measuring instruments and in which the individuals studied showed no individual differences, so that neither measuring error nor sampling error was a relevant concept, then conventional statistics would be a minor branch of mathematics of little scientific relevance. But that glorious state of observational affairs would do nothing to ameliorate the problems of inductive logic, Theoretical inferences are always ampliative and do not flow as a deductive consequence of any finite class of observation statements." (Meehl, 1990, p. 116)
+
+"The purely logical point here is, as I said earlier, that empirical inference from fact to theory is in an invalid figure of the implicative syllogism, so formally the theorist’s transition is the fallacy of affirming the consequent (hence, Morris Raphael Cohen’s malicious witticism). Speaking methodologically, this formal point corresponds to saying, "... but there could be other theories that would explain the facts equally well."" (Meehl, 1990, p. 116)
+
+"Simply put (as Poincaré said in his recantation), if 13 different ways to count molecules yield the same number, then there must be something being counted! And the point is not whether these 13 answers were "significantly different" from one another, which they doubtless were. The point is that they were all of the same order of magnitude, namely, 1023" (Meehl, 1990, p. 118)
+
+"The notion of accuracy, when pressed, is a relative term, usually uninterpretable with respect to theory corroboration without the a priori range." (Meehl, 1990, p. 120)
+
+"If I tell you that a measurement has a standard error of so many angstroms, you don’t know how accurate that is without knowing something of the range of values we are concerned with in the particular experimental domain." (Meehl, 1990, p. 120)
+
+"The tactics within the Lakatosian defensive strategy may vary with circumstances. As mentioned earlier, we may refuse to admit the falsifying protocol into the corpus, or raise doubts about the instrumental auxiliary, or challenge the ceteris paribus clause, or the theoretical auxiliaries, or finally, as a last ditch maneuver, question the peripheral portions of the substantive theory itself. Nobody has given clear-cut rules for which of these tactics is more rational" (Meehl, 1990, p. 122)
+
+"We could label this "Reichenbach’s maxim," because in his famous justification of the straight rule of induction he says that, although we can have no guarantee it will work, it will work if anything works." (Meehl, 1990, p. 122)
+
+"In correlational research there arises a special problem for the social scientist from the empirical fact that "everything is correlated with everything, more or less." My colleague David Lykken presses the point further to include most, if not all, purely experimental research designs, saying that, speaking causally, "Everything influences everything,"" (Meehl, 1990, p. 123)
+
+"Edward Lee Thorndike enunciated the famous dictum, "All good things tend to go together, as do all bad ones."" (Meehl, 1990, p. 124)
+
+"The ubiquity of nonzero correlations gives rise to what is methodologically disturbing to the theory tester and what I call, following Lykken, the crud factor." (Meehl, 1990, p. 124)
+
+"The ubiquity of the crud factor is what gave rise to the bizarre model I propounded in my 1967 article against null-hypothesis testing, in which an investigator draws pairs of variables randomly from an empirical variable hat, and draws theories randomly out of a theory hat, associating each theory with a pseudopredicted empirical correlation. Due to the crud factor, that investigator would come up with a sizable number of apparent "substantiations" of the theories even if they had negligible verisimilitude and there were no intrinsic logical connections between the theory and the pair of variables employed for "testing" purposes." (Meehl, 1990, p. 124)
+
+"One must also keep in mind that socioeconomic status, although intrinsically interesting (especially to sociologists) is probably often functioning as a proxy for other unmeasured personality or status characteristics that are not part of the definition of social class but are, for a variety of complicated reasons, correlated with it. The proxy role is important because it prevents adequate "controlling for" unknown (or unmeasured) crud-factor influences by statistical procedures (matching, partial correlation, analysis of covariance, path analysis)." (Meehl, 1990, p. 125)
+
+"The crud factor is only 1 of 10 obfuscating factors that operate jointly to render most narrative summaries of research in soft psychology well-nigh uninterpretable. These 10 factors are: 1. Loose (nondeductive) derivation chain, making several "obvious" inferential steps requiring unstated premises (intuitive, common-sensical, or clinical experience). 2. Problematic auxiliary theories, although explicitly stated. 3. Problematic ceteris paribus clause. 4. Imperfect realization of particulars (experimenter mistakes in manipulation) or experimenter bias in making or recording observations. 5. Inadequate statistical power to detect real differences at the conventional significance level. 6. Crud factor: In social science everything correlates with everything to some extent, due to complex and obscure causal influences. 7. Pilot studies used to (a) decide whether "an effect exists" and (b) choose a sample size of adequate statistical power if the pilot effect is borderline but in the "right direction." 8. Selective bias in favor of submitting reports refuting the null hypothesis. 9. Selective bias by referees and editors in accepting papers refuting the null hypothesis. 10. Detached validation claim for psychometric instruments." (Meehl, 1990, p. 125)
+
+"Appraising a Theory: Point and Interval Predictions If one is persuaded by these considerations, the question arises whether one could roughly measure the Lakatosian status of a theory? Perhaps not, but I would like to have a try at it. I take a handy notion from the Vienna positivists (which they took, I believe, from Von Kries, a philosopher-statistician of the 19th century): the concept of Spielraum (German word for "action play," "play/game space," "field," "range," "scope," "elbow room")." (Meehl, 1990, p. 127)
+
+"Almost all the pure numbers we employ have algebraically defined bounds. The Pearson r coefficient and its surrogates go from zero to one; analyses of variance and covariance are expressible in terms of proportion of variance accounted for" (Meehl, 1990, p. 127)
+
+"if we are studying memory, the boundaries of the Spielraum could be taken simply as remembering everything and remembering nothing. If reaction time or the rate of responding in a cumulative record is the measure, and we are comparing two groups (or the same group before and after an intervention), it would be reasonable to say that the Spielraum goes from the highest value found in any individual in either group to the lowest value found in any individual in either group." (Meehl, 1990, p. 128)
+
+"The crucial thing is, I urge, not the standard error, or even (somewhat more helpful) the engineer’s familiar percentage error, but the size of the error in relationship to the Spielraum." (Meehl, 1990, p. 128)
+
+"The revised methodology retains the Popperian emphasis on riskiness, but now instead of asking "Did I pass the test, which was stiff?" we ask, "How close did I come?" The ideal case of strong corroboration is that in which the theory predicts a point value (a point value always means, in practice, an interval) and succeeds. A less favorable case, but still leading to a positive appraisal, is a theory that "misses" but comes close, and how close is measured in terms of the Spielraum." (Meehl, 1990, p. 128)
+
+"The preceding corroboration index examines the accuracy of point and interval predictions, and the chief way in which such predictions are mediated is via a specified mathematical function relating two or more observational variables. Of course the success of a theory in deriving the correct observational function is itself a strong corroborator." (Meehl, 1990, p. 130)
+
+"for a given scientific domain, which could be broadly defined (psychology or chemistry) or more narrowly defined (the psychology of mammalian learning, or the chemistry of mammalian nutriation), we could carry out literally—by an appropriately stratified random sample of textbooks, handbooks, and research articlesa statistical study of the occurrence of the various mathematical functions." (Meehl, 1990, p. 134)
+
+"From such a sampling of scientific literature, one could compile a list of functions with their relative frequency in the literature, confident that any function not found in this "function atlas" has a prior probability of less than .01 of appearing in a theory or experimental report. This finite set of functions, each occurring in empirical disciplines with nonnegligible probability, defines the Spielraum. The prior probability, "picking a function out of the function hat randomly," that it will fit a set of experimental data from the domain is then taken to be the relative frequency of that particular function in our empirical atlas." (Meehl, 1990, p. 134)
+
+"In recent years, there has been systematic research by cognitive psychologists and logicians into the reasoning processes of successful scientists, indicating that they frequently commit formal logical errors of a kind you would not expect sophomores to commit if they had taken an elementary logic course (Kern, Mirels, & Hinshaw, 1983). There is a growing body of research on decision making and the assessment of new evidence, both with scientists and nonscientists, which shows that there are several powerful biasing factors in the human mind, especially when large amounts of information have to be processed to arrive at a reasoned judgment (Dawes, 1988; Faust, 1984; Hogarth, 1987; Kahneman, Slovic, & Tversky, 1982; Lord, Ross, & Lepper, 1979; Nisbett & Ross, 1980)." (Meehl, 1990, p. 136)
+
+"Meta-analysis in its received form would not, however, be the answer to our question. First, it was invented and advocated by Glass and his colleagues for evaluation research, to study the efficacy of various interventions, rather than for the testing of substantive theories; that is, its assessment aim was originally technological. Second, the basic dependent variable is effect size, the bigger the effect size the better, which is obviously not true for the testing of theories, especially strong theories which make point or narrow-interval predictions, where an effect size could err either on the high side or the low. Third, and most important, the effect size ignores the critical factor in theory testing of Popperian risk or, speaking quantitatively, of the theory’s intolerance, its Salmonian coincidence. For a critique of meta-analysis as used to appraise theories, see Chow (1987)." (Meehl, 1990, p. 137)
+
+"Reichenbach’s (1938) muchcriticized dichotomy between the context of discovery and the context of justification" (Meehl, 1990, p. 137)
+
+"Is It Ever Correct to Use Null-Hypothesis Significance Tests? Of course it is. I do not say significance testing is never appropriate or helpful; there are several contexts in which I would incline to criticize a researcher who failed to test for significance. The first involves technological problems, where we are not (primarily) interested in examining the verisimilitude of an explanatory theory but rather in evaluating a technique (tool, procedure, action) aimed at some pragmatic end. If we compare two antidepressants in a psychopharmacological study, and one drug helps 7% more patients than the other, we want to know whether that 7% can be plausibly attributed to "chance" before advising practitioners or drug companies as to the merits. However, even here I would urge the superiority of setting up a confidence belt, which would give us additional information as to the size of a difference with specified levels of confidence. There may even be some situations where the pragmatic context is such that we ought to rely on an observed difference whatever its significance level (assuming costs and adverse side effects to be equal). As was pointed out many years ago (Simon, 1945), the best estimate of a mean, the best estimate of a proportion, and the best estimate of a difference between two means or proportions is the observed one, quite apart from significance testing." (Meehl, 1990, p. 137)
+
+"A second context is that in which there is essentially no difference between the content of the substantive theory T and the counternull statistical hypothesis H\*, so that refuting H0 (thereby corroborating H\*) is equivalent to corroborating T." (Meehl, 1990, p. 137)
+
+"this fact of a negligible "semantic distance" between the content of T and H\* that leads to the legitimate reliance on significance testing in such fields as agronomy, where the difference between the statement "those plots that were fertilized yielded more corn" and the statement "it helps to grow corn if you fertilize it" is of no consequence" (Meehl, 1990, p. 138)
+
+"Third, even in the context of discovery (Reichenbach, 1938) there do occur rational (critical, evaluative) components, considerations that normally we assign to the context of justification. Adoption of a research program, or preference for one type of apparatus rather than another to study a phenomenon such as latent learning, is not done by the scientist whimsically or intuitively, but with rational considerations in mind." (Meehl, 1990, p. 138)
+
+"If I describe my study so that you can replicate my results, and enough of you do so, it doesn’t matter whether any of us did a significance test; whereas if I describe my study in such a way that the rest of you cannot duplicate my results, others will not believe me, or use my findings to corroborate or refute a theory, even if I did reach statistical significance. So if my work is replicable, the significance test is unnecessary; if my work is not replicable, the significance test is useless." (Meehl, 1990, p. 138)
+
+"It is interesting that the grip of the received research tradition is so strong that some insist on significance tests in settings where data are so clear and the reproducibility so good that scientists in other fields would not bother with statistics." (Meehl, 1990, p. 138)
+
+"In either a theoretical or technological context, replicability (preferably by different workers) is more important than statistical significance." (Meehl, 1990, p. 138)
+
+"I have tried to provide a reformulation of Serlin and Lapsley’s (1985) "good enough" principle that preserves the Popperian emphasis on strong corroboration. Accepting their criticism of my overly strict Popperian formulations, and moving from Popper to Lakatos as a metatheoretical guide, we ask not, "Is the theory literally true?" but instead, "Does the theory have sufficient verisimilitude to warrant our continuing to test it and amend it?" This revised appraisal in terms of verisimilitude rather than strict truth leads to adopting a strategy of Lakatosian defense by strategic retreat" (Meehl, 1990, p. 138)
+
+"The warrant for conducting a Lakatosian defense is the theory’s track record. A good track record consists of successful and almost-successful risky predictions" (Meehl, 1990, p. 138)
+
+"It is crucial in my argument that this low tolerance is not best judged by traditional significance testing, whether of the strong or weak kind, or even by confidence-interval estimation, but by comparing the theory’s intolerance, and the nearness of the "miss" when there is a miss, with a reasonable a priori range of possible values, the antecedent Spielraum." (Meehl, 1990, p. 139)
+
+"We are attacking the whole tradition of null-hypothesis refutation as a way of appraising theories." (Meehl, 1990, p. 139)
