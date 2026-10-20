@@ -1,24 +1,410 @@
 ---
 execute:
   echo: true
+editor: 
+  markdown: 
+    wrap: 72
 ---
 
 # Causal Discovery
 
 ## Weekly Readings
 
-```{r echo = FALSE, results = "asis"}
+```{r}
+#| echo: false
+#| results: asis
 schedule <- readODS::read_ods("schedule.ods")
 cat(paste0("* ", strsplit(schedule$Reading[which(schedule$file == "causal_discovery.qmd")], split = "\n")[[1]]), sep = "\n")
 ```
 
 ## Tutorial
 
-In these exercises we will explore causal discovery methods based on
-conditional independence testing.
-This tutorial is also available in the file `causal_discovery_zhao_2025.R` in the `patterns_principles_exercises` project.
-We will use four constructs from the
-Zhao (2025) dataset throughout:
+Suppose you have a correlation matrix based on observational (i.e.,
+non-experimental) data and nothing else. How much can you say about what
+causes what?
+
+The standard answer that we learn in statistics courses is "nothing":
+*correlation does not equal causation*. The surprising answer is
+"sometimes quite a lot". Certain causal structures leave distinctive
+traces in the pattern of correlations, and those traces can be read back
+off the data, granted we are willing to make some assumptions. Methods
+that do this are called *causal discovery methods*.
+
+In this tutorial, we will explore how to use causal discovery to go
+beyond correlation and infer causal relationships from observational
+(i.e., non-experimental) data.
+
+```{r}
+#| message: false
+library(tidySEM)
+library(ppcor)
+library(qgraph)
+library(pcalg)
+library(Rgraphviz)
+library(dagitty)
+library(tpc)
+library(webexercises)
+```
+
+::: callout-tip
+## One helper function
+
+Software implementations of causal discovery methods typically output an
+adjacancy matrix to represent the causal structure, but they are hard to
+read. The function below prints a graph as a list of edges instead. Run
+it once; we use it throughout.
+
+```{r}
+edges_of <- function(fit) {
+  # coerce the fit into an adjacancy matrix
+  m <- as(fit, "amat")
+  # store the variable names
+  nms <- colnames(m)
+  # initialize empty vector to collect edge strings
+  out <- character(0)
+  
+  # loop over every ordered pair of variable names
+  for (i in nms) for (j in nms) {
+    # Skips the diagonal (since a variable has no edge to itself)
+    if (i == j) next
+    # pcalg convention: m[i, j] == 0 and m[j, i] == 1 means i -> j
+    # Detects a directed edge
+    if (m[j, i] == 1 && m[i, j] == 0) out <- c(out, paste(i, "->", j))
+    # Detects a undirected edge
+    if (m[i, j] == 1 && m[j, i] == 1 && i < j) out <- c(out, paste(i, "--", j))
+  }
+  out
+}
+```
+:::
+
+## Part 1: Three patterns, Three Traces (30 min)
+
+When thinking about what traces can be used to infer the causal
+structure, it helps to distinguish between a few different causal
+structures containing 3 variables, visualized in the directed acyclic
+graphs (DAGs; i.e., a causal graph without cycles) below.
+
+::: {layout-ncol="3"}
+```{tikz}
+%| label: fig-chain
+%| fig-cap: "Chain"
+%| fig-ext: svg
+%| echo: false
+\usetikzlibrary{arrows.meta}
+\input{graph-chain.tex}
+```
+
+```{tikz}
+%| label: fig-commoncause
+%| fig-cap: "Common cause"
+%| fig-ext: svg
+%| echo: false
+\usetikzlibrary{arrows.meta}
+\input{graph-commoncause.tex}
+```
+
+```{tikz}
+%| label: fig-commoneffect
+%| fig-cap: "Common effect"
+%| fig-ext: svg
+%| echo: false
+\usetikzlibrary{arrows.meta}
+\input{graph-commoneffect.tex}
+```
+:::
+
+In this part of the tutorial, we will simulate data for each one, so
+that we know the true answer ("ground truth") and look at what shows up
+in the correlations. More specifically, we will take a look at two
+metrics for each pattern:
+
+- the plain correlation between `X` and `Y`;
+- the correlation between `X` and `Y` *after accounting for* `Z`, the
+  **partial correlation**.
+
+::: callout-note
+## What does "accounting for" mean?
+
+"Accounting for `Z`" means: within groups of people who have the same
+value of `Z`, are `X` and `Y` still related? The same thing is sometimes
+expressed using a few different phrasings: (a) "controlling for `Z`",
+(b) "conditioning on `Z`", or (c) "holding `Z` fixed".
+:::
+
+### Pattern 1: a chain
+
+In a chain, a third variable `Z` sits between `X` and `Y`. In other
+words, `Z` is a mediator in the causal relationship between `X` and `Y`.
+As an example, teacher pressure lowers motivation, and motivation drives
+behaviour.
+
+```{r}
+set.seed(6)
+n <- 5000   # large, so that sampling noise does not obscure the pattern
+a <- 0.6    # strength of every arrow, on a correlation scale
+
+chain <- local({
+  X <- rnorm(n)
+  Z <- a * X + rnorm(n, sd = sqrt(1 - a^2))
+  Y <- a * Z + rnorm(n, sd = sqrt(1 - a^2))
+  data.frame(X = X, Z = Z, Y = Y)
+})
+
+cor(chain$X, chain$Y)                                  # related?
+pcor.test(chain$X, chain$Y, chain$Z)$estimate          # still related given Z?
+```
+
+From the output, we can tell that `X` and `Y` are correlated, and that
+the correlation disappears once we account for `Z`. The intuitive
+explanation for this is that if the only route from `X` to `Y` runs
+through `Z`, then holding `Z` fixed blocks (i.e., cuts the flow of
+association) the route.
+
+### Pattern 2: a common cause
+
+With a common cause, a third variable `Z` causes both `X` and `Y`, but
+there is *no causal relation* between the latter two. In other words,
+`Z` is a confounder in the relationship between `X` and `Y`.
+
+```{r}
+fork <- local({
+  Z <- rnorm(n)
+  X <- a * Z + rnorm(n, sd = sqrt(1 - a^2))
+  Y <- a * Z + rnorm(n, sd = sqrt(1 - a^2))
+  data.frame(X = X, Z = Z, Y = Y)
+})
+
+cor(fork$X, fork$Y)
+pcor.test(fork$X, fork$Y, fork$Z)$estimate
+```
+
+As an example, we may see that the number of shark attacks and the
+number of ice cream sales move together (when one tends to be higher,
+the other tends to be as well), which is all explained by the amount of
+sunny days. And once we *account* for the amount of sunny days, the
+correlation between shark attacks and ice cream sales dissappears, as
+the pathway is blocked.
+
+Note that we practically get the same two numbers as the chain: both
+produce a correlation that vanishes when you account for the middle
+variable. This is because *the data cannot tell apart a chain from a
+common cause*.
+
+### Pattern 3: a common effect
+
+When there is a common effect, two variables `X` and `Y` both cause a
+third variable `Z`, where `Z` is referred to as a *collider*. Note that
+the arrows are pointed the opposite way as what we saw in pattern 2. As
+an example, natural talent and working hard both contribute to getting a
+good exam grade; but the former two do not causally impact one another.
+
+```{r}
+collider <- local({
+  X <- rnorm(n)
+  Y <- rnorm(n)
+  Z <- a * X + a * Y + rnorm(n, sd = sqrt(1 - 2 * a^2))
+  data.frame(X = X, Z = Z, Y = Y)
+})
+
+cor(collider$X, collider$Y)
+pcor.test(collider$X, collider$Y, collider$Z)$estimate
+```
+
+Among students who got a good grade, someone with little natural talent
+must have worked hard, and someone who did not work hard must have had
+natural talent. So learning one tells you something about the other. In
+more formal words, when we account/control for exam grades, we create an
+association between the two previously uncorrelated variables. Here, the
+initial state is blocked and by accounting for the collider we
+unblocks/opens up the pathway.
+
+This is exactly the opposite of what we saw for a common cause, where we
+removed the correlation by accounting for the third variable.
+
+### The three traces side by side
+
+```{r}
+trace <- function(d) {
+  c(r_XY = cor(d$X, d$Y),
+    r_XY_given_Z = pcor.test(d$X, d$Y, d$Z)$estimate)
+}
+
+patterns <- data.frame(
+  pattern = c("Chain:         X -> Z -> Y",
+              "Common cause:  X <- Z -> Y",
+              "Common effect: X -> Z <- Y"),
+  rbind(trace(chain), trace(fork), trace(collider))
+)
+print(patterns, digits = 2, row.names = FALSE)
+```
+
+The former two patterns are statistically indistinguishable. The third
+has a different statistical trace: unrelated on their own, but related
+once we account for the third variable.
+
+This assymetry between the chain and common cause on the one hand and
+the common effect on the other is the basis of constraint-based causal
+discovery.
+
+`r quiz("You find that X and Y are correlated, and that the correlation disappears when you account for Z. Which pattern is it?" = c("A chain", "A common cause", answer = "Either one; the data cannot distinguish them"), "You find that X and Y are uncorrelated, but become correlated once you account for Z. Which pattern is it?" = c(answer = "A common effect", "A chain", "A common cause"), "Accounting for a common effect can create an association where there was none." = TRUE)`
+
+::: callout-note
+## Accounting for the third variable $Z$ has different consequences
+
+Accounting for the third variable $Z$ blocks a chain (pattern 1) and
+blocks a common cause (pattern 2), and *unblocks* a collider (pattern
+3).
+:::
+
+## Part 2: Can the algorithm find a structure we hid? (30 min)
+
+**P**eter Spirtes and **C**lark Glymour operationalized this assymetry
+between the three patterns and developed the *PC algorithm*, which tests
+every pair of variables under every relevant conditioning set, deletes
+edges whenever it finds independence, then orients arrows using the
+collider traces from Part 1.
+
+But can algorithmns actually find a structure we hide? And under what
+conditions? To address these questions, we will hide a structure in
+simulated data and see whether the algorithm can retrieve this
+correctly.
+
+We will *simulate* graphs with four variables that were present in the
+Zhao (2025) data (introduced in Week 6 Machine-Learning Informed Theory
+Construction; we will come back to the *real* data in Part 3):
+
+- `AM` (autonomous motivation)
+
+- `TS` (teacher pressure)
+
+- `BI` (behavioural intention)
+
+- `BH` (sports behaviour).
+
+```{r}
+set.seed(1)
+n <- 1000
+vars <- c("AM", "TS", "BI", "BH")
+alpha <- 0.10 # significance level of independence tests
+```
+
+Below we create a simple function for running the PC, algorithm. We can
+see that the `pc` function only requires the correlation matrix and
+sample size rather than the raw data (see the `suffStat` line).
+
+```{r}
+run_pc <- function(data, alpha = 0.10) {
+  pcalg::pc(suffStat = list(C = cor(data), n = nrow(data)),
+     indepTest = gaussCItest,
+     alpha     = alpha,
+     labels    = names(data))
+}
+```
+
+### World 1: a structure containing a common effect
+
+Let us first create a fictional structure that we call World 1,
+containing a common effect, with the causal relations: `AM -> BI`,
+`TS -> BI`, `BI -> BH`. Motivation and teacher pressure both cause
+intention, and intention causes behaviour. Note that `BI` is a common
+effect of `AM` and `TS`.
+
+```{r}
+world1 <- local({
+  TS <- rnorm(n)
+  AM <- rnorm(n)
+  BI <- 0.6 * TS + 0.6 * AM + rnorm(n)
+  BH <- 0.6 * BI + rnorm(n)
+  data.frame(AM = AM, TS = TS, BI = BI, BH = BH)
+})
+
+fit1 <- run_pc(data = world1)
+edges_of(fit1)
+plot(fit1, main = "World 1: what PC recovered")
+```
+
+We can see that PC recovers each arrow correctly. The algorithm found
+the common effect at `BI` using the trace from Part 1, and once those
+two arrows were fixed, the direction of `BI -> BH` followed: pointing it
+the other way would have created a second common effect at `BI`, which
+the data rule out.
+
+### World 2: a pure chain
+
+Let's now consider another fictional causal structure, called World 2,
+with the causal relations: `TS -> AM -> BI -> BH`. These comprise the
+same four variables, but now with a chain structure rather than a common
+effect.
+
+```{r}
+world2 <- local({
+  TS <- rnorm(n)
+  AM <- 0.6 * TS + rnorm(n)
+  BI <- 0.6 * AM + rnorm(n)
+  BH <- 0.6 * BI + rnorm(n)
+  data.frame(AM = AM, TS = TS, BI = BI, BH = BH)
+})
+
+fit2 <- run_pc(data = world2)
+edges_of(fit2)
+plot(fit2, main = "World 2: what PC recovered")
+```
+
+We can see that PC correctly recovers the skeleton (i.e., undirected
+graph showing which variables are statistically associated), but cannot
+tell which way the arrows point. This indeterminacy of the complete
+causal structure (including orientation) follows directly from what we
+learnt in Part 1: a chain running left to right and a chain running
+right to left produce identical correlations, so no amount of data can
+separate them. Without a common effect, there is no trace to exploit.
+
+### How many structures fit equally well?
+
+Let us figure out how many causal structures can explain the
+correlations that were found in the data simulated based on the
+structures of World 1 and World 2.
+
+```{r}
+n_structures <- function(fit) nrow(pcalg::pdag2allDags(as(fit, "matrix"))$dags)
+
+n_structures(fit1)
+n_structures(fit2)
+```
+
+We can see that PC can pin it down to a single structure for World 1,
+whereas it leaves several different possible causal structures for World
+2.
+
+`r quiz("PC recovered World 1 exactly because" = c(answer = "the true structure contained a common effect, which leaves a unique trace", "the sample size was large", "chains are harder to simulate"), "In World 2, PC left the edges undirected because" = c(answer = "chains pointing in either direction imply the same correlations", "the algorithm ran out of tests", "the associations were too weak"), "A graph with undirected edges means the analysis failed." = FALSE)`
+
+::: callout-note
+## What the PC provides as output
+
+- The PC algorithmn constructs the skeleton and then orients any
+  collider structures and other compelled edges to construct a DAG.
+  Because we are limited by these collider structures for orientation
+  (we cannot distinguish between a chain and common cause as seen in
+  Part 1; e.g., World 2), the algorithm returns a completed partially
+  directed acyclic graph (**CPDAG**; completed because it contains every
+  single edge orientation that can be deduced)
+- A CPDAG is consistent with *multiple candidate DAGs* (where all edges
+  are oriented). These DAGs are statistically indistinguishable. We call
+  this group of DAGs the **Markov equivalence class**. In World 1, the
+  MEC consisted of one structure; in World 2 it consisted of several
+  structures.
+:::
+
+## Part 3: Your theory meets real data (30 min)
+
+The PC algorithm uses statistical rules of thumb to construct DAGs; it
+does not know your underlying theory. At this point you may ask: Do the
+DAGs constructed by `pcalg::pc()` make sense? If you used only expert
+knowledge, what DAG would you construct? And does this DAG have the
+causal implications that allow it to be recovered by algorithms like PC?
+
+We now turn to the *real* Zhao (2025) dataset, using the same four
+constructs as we simulated data for in Part 2:
 
 - **AM**: Autonomous motivation, as an operationlization of one of the
   fundamental needs.
@@ -29,520 +415,166 @@ Zhao (2025) dataset throughout:
 - **BH**: Sports behavior, as a context-specific operationalization of
   healthy development.
 
-Note that these variables are not perfect matches for the theoretical
-concepts, but for the purpose of a tutorial - that is fine.
-
-All four variables are mean scores aggregated from their questionnaire
-items, with higher values indicating higher levels of the corresponding
-construct.
+These are imperfect matches for the theoretical concepts, but for the
+purpose of a tutorial - that is fine. All four are mean scores
+aggregrated across questionnaire items, with higher values indicating
+higher levels of the corresponding construct.
 
 ```{r}
-# echo: true
-library(tidySEM)
-library(ppcor)
-library(qgraph)
-library(pcalg)
-library(Rgraphviz)
-library(webexercises)
-
 data_raw <- readRDS("zhao_2025.rds")
 vars <- c("AM", "TS", "BI", "BH")
-# Select four variables for this tutorial
-df <- data_raw[, vars]
-alpha <- .10
-```
+df <- data_raw[, vars] # select four variables for this tutorial
 
-```{r}
-# echo: true
 print(descriptives(df), digits = 2)
 print(cor(df), digits = 2)
 ```
 
-Conditional-independence tests based on correlations and partial
-correlations, which assume that all relationships are linear with
-normally distributed noise. These assumptions are likely often violated
-with psychological data, so keep that in mind when interpreting the
-results.
+### Step 1: Write down your theory
 
-### Causal Discovery
-
-In this exercise you will learn the basics of causal discovery, using
-the conditional independence method. You will apply the steps manually
-to understand the process, and then automate it using the \`pcalg\`
-package.
-
-#### Enumerate all Possible Independence Tests
-
-The first thing we'll do is to test all possible marginal and
-conditional independence relations present in the data. Later, we use
-this information to constrain the possible DAGs. 
-
-With four variables, we need to test:
-
-1.  all marginal associations;
-2.  all conditional associations where we condition on one other
-    variable; and
-3.  all conditional associations where we condition on the two remaining
-    variables.
-
-We can construct these sets as follows:
+Before looking at any output of the algorithm, we should commit and make
+our hypothesized/theoretical DAG explicit. Shortly discuss what you
+think is the DAG is in this substantive setting and edit the code
+(`theory` line) below accordingly.
 
 ```{r}
-# echo: true
-# All unique combinations of four variables
-marginal <- combn(vars, 2)
-# For each of those combinations, condition on both of the two remaining variables separately
-cond1 <- do.call(cbind, apply(marginal, 2, function(pair){
-  rbind(matrix(pair, ncol = 2, nrow = 2), setdiff(vars, pair))
-  }, simplify = FALSE))
+theory <- dagitty('dag {
+  TS -> AM
+  AM -> BH
+  BI -> BH
+}')
 
-# For each combination, condition on both remaining variables together
-cond2 <- apply(marginal, 2, function(pair){
-  c(pair, setdiff(vars, pair))})
-marginal
-cond1
-cond2
+coordinates(theory) <- list(
+  x = c(TS = 0, AM = 1, BI = 2, BH = 2),
+  y = c(TS = 0, AM = 0, BI = 0, BH = 1)
+)
+
+plot(theory)
 ```
 
-Each table captures unique relations in the columns.
+### Step 2: Ask what your theory predicts
 
-`r quiz("The first column of marginal gives us the bivariate independence relation
-between:" = c(answer = "AM and TS", "BH and TS", "BI and BH", "AM and BH"), "The first column of cond1 conditions on:" = c(answer = "BI", "BH", "AM", "TS"), "The first column of cond2 conditions on:" = c(answer = "AM and TS", "BH and TS", "BI and BH", "AM and BH"), "How many unique independence relations does this give?" = 24L)`
-
-
-#### Test marginal and conditional independence
-
-If we assume that all associations are linear and errors are normally
-distributed, then we can use correlations to test marginal independence
-and partial correlations to test conditional independence between these
-variables.
-
-Remember that the null hypothesis for each test is that the two
-variables are independent. We use an alpha level of `.10`.
+At this point, we want to see what predictions our theory actually makes
+(i.e., what causal implications it has).
 
 ```{r}
-# echo: true
-# Example of one marginal-independence test
-martest1 <- cor.test(
-  df$AM,
-  df$TS
-  )
-martest1$p.value
-
-# Example conditional-independence test:
-# AM and TS conditional on BH
-ctest1 <- pcor.test(
-  df$AM,
-  df$TS,
-  df$BI
-  )
-ctest1$p.value
+dagitty::impliedConditionalIndependencies(theory)
 ```
 
-`r quiz("AM is independent from TS" = FALSE, "AM is independent from TS when conditioning on BI." = TRUE)`
+The symbolic notation `X _||_ Y | Z` should be read as "X is unrelated
+to Y once you account for Z".
 
-We can use the previously constructed tables to automate all tests:
+**Write down the predictions in words.**
+
+### Step 3: Test the predictions
+
+Given that the theory is true, can we be expected to recover the correct
+causal structure given that the assumptions of PC hold? To explore this,
+we will test our predictions
 
 ```{r}
-# echo: true
-# Marginal correlations
-marg_p <- apply(marginal, 2, function(r) {
-  cor.test(df[, r[1]], df[, r[2]])$p.value })
-
-# Conditional on one variable
-c1_p <- apply(cond1, 2, function(r) { 
-  pcor.test(df[, r[1]], df[, r[2]], df[, r[3]])$p.value })
-
-# Conditional on both remaining variables
-c2_p <- apply(cond2, 2, function(r) {
-  pcor.test( df[, r[1]], df[, r[2]], df[, r[3:4]] )$p.value })
-
-marg <- data.frame(t(marginal), p_value = marg_p, result = c("Dependent", "Independent")[(marg_p > alpha)+1L])
-c1 <- data.frame(t(cond1), p_value = c1_p, result = c("Dependent", "Independent")[(c1_p > alpha)+1L])
-c2 <- data.frame(t(cond2), p_value = c2_p, result = c("Dependent", "Independent")[(c2_p > alpha)+1L])
-marg
-c1
-c2
+round(dagitty::localTests(theory, df, type = "cis"), 3) # cis: linear conditional independence
 ```
 
-Which conditional independencies were detected?
-
-```{r eval = FALSE}
-# echo: true
-marg[marg$result == "Independent", ]
-c1[c1$result == "Independent", ]
-c2[c2$result == "Independent", ]
-```
-
-#### Infer the skeleton
-
-We now use the independence relations to infer the underlying graph
-structure, assuming causal sufficiency and faithfulness (see Pearl).
-
-**Principle 1:** Two variables *A* and *B* are directly connected in the
-DAG (either *A* -\> *B* or *B* -\> *A*) if and only if they are still
-dependent after conditioning on every possible subset of the other
-variables.
-
-Use this principle to draw the skeleton of the DAG. Start with a
-complete undirected graph and remove an edge whenever a pair is
-independent in at least one of the tests above.
-
-```{r}
-# echo: true
-adj_full <- matrix(1,
-                   nrow = length(vars),
-                   ncol = length(vars),
-                   dimnames = list(vars, vars))
-diag(adj_full) <- 0
-
-qgraph(adj_full, directed = FALSE, title = "Full Undirected Graph", title.cex = 1.25, vsize = 15)
-```
-
-The following code removes any edge for which at least one marginal or
-conditional independence was detected.
-
-```{r}
-# echo: true
-
-adj <- adj_full
-
-independent_pairs <- unique(rbind(
-  marg[marg$result == "Independent", 1:2],
-  c1[c1$result == "Independent", 1:2],
-  c2[c2$result == "Independent", 1:2]
-))
-
-if (nrow(independent_pairs) > 0) {
-  for (i in seq_len(nrow(independent_pairs))) {
-    a <- independent_pairs[i, 1]
-    b <- independent_pairs[i, 2]
-    adj[a, b] <- 0
-    adj[b, a] <- 0
-  }
-}
-
-par(mfrow = c(1, 2))
-
-qgraph(
-  adj_full,
-  directed = FALSE,
-  title = "Full Undirected Graph",
-  title.cex = 1.25,
-  vsize = 15
-  )
-
-qgraph(
-  adj,
-  directed = FALSE,
-  title = "Estimated Skeleton",
-  title.cex = 1.25,
-  vsize = 15
-  )
-
-par(mfrow = c(1, 1))
-```
-
-#### Interpret the skeleton.
-
-`quiz(
-"Which of these pairs is not directly connected?" = c(answer = "BH and TS", "BH and BI", "AM and TS", "TS and BH"), "What is the p-value of the conditional independence test with the fewest covariates justifying the removal of that link?" = c(0.658, .01))
-)`
-
-#### Orient collider structures
-
-Having obtained the skeleton, we can try to orient as many edges as
-possible. Our ability to orient arrows using conditional-independence
-information depends especially on collider structures.
-
-**Principle 2:** If the skeleton contains a triplet *A* − *B* − *C*,
-with no edge between *A* and *C*, we can orient it as *A* -\> *B* \<-
-*C* when *B* is not in a separating set that renders *A* and *C*
-independent.
-
-This is a restatement of the d-separation behavior of colliders.
-
-Inspect the unshielded triplets in your estimated skeleton. Which, if
-any, can be oriented as colliders? What CPDAG do the observed
-independence relations imply?
-
-At this stage, doing the exercise by hand is useful. In the next
-section, we will use the PC algorithm to perform these steps
-systematically.
-
-#### Markov equivalence and causal effects
-
-
-Suppose we are interested in the causal effect of AM on ACP. Depending
-on the DAG in the equivalence class, different adjustment sets may be
-required. Why can different DAGs that fit the same observational
-independence structure imply different causal-effect estimates?
-
-The next section uses `pcalg` to estimate the CPDAG and `ida()` to
-quantify this ambiguity directly.
-
-### Intro to the PC algorithm
-
-The approach above is instructive but inefficient. Once we learn that
-two variables are independent under some conditioning set, we already
-know that their edge should be removed from the skeleton. There is no
-need to continue testing every larger conditioning set merely to decide
-whether that edge exists.
-The **PC algorithm** uses this logic to estimate the skeleton
-efficiently.
-
-We can use `gaussCItest` to get an independence test based on partial correlations, just as we did in the manual approach.
-Setting the alpha level of `.10` again ensures that we match the manual exercise.
-
-The algorithm uses sufficient
-statistics rather than the raw data. Here, we put the correlation matrix and sample size into an object:
-
-```{r}
-# echo: true
-suffStat <- list(C = cor(df), n = nrow(df))
-```
-
-#### Estimate the Skeleton
-
-Use the `skeleton()`function to automatically estimate the skeleton:
-
-
-
-```{r}
-# echo: true
-
-res_skel <- skeleton(suffStat = suffStat,
-                     indepTest = gaussCItest,
-                     alpha = alpha,
-                     labels = vars)
-
-qgraph(res_skel, directed = FALSE, title = "Estimated Skeleton", title.cex = 1.25, asize = 8, vsize = 15 )
-```
-
-Compare this skeleton with your hand-derived one. Are there any discrepancies? If so, inspect the
-conditional-independence tests that produced it.
-
-#### Estimate the CPDAG
-
-The `pcalg::pc()` function constructs the skeleton and then orients any collider structures and other compelled
-edges to construct a DAG.
-Because there are often multiple ways that edges could be oriented,
-the algorithm returns a completed partially directed acyclic graph (CPDAG).
-A CPDAG is consistent with *multiple candidate DAGs* (where all edges are oriented).
-These DAGs are
-statistically indistinguishable.
-We call this
-group of DAGs the **Markov equivalence class**.
-
-Use the PC algorithm with an alpha level of `.10`, matching the manual exercise:
-
-```{r}
-# echo: true
-pc_fit <- pc(
-  suffStat = suffStat,
-  indepTest = gaussCItest,
-  alpha = alpha,
-  labels = vars,
-  verbose = FALSE
-  )
-
-plot(pc_fit, main = "Inferred CPDAG using pcalg")
-```
-
-
-**What does the PC algorithm recover?**
-
-`r quiz("According to the graph, behavior causes behavioral intentions." = TRUE, "According to the graph, there is a connection between teacher stress and autonomous motivation, but it's not oriented." = TRUE, "According to the graph, teacher stress causes sports behavior." = FALSE)`
-
-
-
-#### Enumerate the DAGs in the equivalence class
-
-We can use `pdag2allDags()` to enumerate all DAGs in the equivalence class of the
-estimated CPDAG.
-
-```{r}
-# echo: true
-res <- pdag2allDags(as(pc_fit, "matrix"))
-res_dags <- apply(res$dags, 1, function(r) {
-  matrix(
-    r,
-    nrow = ncol(df),
-    ncol = ncol(df),
-    dimnames = list(vars, vars)
-  )
-}, simplify = FALSE)
-
-length(res_dags)
-```
-
-If the equivalence class is reasonably small, plot all of its DAGs:
-
-```{r}
-# echo: true
-#| eval: true
-
-if (length(res_dags) <= 12) {
-  old_par <- par(mfrow = c(ceiling(length(res_dags) / 3), 3))
-
-  for (i in seq_along(res_dags)) { 
-    qgraph( res_dags[[i]], directed = TRUE, asize = 8, vsize = 12, title = paste("DAG", i) ) 
-  }
-  par(old_par)
-} else {
-  cat( "The estimated equivalence class contains", length(res_dags), "DAGs, so they are not all plotted here." )
-}
-```
-
-`quiz(
-"All DAGs agree about the effect of:" = c(answer = "TS on BI", "AM on BH", "AM on TS"),
-"There is ambiguity about the effect of:" = c(answer = "AM on BH", "TS on BI", "AM on BI"),
-"It is theoretically plausible that BH causes BI." = FALSE)`
-
-### Causal Inference with the PC Algorithm
-
-We now apply the same PC result to theoretically meaningful questions
-involving all four constructs.
-
-Recall the substantive interpretation:
-
-- **AM**: Autonomous motivation, as an operationalization of one of the
-  fundamental needs.
-- **TS** Social pressure (social stress), as an operationalization of
-  "external events"
-- **BI**: Behavioral intention, which we will interpret as an
-  operationalization of integration.
-- **BH**: Sports behavior, as a context-specific operationalization of
-  healthy development.
-  
-First, lets make a vector of the order of our variables, so we can later easily find their row/column positions:
-
-```{r}
-var_pos <- seq_along(vars)
-names(var_pos) <- vars
-var_pos
-```
-
-So AM is variable 1 and BH is variable 4.
-
-#### Estimate the effect of Autonomous Motivation on Sports Behavior
-
-The `ida()` function estimates the possible total causal effects implied by the different DAGs in the Markov equivalence class.
-
-Let's estimate the causal effects of AM on BH using the `ida()` function:
-
-```{r}
-# echo: true
-
-effect_AM_BH <- ida( x.pos = var_pos["AM"], y.pos = var_pos["BH"], mcov = cov(df), graphEst = pc_fit@graph, verbose = TRUE )
-
-effect_AM_BH
-```
-
-`quiz("How many causal estimates do you obtain?" = 3L, "This means there is uncertainty about this effect." = TRUE)`
-
-
-#### Autonomous Motivation and Sports Behavior
-
-Estimate the possible causal effects of AM on BH:
-
-```{r}
-# echo: true
-
-ida(
-  x.pos = which(vars == "AM"),
-  y.pos = which(vars == "BH"),
-  mcov = cov(df),
-  graphEst = pc_fit@graph,
-  verbose = TRUE
-  )
-```
+Each row reports an estimate of the (partial) correlation your theory
+says should be zero, together with a p-value and a confidence interval.
+An estimate far from zero, with an interval excluding zero, means the
+data contradict that particular prediction.
 
 **Interpret the result in substantive terms.**
 
-Does this result make sense? What does that say about the quality of the PC-constructed DAG?
+### Step 4: Let the data propose a structure
 
-#### The Effect of Teacher Pressure on Autonomous Motivation
-
-
-Estimate the possible causal effects of TS on AM.
+Now run PC on the same data and compare.
 
 ```{r}
-# echo: true
+suffStat <- list(C = cor(df), n = nrow(df))
 
-ida( x.pos = which(vars == "TS"), y.pos = which(vars ==
-"AM"), mcov = cov(df), graphEst = pc_fit@graph,
-verbose = TRUE )
+pc_fit <- pc(suffStat  = suffStat,
+             indepTest = gaussCItest,
+             alpha     = alpha,
+             labels    = vars)
+
+edges_of(pc_fit)
+plot(pc_fit, main = "Structure inferred by PC") # bidrectional arrows imply that the arrow is unoriented (not a cyclic relationship!)
 ```
 
-`r quiz("How many possible effect estimates are returned?" = 1, 
-"There is ambiguity about this causal effect." = FALSE)`
+### Step 5: Compare, and account for the differences
 
-```{r}
-# echo: true
+Work through these questions in your group and write your answers down.
 
-ida(
-  x.pos = which(vars == "TS"),
-  y.pos = which(vars == "AM"),
-  mcov = cov(df),
-  graphEst = pc_fit@graph,
-  verbose = TRUE
-  )
-```
+1.  **Which connections do the two graphs agree on?** These are the
+    claims supported both by your theory and by the data.
+2.  **Which edges does PC include that your theory omits?** Is there a
+    plausible mechanism you had not considered, or a common cause that
+    is missing from both?
+3.  **Which edges does your theory include that PC removes?** Look up
+    the relevant test in `localTests()` output. Is the association truly
+    absent, or merely too small to detect at this sample size?
+4.  **Where PC points an arrow, do you believe it?** Check whether the
+    direction is substantively possible. An implausible arrow can be
+    suggestive of an assumption violation.
+5.  **Where PC leaves an edge undirected, what would settle it?** Can we
+    infer it using time order, an experiment, or an additional variable?
 
-### Your Own Theory
+::: callout-important
+## What PC assumes
 
-The PC algorithm uses statistical rules of thumb to construct DAGs; it does not know your underlying theory.
+Several assumptions are needed to infer the causal graph from
+statistical associations alone. With any causal discovery algorithm, the
+result is only as good as these assumptions, and with real-world data,
+some may likely be violated.
 
-At this point you may ask: Do the DAGs constructed by `pcalg()` make sense? If you used only expert knowledge, what DAG would you construct?
+- **Causal Markov Condition**: Whatever the graph blocks really is
+  statistically unrelated in the data.
+- **Faithfulness**: Whatever is statistically unrelated in the data
+  really is blocked in the graph. In practice, this implies that no two
+  causal paths cancel each other out exactly. For instance, a positive
+  direct effect offset by a negative indirect effect could look like no
+  effect at all.
+- **No hidden confounders**: every common cause of the measured
+  variables is itself measured.
+- **No cycles in the causal graph**: causation runs one way through the
+  graph, and nothing returns to itself.
+- **Linearity and normality (because of independence test chosen)**:
+  `gaussCItest` reads independence off partial correlations, which
+  capture *linear* relations only.
+:::
 
-While it's possible to add background knowledge to a CPDAG, here we just construct a DAG by hand:
+## Concluding thoughts
 
+Throughout this tutorial, we have learnt that the graph produced by the
+PC algorithm cannot be taken, at face value, as the "true" causal
+structure. A discovered graph is an estimate that is built on
+assumptions you can substantively consider but mostly cannot check
+empirically. Expert knowledge still plays an important role and is
+needed to interpret the output, informing us when the model output
+simply cannot be true (e.g., teacher pressure influencing age) or when
+core assumptions are likely violated. Causal discovery is an exploratory
+tool that can, under certain conditions, provide us useful information
+in formulating theories (e.g., do our theory's predictions allign with
+the data?) and help us think about what experiments to prioritize. But
+perhaps most importantly, these causal tools force us to make the
+assumptions about causality (in our theories) explicit.
 
-```{r}
-# Example DAG adjacency matrix
-theory_dag <- matrix(c(
-  0, 1, 0, 0,
-  0, 0, 0, 0,
-  0, 0, 0, 0,
-  1, 0, 1, 0),
-  nrow = 4,
-  dimnames = list(vars, vars))
-qgraph(theory_dag, directed = TRUE, title = "Theoretical DAG", title.cex = 1.25, asize = 8, vsize = 15 )
-```
-
-You can use this DAG to conduct causal inference too;
-just pick your predictor and outcome (x and y),
-and control for the parents of x:
-
-```{r}
-x <- "TS"
-y <- "AM"
-
-fit <- lm(
-  as.formula(paste0(y, " ~ ", paste0(c(x, rownames(theory_dag)[which(theory_dag[, x] == 1)]), collapse = " + "))),
-  data = df
-)
-summary(fit)$coefficients[2, ]
-```
-
-### Concluding Thoughts
-
-This illustrates that the graph estimated by the
-PC algorithm should not be treated as the "true" causal
-structure.
-There is still a place for expert knowledge.
-However, explicit assumptions regarding causality can be very useful.
-Think back on last week's machine learning analyses, for example. Do you think that all of the important predictors of the outcome you chose are in fact causes of it? Or is it possible that some of the predictors are *caused by* your chosen outcome, or correlated with it for irrelevant reasons?
-
+Think back on last week’s machine learning analyses, for example. Do you
+think that all of the important predictors of the outcome you chose are
+in fact causes of it? Or is it possible that some of the predictors are
+*caused by* your chosen outcome, or correlated with it for irrelevant
+reasons?
 
 ## Homework
 
-Apply the causal discovery pipeline from the tutorial to the dataset you prepared for last week's machine learning analysis.
+Apply the causal discovery pipeline from this tutorial (Part 3) to the
+dataset you prepared for last week's machine learning analysis:
 
-Interpret the results you've obtained, 
-and reflect on your previous theory (the DAG).
-Do you see any causal links that are not in your DAG but should be?
-Did you learn anything new about the direction of effects?
-Are any of the links counterintuitive or wrong?
-Write your reflections down to become part of your final report.
+1.  Write down your theoretical DAG, and list the conditional
+    independencies it implies.
+2.  Test those implications with `localTests()`.
+3.  Run the PC algorithm on the same data, and compare the two graphs.
+
+Interpret the results you’ve obtained, and reflect on your previous
+theory (the DAG). Do you see any causal links that are not in your
+theory-based DAG but should be? Did you learn anything new about the
+direction of effects? Are any of the links counterintuitive or wrong?
+Which assumption do you think is responsible? Write your reflections
+down to become part of your final report.
