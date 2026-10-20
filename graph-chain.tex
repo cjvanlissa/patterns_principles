@@ -1,0 +1,16 @@
+\begin{tikzpicture}[
+  every node/.style={circle, draw, minimum size=0.75cm, inner sep=2pt}
+]
+
+% Fix the canvas size: xmin, ymin, xmax, ymax
+\useasboundingbox (-1.7,-0.60) rectangle (1.7,1.60);
+
+% Nodes (raise Z)
+\node[] (Z) at (0,1) {$Z$};
+\node[] (Y) at (1.25,0) {$Y$};
+\node[] (X) at (-1.25,0) {$X$};
+
+% Arrows
+\draw[arrows = {->[scale=1.5]}] (X) -- (Z);
+\draw[arrows = {->[scale=1.5]}] (Z) -- (Y);
+\end{tikzpicture}
