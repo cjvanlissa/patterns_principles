@@ -7,9 +7,11 @@ schedule <- readODS::read_ods("schedule.ods")
 cat(paste0("* ", strsplit(schedule$Reading[which(schedule$file == "latent_theory.qmd")], split = "\n")[[1]]), sep = "\n")
 ```
 
+[The lecture sides are here](https://docs.google.com/presentation/d/1cLucqgs12IAKcya4MF6FRGgTriAzzgVr/edit?usp=sharing&ouid=105517126055003019315&rtpof=true&sd=true)
+
 ## Tutorial
 
-[TO DO: Rasoul]
+[The tutorial is here](https://colab.research.google.com/drive/1pRahaj5bVh8ARVM3Qi1nuDLuIMigZa9b?usp=sharing)
 
 ## Homework
 

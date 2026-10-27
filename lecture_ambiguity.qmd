@@ -1,0 +1,123 @@
+---
+format:
+  revealjs:
+    theme: simple
+    transition: none
+    center: false
+    incremental: false
+    embed-resources: true
+---
+
+## Logical Fallacy Bingo
+
+<https://yourlogicalfallacyis.com/>
+
+## Baumeister / Ego Depletion
+
+[Is Ego Depletion Theory - affected by the replication crisis in psychology?](https://www.youtube.com/watch?v=HD-dxUZxMcs)
+
+## Baumeister: Fallacies {.smaller}
+
+* 0:10: Red herring, false dichotomy
+* 0:50: Incredulity, Texas sharpshooter, Ambiguity (changes definition of replicated)
+* 1:10: "failing" to replicate VS "failure" to replicate: Burden of proof
+* 1:24: Strawman: Why doesn't it work (when you don't manipulate the IV)
+* 1:29: Special pleading: There must be some moderator
+* 1:49: Assuming the consequence: Ego depletion exists because it's been replicated many times
+* 1:55: "It's not just chance" why?
+* 3:00: Ad hominem
+
+## Peterson: Atheists Worship
+
+Everybody worships something, even though they might not know it.
+
+[](https://www.youtube.com/watch?v=JKiTvO_taos)
+
+## Peterson: Atheists Worship
+
+* 0:48: P: Special pleading, ambiguity, Motte-and-Bailey
+* 1:13: D: Strawman, it weakens his case (and Peterson jumps on it)
+* 1:56: P: Ad hominem
+
+## Peterson: Climate Change, Vaccines
+
+<https://www.youtube.com/watch?v=Jqeq5zadrrg>
+
+## Peterson: Climate Change, Vaccines {.smaller}
+
+* 0:55 Slippery slope
+* 1:20 False dichotomy
+* 4:02 Red herring, anecdotal
+* 5:45 Composition/division: Seattle, Germany, all of Europe, Canada
+* 5:51 Special pleading, composition/division: Changes from "left" to "radical left"
+* 6:00 Ambiguity "aftermath of the COVID debacle", insinuation
+* 6:08 Double standard: Nuclear vs Vaccines
+* 6:38 No true Scotsman: Because the Greens haven't been advocating nuclear, they cannot be pro climate action
+
+## Peterson: Climate Change, Vaccines {.smaller}
+
+* 7:18 Burden of proof: Excess deaths
+* 7:30 False dichotomy
+* 8:18 Double standard
+* 8:45 Red herring: leftists were on the side of farmaceutical companies
+* 9:26 Red herring: farmaceutical companies are corrupt
+* 10:12 Anecdotal
+* 10:45 Special pleading: Don't use force, only for COVID vaccines
+* 11:00 Special pleading: Moving the goalposts
+* 12:30 Motte-and-Bailey: mRNA is not a vaccine - mRNA is novel
+* 12:55 Burden of prood
+* 12:30 Bandwagon
+
+
+
+
+## Fishbowl Debate
+
+* Inner circle debates topic
+* Larger circle observes, listens carefully, and takes notes
+* Students rotate between the circles, practicing both contributing and active listening
+* Outer circle gives students time to process before entering the discussion
+
+
+* Left hand: Join pro side
+* Right hand: Join contra side
+
+
+## All theory should strive towards more formality
+
+## The burden of proof should be higher for adding nuance to theories, than for further simplifying them.
+
+## Good theories must misrepresent reality in order to explain it
+
+## Nuance is an excuse for intellectual cowardice.
+
+## The more formal a theory is, the lower its discursive survival (understandability, see Guest).
+
+
+
+
+
+https://youtu.be/snjPo6uZKXA?si=JgqkwVFUW5AIPbMS&t=138
+
+## Socratic method
+
+* Discuss an open-ended question or text.
+* No discussion leader; respond and ask follow-up questions directly to one another
+* Student-owned conversation. The conversation does not flow through the teacher.
+* I will pose a strong opening question and then step back
+    + You can ask me questions
+    + I occasionally moderate or introdce a next question
+
+## Discussion rules {.smaller}
+
+1. Listen respectfully and fully with the intention to understand
+2. Assume good intentions
+3. Challenge ideas, not people
+4. Acknowledge previous ideas and build on them
+5. Step up, then step back: speak your mind, then give everyone else a chance to speak
+6. When you notice that you are making assumptions, ask a question
+7. Take responsibility for your statements: Speak in the first person (I think, I notice), bring the evidence for your claims
+8. Focus on what can be learned, not on "winning" the debate
+9. If you respond emotionally to the topic of the discussion, express it
+10. Pass the microphone to the first person with a hand up to your left (end of the room: start again on other side)
+

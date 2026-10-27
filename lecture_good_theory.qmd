@@ -8,6 +8,28 @@ format:
     embed-resources: true
 ---
 
+## Socratic method
+
+* Discuss an open-ended question or text.
+* No discussion leader; respond and ask follow-up questions directly to one another
+* Student-owned conversation. The conversation does not flow through the teacher.
+* I will pose a strong opening question and then step back
+    + You can ask me questions
+    + I occasionally moderate or introdce a next question
+
+## Discussion rules {.smaller}
+
+1. Listen respectfully and fully with the intention to understand
+2. Assume good intentions
+3. Challenge ideas, not people
+4. Acknowledge previous ideas and build on them
+5. Step up, then step back: speak your mind, then give everyone else a chance to speak
+6. When you notice that you are making assumptions, ask a question
+7. Take responsibility for your statements: Speak in the first person (I think, I notice), bring the evidence for your claims
+8. Focus on what can be learned, not on "winning" the debate
+9. If you respond emotionally to the topic of the discussion, express it
+10. Pass the microphone to the first person with a hand up to your left (end of the room: start again on other side)
+
 
 ## Meehl's criteria
 

@@ -6,9 +6,6 @@ execute:
 ---
 
 
-## QR Code
-
-![](qr_quiz.png)
 
 ```{r}
 #| warning: false
@@ -25,7 +22,7 @@ pw <- readLines("password.txt")
 #   if(file.exists(newf)) file.remove(newf)
 #   safer::save_object(qs, key = pw, conn = newf)
 # }
-quizfile <- "q2.bin"  
+quizfile <- "q3.bin"  
 
 qs <- safer::retrieve_object(quizfile, key = pw)
 qs <- split(qs, rep(1:(length(qs)/6), each = 6))
@@ -43,13 +40,32 @@ answerkey <- sapply(qs, function(x){LETTERS[which(names(x[[1]]) == "answer")]})
 
 for (q in seq_along(qs))
 {
-  cat(glue::glue("\n\n# Question {q}\n\n"))
+  if(nchar(paste(c(names(qs[[q]])[1], unlist(qs[[q]])), collapse = " ")) < 461){
+    cat(glue::glue("\n\n# Question {q}\n\n"))
+  } else {
+    cat(paste0("\n\n# Question ", q, " {.smaller}\n\n"))
+  }
+  
   cat(paste0("**", names(qs[[q]])[1], "**\n\n"))
   cat(paste0("**",LETTERS[seq_along(qs[[q]][[1]])], ".** ", qs[[q]][[1]]), sep = "\n\n")
 }
 cat("\n\n# Answers\n\n")
 cat(paste0("* Question ", 1:length(qs), ": ", answerkey), sep = "\n")
 cat("\n\n")
+
+```
+
+
+## QR Code
+
+![](qr_quiz.png)
+
+```{r}
+#| warning: false
+#| message: false
+#| echo: false
+#| output: asis
+
 for (q in seq_along(qs))
 {
   cat(paste0("\n# Question ", q, " explained {.smaller}\n\n"))
