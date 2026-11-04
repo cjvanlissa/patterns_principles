@@ -22,7 +22,7 @@ pw <- readLines("password.txt")
 #   if(file.exists(newf)) file.remove(newf)
 #   safer::save_object(qs, key = pw, conn = newf)
 # }
-quizfile <- "q4.bin"  
+quizfile <- "q5.bin"  
 
 qs <- safer::retrieve_object(quizfile, key = pw)
 qs <- split(qs, rep(1:(length(qs)/6), each = 6))
