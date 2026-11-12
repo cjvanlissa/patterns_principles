@@ -1,0 +1,76 @@
+---
+format:
+  revealjs:
+    theme: simple
+    transition: none
+    center: false
+    incremental: false
+    embed-resources: true
+---
+
+
+## Training
+
+* Form groups
+* Read the vignettes
+* Develop a rule for deciding who drops out, write it down
+* Mark which cases support the rule
+
+## Prediction
+
+> **Alex** enjoys spending time with classmates, feels comfortable participating in seminars, and has developed several close friendships at university. However, Alex procrastinates frequently, struggles to maintain a study schedule, and often prepares for exams at the last minute. Alex also works part-time and experiences considerable academic stress.
+
+Continues or drops out? Use your rule
+
+
+## Compare Notes
+
+* Share your prediction, rule, and confidence
+
+
+## Ground Truth
+
+**Alex continues**
+
+> Dropout is caused by a combination of low belonging and poor study habits
+
+Alex has high belonging
+
+Each group saw different pieces of the puzzle
+
+## Choose a Side
+
+* Make groups
+* Write down your true position
+* 5 minutes to prepare a strong case
+* Socrative discussion between pro and con
+* Show of hands: Did the debate change your position?
+
+## Discussion rules {.smaller}
+
+1. Listen respectfully and fully with the intention to understand
+2. Assume good intentions
+3. Challenge ideas, not people
+4. Acknowledge previous ideas and build on them
+5. Step up, then step back: speak your mind, then give everyone else a chance to speak
+6. When you notice that you are making assumptions, ask a question
+7. Take responsibility for your statements: Speak in the first person (I think, I notice), bring the evidence for your claims
+8. Focus on what can be learned, not on "winning" the debate
+9. If you respond emotionally to the topic of the discussion, express it
+10. Pass the microphone to the first person with a hand up to your left (end of the room: start again on other side)
+
+
+## Discussion statement 1
+
+<!-- > Machine learning is transforming psychology into a discipline that can predict human behavior without understanding it. Rather than solving psychology's theory crisis, increasingly sophisticated algorithms may allow researchers to avoid developing theories altogether. -->
+
+> Just like Claude makes it possible to write code without any understanding of programming, it is possible to develop a black-box algorithm that accurately predicts human experience and behavior. Once this is done, there is no need for psychological theory.
+
+## Discussion statement 2
+
+> Machine learning is better suited to discovering psychological theories than traditional hypothesis-driven research.
+
+## Discussion statement 3
+
+> Generative Large Language Models make machine learning obsolete. 
+

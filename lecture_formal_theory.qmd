@@ -75,10 +75,10 @@ Afterwards, singles show me your card values
 ## Formalize the Model
 
 * Groups of 3/4
-* Take your experience from the mating game, and *design* a model that could, in principle, be programmed
-* Design means: You don't have to define every rule
-* You can write statements, use pseudocode, draw a flowchart - whatever you like
-* Then, present
+* Take your experience from the mating game, and design your own agent-based model that could be run by real humans
+* You can base it on the theory for your final paper, but don't have to
+* Write instructions for your humans
+* Then, present to the class
 
 ## Question the Model
 
@@ -86,7 +86,7 @@ Suggested phrasing of your questions:
 
 "What I learned from your model is X, what I still wonder about is Y"
 
-Suggested lines of enquiry:
+Suggested lines of inquiry:
 
 1. What aspects of the exercise do you miss?
 1. Which assumptions are unrealistic or unjustified?

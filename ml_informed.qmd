@@ -94,7 +94,7 @@ The plot tells us:
 -   which variables are selected at all; these are the relevant predictors
 -   how the model comes to a prediction: you navigate the decision tree based on your values on the predictor variables, until you reach the bottom of the tree. The predicted value is the label of the terminal node. <!-- - Note that the previous example also illustrates a potential interaction between BI and CM because you first split on the one, and then on the other. -->
 
-`r quiz("In this model, all variables are used." = TRUE, "To get a prediction, you start from the top: if your BI score is not lower than -.58, then go down the right branch" = TRUE, "The fact that the model first splits on BI and then on CM suggests a potential interaction between these two variables." = TRUE, "If the tree had been simpler (= less complex branching), it would be less overfit." = TRUE)`
+`r quiz("In this model, all variables are used." = FALSE, "To get a prediction, you start from the top: if your BI score is not lower than -.58, then go down the right branch" = TRUE, "The fact that the model first splits on BI and then on CM suggests a potential interaction between these two variables." = TRUE, "If the tree had been simpler (= less complex branching), it would be less overfit." = TRUE)`
 
 #### Explain a Random Forest
 
