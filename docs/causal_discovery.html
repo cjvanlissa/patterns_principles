@@ -442,8 +442,9 @@ window.Quarto = {
 <li><a href="#step-1-write-down-your-theory" id="toc-step-1-write-down-your-theory" class="nav-link" data-scroll-target="#step-1-write-down-your-theory"><span class="header-section-number">7.5.1</span> Step 1: Write down your theory</a></li>
   <li><a href="#step-2-ask-what-your-theory-predicts" id="toc-step-2-ask-what-your-theory-predicts" class="nav-link" data-scroll-target="#step-2-ask-what-your-theory-predicts"><span class="header-section-number">7.5.2</span> Step 2: Ask what your theory predicts</a></li>
   <li><a href="#step-3-test-the-predictions" id="toc-step-3-test-the-predictions" class="nav-link" data-scroll-target="#step-3-test-the-predictions"><span class="header-section-number">7.5.3</span> Step 3: Test the predictions</a></li>
-  <li><a href="#step-4-let-the-data-propose-a-structure" id="toc-step-4-let-the-data-propose-a-structure" class="nav-link" data-scroll-target="#step-4-let-the-data-propose-a-structure"><span class="header-section-number">7.5.4</span> Step 4: Let the data propose a structure</a></li>
-  <li><a href="#step-5-compare-and-account-for-the-differences" id="toc-step-5-compare-and-account-for-the-differences" class="nav-link" data-scroll-target="#step-5-compare-and-account-for-the-differences"><span class="header-section-number">7.5.5</span> Step 5: Compare, and account for the differences</a></li>
+  <li><a href="#step-4-what-could-pc-recover-if-your-theory-were-true" id="toc-step-4-what-could-pc-recover-if-your-theory-were-true" class="nav-link" data-scroll-target="#step-4-what-could-pc-recover-if-your-theory-were-true"><span class="header-section-number">7.5.4</span> Step 4: What could PC recover if your theory were true?</a></li>
+  <li><a href="#step-5-let-the-data-propose-a-structure" id="toc-step-5-let-the-data-propose-a-structure" class="nav-link" data-scroll-target="#step-5-let-the-data-propose-a-structure"><span class="header-section-number">7.5.5</span> Step 5: Let the data propose a structure</a></li>
+  <li><a href="#step-6-compare-and-account-for-the-differences" id="toc-step-6-compare-and-account-for-the-differences" class="nav-link" data-scroll-target="#step-6-compare-and-account-for-the-differences"><span class="header-section-number">7.5.6</span> Step 6: Compare, and account for the differences</a></li>
   </ul>
 </li>
   <li><a href="#concluding-thoughts" id="toc-concluding-thoughts" class="nav-link" data-scroll-target="#concluding-thoughts"><span class="header-section-number">7.6</span> Concluding thoughts</a></li>
@@ -912,7 +913,7 @@ BI _||_ TS</code></pre>
 <p><strong>Write down the predictions in words.</strong></p>
 </section><section id="step-3-test-the-predictions" class="level3" data-number="7.5.3"><h3 data-number="7.5.3" class="anchored" data-anchor-id="step-3-test-the-predictions">
 <span class="header-section-number">7.5.3</span> Step 3: Test the predictions</h3>
-<p>Given that the theory is true, can we be expected to recover the correct causal structure given that the assumptions of PC hold? To explore this, we will test our predictions</p>
+<p>Let us now test our predictions on the data using the <code>localTests()</code> function.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="fu">round</span>(dagitty<span class="sc">::</span><span class="fu">localTests</span>(theory, df, <span class="at">type =</span> <span class="st">"cis"</span>), <span class="dv">3</span>) <span class="co"># cis: linear conditional independence</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
@@ -954,22 +955,24 @@ BI _||_ TS</code></pre>
 </div>
 <p>Each row reports an estimate of the (partial) correlation your theory says should be zero, together with a p-value and a confidence interval. An estimate far from zero, with an interval excluding zero, means the data contradict that particular prediction.</p>
 <p><strong>Interpret the result in substantive terms.</strong></p>
-</section><section id="step-4-let-the-data-propose-a-structure" class="level3" data-number="7.5.4"><h3 data-number="7.5.4" class="anchored" data-anchor-id="step-4-let-the-data-propose-a-structure">
-<span class="header-section-number">7.5.4</span> Step 4: Let the data propose a structure</h3>
-<p>Now run PC on the same data and compare.</p>
+</section><section id="step-4-what-could-pc-recover-if-your-theory-were-true" class="level3" data-number="7.5.4"><h3 data-number="7.5.4" class="anchored" data-anchor-id="step-4-what-could-pc-recover-if-your-theory-were-true">
+<span class="header-section-number">7.5.4</span> Step 4: What could PC recover if your theory were true?</h3>
+<p>Suppose your theory is exactly right, all of PC’s assumptions hold (see “What PC assumes” below) and the sample size is infinite. Even then, PC can only recover your DAG up to its Markov equivalence class (MEC), as we saw in Part 2. Let’s now determine this MEC based on our theoretical DAG.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a>suffStat <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">C =</span> <span class="fu">cor</span>(df), <span class="at">n =</span> <span class="fu">nrow</span>(df))</span>
-<span id="cb37-2"><a href="#cb37-2"></a></span>
-<span id="cb37-3"><a href="#cb37-3"></a>pc_fit <span class="ot">&lt;-</span> <span class="fu">pc</span>(<span class="at">suffStat  =</span> suffStat,</span>
-<span id="cb37-4"><a href="#cb37-4"></a>             <span class="at">indepTest =</span> gaussCItest,</span>
-<span id="cb37-5"><a href="#cb37-5"></a>             <span class="at">alpha     =</span> alpha,</span>
-<span id="cb37-6"><a href="#cb37-6"></a>             <span class="at">labels    =</span> vars)</span>
-<span id="cb37-7"><a href="#cb37-7"></a></span>
-<span id="cb37-8"><a href="#cb37-8"></a><span class="fu">edges_of</span>(pc_fit)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a>theory_cpdag <span class="ot">&lt;-</span> dagitty<span class="sc">::</span><span class="fu">equivalenceClass</span>(theory)</span>
+<span id="cb37-2"><a href="#cb37-2"></a>theory_cpdag</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "AM -- TS" "AM -&gt; BI" "AM -- BH" "TS -&gt; BI" "BH -&gt; BI"</code></pre>
+<pre><code>pdag {
+AM [pos="1.000,0.000"]
+BH [pos="2.000,1.000"]
+BI [pos="2.000,0.000"]
+TS [pos="0.000,0.000"]
+AM -- TS
+AM -&gt; BH
+BI -&gt; BH
+}</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="fu">plot</span>(pc_fit, <span class="at">main =</span> <span class="st">"Structure inferred by PC"</span>) <span class="co"># bidrectional arrows imply that the arrow is unoriented (not a cyclic relationship!)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="fu">plot</span>(theory_cpdag)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="causal_discovery_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
@@ -977,8 +980,32 @@ BI _||_ TS</code></pre>
 </div>
 </div>
 </div>
-</section><section id="step-5-compare-and-account-for-the-differences" class="level3" data-number="7.5.5"><h3 data-number="7.5.5" class="anchored" data-anchor-id="step-5-compare-and-account-for-the-differences">
-<span class="header-section-number">7.5.5</span> Step 5: Compare, and account for the differences</h3>
+<p>Edges that remain undirected (<code>--</code> in code; dark grey in diagram) are arrows in your theory whose direction PC cannot possibly determine from data. So if PC leaves one of them undirected, we know that this is not evidence against your theory.</p>
+</section><section id="step-5-let-the-data-propose-a-structure" class="level3" data-number="7.5.5"><h3 data-number="7.5.5" class="anchored" data-anchor-id="step-5-let-the-data-propose-a-structure">
+<span class="header-section-number">7.5.5</span> Step 5: Let the data propose a structure</h3>
+<p>Now run PC on the same data and compare.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a>suffStat <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">C =</span> <span class="fu">cor</span>(df), <span class="at">n =</span> <span class="fu">nrow</span>(df))</span>
+<span id="cb40-2"><a href="#cb40-2"></a></span>
+<span id="cb40-3"><a href="#cb40-3"></a>pc_fit <span class="ot">&lt;-</span> <span class="fu">pc</span>(<span class="at">suffStat  =</span> suffStat,</span>
+<span id="cb40-4"><a href="#cb40-4"></a>             <span class="at">indepTest =</span> gaussCItest,</span>
+<span id="cb40-5"><a href="#cb40-5"></a>             <span class="at">alpha     =</span> alpha,</span>
+<span id="cb40-6"><a href="#cb40-6"></a>             <span class="at">labels    =</span> vars)</span>
+<span id="cb40-7"><a href="#cb40-7"></a></span>
+<span id="cb40-8"><a href="#cb40-8"></a><span class="fu">edges_of</span>(pc_fit)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "AM -- TS" "AM -&gt; BI" "AM -- BH" "TS -&gt; BI" "BH -&gt; BI"</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a><span class="fu">plot</span>(pc_fit, <span class="at">main =</span> <span class="st">"Structure inferred by PC"</span>) <span class="co"># bidrectional arrows imply that the arrow is unoriented (not a cyclic relationship!)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="causal_discovery_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="step-6-compare-and-account-for-the-differences" class="level3" data-number="7.5.6"><h3 data-number="7.5.6" class="anchored" data-anchor-id="step-6-compare-and-account-for-the-differences">
+<span class="header-section-number">7.5.6</span> Step 6: Compare, and account for the differences</h3>
 <p>Work through these questions in your group and write your answers down.</p>
 <ol type="1">
 <li>
