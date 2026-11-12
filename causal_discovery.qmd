@@ -349,7 +349,7 @@ The symbolic notation `X _||_ Y | Z` should be read as "X is unrelated to Y once
 
 ### Step 3: Test the predictions
 
-Given that the theory is true, can we be expected to recover the correct causal structure given that the assumptions of PC hold? To explore this, we will test our predictions
+Let us now test our predictions on the data using the `localTests()` function.
 
 ```{r}
 round(dagitty::localTests(theory, df, type = "cis"), 3) # cis: linear conditional independence
@@ -359,7 +359,19 @@ Each row reports an estimate of the (partial) correlation your theory says shoul
 
 **Interpret the result in substantive terms.**
 
-### Step 4: Let the data propose a structure
+### Step 4: What could PC recover if your theory were true?
+
+Suppose your theory is exactly right, all of PC's assumptions hold (see "What PC assumes" below) and the sample size is infinite. Even then, PC can only recover your DAG up to its Markov equivalence class (MEC), as we saw in Part 2. Let's now determine this MEC based on our theoretical DAG.
+
+```{r}
+theory_cpdag <- dagitty::equivalenceClass(theory)
+theory_cpdag
+plot(theory_cpdag)
+```
+
+Edges that remain undirected (`--` in code; dark grey in diagram) are arrows in your theory whose direction PC cannot possibly determine from data. So if PC leaves one of them undirected, we know that this is not evidence against your theory. 
+
+### Step 5: Let the data propose a structure
 
 Now run PC on the same data and compare.
 
@@ -375,7 +387,7 @@ edges_of(pc_fit)
 plot(pc_fit, main = "Structure inferred by PC") # bidrectional arrows imply that the arrow is unoriented (not a cyclic relationship!)
 ```
 
-### Step 5: Compare, and account for the differences
+### Step 6: Compare, and account for the differences
 
 Work through these questions in your group and write your answers down.
 
