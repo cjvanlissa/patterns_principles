@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.11.9">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="description" content="Book Description">
 <title>7&nbsp; Causal Discovery – Patterns to Principles</title>
@@ -10,10 +10,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -69,18 +72,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./favicon.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-33269adcf1721b81efc5ea7fcfe7f0ee.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-5a2acb6f4ed5aeb23a104ba421924b87.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-33269adcf1721b81efc5ea7fcfe7f0ee.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b1528b1cba7e9f63f59baa7408a6f56.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-3db608c3aac2db220582703da11e8ac9.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b1528b1cba7e9f63f59baa7408a6f56.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-1bb825c67a2efe62597e07348eb8bcba.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-cc91bfdb7c5dfa564528353fdb34f86f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-1bb825c67a2efe62597e07348eb8bcba.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-f1af5b8e9e1153ad751e191c3b49cb96.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-9b96e713486b37b48f2ddbd7c4cbd36f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-f1af5b8e9e1153ad751e191c3b49cb96.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -106,7 +110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
+}</script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script><script type="text/javascript">
 const typesetMath = (el) => {
   if (window.MathJax) {
     // MathJax Typeset
@@ -137,7 +141,7 @@ window.Quarto = {
 <link rel="stylesheet" href="include/glossary.css">
 <link rel="stylesheet" href="include/style.css">
 </head>
-<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-sidebar floating quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -160,6 +164,7 @@ window.Quarto = {
       for (let i=0; i < toggles.length; i++) {
         const toggle = toggles[i];
         if (toggle) {
+          toggle.setAttribute("aria-checked", alternate ? "true" : "false");
           if (alternate) {
             toggle.classList.add("alternate");
           } else {
@@ -189,13 +194,19 @@ window.Quarto = {
       manageTransitions('#quarto-margin-sidebar .nav-link', true);
       // Switch the toggles
       setColorSchemeToggle(alternate)
-      // Hack to workaround the fact that safari doesn't
-      // properly recolor the scrollbar when toggling (#1455)
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455).
+    // Not run on load: stylesheets are set before first paint there, and
+    // scrolling would undo the scroll to a URL fragment (#14973).
+    // The one pixel nudge keeps the reader where they were.
+    const refreshSafariScrollbar = () => {
       if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
         manageTransitions("body", false);
-        window.scrollTo(0, 1);
+        const scrollY = window.scrollY;
+        window.scrollTo(0, scrollY > 0 ? scrollY - 1 : 1);
         setTimeout(() => {
-          window.scrollTo(0, 0);
+          window.scrollTo(0, scrollY);
           manageTransitions("body", true);
         }, 40);
       }
@@ -289,6 +300,7 @@ window.Quarto = {
       // Read the current dark / light value
       let toAlternate = !hasAlternateSentinel();
       toggleColorMode(toAlternate);
+      refreshSafariScrollbar();
       setStyleSentinel(toAlternate);
       toggleGiscusIfUsed(toAlternate, darkModeDefault);
       window.dispatchEvent(new Event('resize'));
@@ -302,12 +314,12 @@ window.Quarto = {
   </script>
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav" aria-label="Toolbar"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./causal_discovery.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Causal Discovery</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./causal_discovery.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Causal Discovery</span></a></li></ol></nav>
+        <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
@@ -315,13 +327,13 @@ window.Quarto = {
     </div>
   </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto" aria-label="Site"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Patterns to Principles</a> 
         <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/cjvanlissa/patterns_principles" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
     <a href="./Patterns-to-Principles.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <button type="button" role="switch" aria-checked="false" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode" aria-label="Toggle dark mode"><i class="bi"></i></button>
 </div>
     </div>
       </div>
@@ -394,13 +406,10 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Appendices</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-controls="quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-1-label">Appendices</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+      <ul id="quarto-sidebar-section-1" aria-labelledby="quarto-sidebar-section-1-label" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./setup.html" class="sidebar-item-text sidebar-link">
@@ -414,7 +423,7 @@ window.Quarto = {
 </nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active"><h2 id="toc-title">Table of contents</h2>
    
   <ul>
 <li><a href="#weekly-readings" id="toc-weekly-readings" class="nav-link active" data-scroll-target="#weekly-readings"><span class="header-section-number">7.1</span> Weekly Readings</a></li>
@@ -452,7 +461,7 @@ window.Quarto = {
   </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<main class="content" id="quarto-document-content" tabindex="-1"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
 <h1 class="title">
 <span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Causal Discovery</span>
 </h1>
@@ -480,14 +489,14 @@ window.Quarto = {
 <p>The standard answer that we learn in statistics courses is “nothing”: <em>correlation does not equal causation</em>. The surprising answer is “sometimes quite a lot”. Certain causal structures leave distinctive traces in the pattern of correlations, and those traces can be read back off the data, granted we are willing to make some assumptions. Methods that do this are called <em>causal discovery methods</em>.</p>
 <p>In this tutorial, we will explore how to use causal discovery (based on conditional independence testing) to go beyond correlation and infer causal relationships from observational (i.e., non-experimental) data.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(tidySEM)</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(ppcor)</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">library</span>(qgraph)</span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">library</span>(pcalg)</span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="fu">library</span>(Rgraphviz)</span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="fu">library</span>(dagitty)</span>
-<span id="cb1-7"><a href="#cb1-7"></a><span class="fu">library</span>(tpc)</span>
-<span id="cb1-8"><a href="#cb1-8"></a><span class="fu">library</span>(webexercises)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-label="1"></a><span class="fu">library</span>(tidySEM)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-label="2"></a><span class="fu">library</span>(ppcor)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-label="3"></a><span class="fu">library</span>(qgraph)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-label="4"></a><span class="fu">library</span>(pcalg)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-label="5"></a><span class="fu">library</span>(Rgraphviz)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-label="6"></a><span class="fu">library</span>(dagitty)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-label="7"></a><span class="fu">library</span>(tpc)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-label="8"></a><span class="fu">library</span>(webexercises)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -501,26 +510,26 @@ window.Quarto = {
 <div class="callout-body-container callout-body">
 <p>Software implementations of causal discovery methods typically output an adjacancy matrix to represent the causal structure, but they are hard to read. The function below prints a graph as a list of edges instead. Run it once; we use it throughout.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>edges_of <span class="ot">&lt;-</span> <span class="cf">function</span>(fit) {</span>
-<span id="cb2-2"><a href="#cb2-2"></a>  <span class="co"># coerce the fit into an adjacancy matrix</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a>  m <span class="ot">&lt;-</span> <span class="fu">as</span>(fit, <span class="st">"amat"</span>)</span>
-<span id="cb2-4"><a href="#cb2-4"></a>  <span class="co"># store the variable names</span></span>
-<span id="cb2-5"><a href="#cb2-5"></a>  nms <span class="ot">&lt;-</span> <span class="fu">colnames</span>(m)</span>
-<span id="cb2-6"><a href="#cb2-6"></a>  <span class="co"># initialize empty vector to collect edge strings</span></span>
-<span id="cb2-7"><a href="#cb2-7"></a>  out <span class="ot">&lt;-</span> <span class="fu">character</span>(<span class="dv">0</span>)</span>
-<span id="cb2-8"><a href="#cb2-8"></a>  </span>
-<span id="cb2-9"><a href="#cb2-9"></a>  <span class="co"># loop over every ordered pair of variable names</span></span>
-<span id="cb2-10"><a href="#cb2-10"></a>  <span class="cf">for</span> (i <span class="cf">in</span> nms) <span class="cf">for</span> (j <span class="cf">in</span> nms) {</span>
-<span id="cb2-11"><a href="#cb2-11"></a>    <span class="co"># Skips the diagonal (since a variable has no edge to itself)</span></span>
-<span id="cb2-12"><a href="#cb2-12"></a>    <span class="cf">if</span> (i <span class="sc">==</span> j) <span class="cf">next</span></span>
-<span id="cb2-13"><a href="#cb2-13"></a>    <span class="co"># pcalg convention: m[i, j] == 0 and m[j, i] == 1 means i -&gt; j</span></span>
-<span id="cb2-14"><a href="#cb2-14"></a>    <span class="co"># Detects a directed edge</span></span>
-<span id="cb2-15"><a href="#cb2-15"></a>    <span class="cf">if</span> (m[j, i] <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;&amp;</span> m[i, j] <span class="sc">==</span> <span class="dv">0</span>) out <span class="ot">&lt;-</span> <span class="fu">c</span>(out, <span class="fu">paste</span>(i, <span class="st">"-&gt;"</span>, j))</span>
-<span id="cb2-16"><a href="#cb2-16"></a>    <span class="co"># Detects a undirected edge</span></span>
-<span id="cb2-17"><a href="#cb2-17"></a>    <span class="cf">if</span> (m[i, j] <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;&amp;</span> m[j, i] <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;&amp;</span> i <span class="sc">&lt;</span> j) out <span class="ot">&lt;-</span> <span class="fu">c</span>(out, <span class="fu">paste</span>(i, <span class="st">"--"</span>, j))</span>
-<span id="cb2-18"><a href="#cb2-18"></a>  }</span>
-<span id="cb2-19"><a href="#cb2-19"></a>  out</span>
-<span id="cb2-20"><a href="#cb2-20"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-label="1"></a>edges_of <span class="ot">&lt;-</span> <span class="cf">function</span>(fit) {</span>
+<span id="cb2-2"><a href="#cb2-2" aria-label="2"></a>  <span class="co"># coerce the fit into an adjacancy matrix</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-label="3"></a>  m <span class="ot">&lt;-</span> <span class="fu">as</span>(fit, <span class="st">"amat"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-label="4"></a>  <span class="co"># store the variable names</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-label="5"></a>  nms <span class="ot">&lt;-</span> <span class="fu">colnames</span>(m)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-label="6"></a>  <span class="co"># initialize empty vector to collect edge strings</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-label="7"></a>  out <span class="ot">&lt;-</span> <span class="fu">character</span>(<span class="dv">0</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-label="8"></a>  </span>
+<span id="cb2-9"><a href="#cb2-9" aria-label="9"></a>  <span class="co"># loop over every ordered pair of variable names</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-label="10"></a>  <span class="cf">for</span> (i <span class="cf">in</span> nms) <span class="cf">for</span> (j <span class="cf">in</span> nms) {</span>
+<span id="cb2-11"><a href="#cb2-11" aria-label="11"></a>    <span class="co"># Skips the diagonal (since a variable has no edge to itself)</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-label="12"></a>    <span class="cf">if</span> (i <span class="sc">==</span> j) <span class="cf">next</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-label="13"></a>    <span class="co"># pcalg convention: m[i, j] == 0 and m[j, i] == 1 means i -&gt; j</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-label="14"></a>    <span class="co"># Detects a directed edge</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-label="15"></a>    <span class="cf">if</span> (m[j, i] <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;&amp;</span> m[i, j] <span class="sc">==</span> <span class="dv">0</span>) out <span class="ot">&lt;-</span> <span class="fu">c</span>(out, <span class="fu">paste</span>(i, <span class="st">"-&gt;"</span>, j))</span>
+<span id="cb2-16"><a href="#cb2-16" aria-label="16"></a>    <span class="co"># Detects a undirected edge</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-label="17"></a>    <span class="cf">if</span> (m[i, j] <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;&amp;</span> m[j, i] <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;&amp;</span> i <span class="sc">&lt;</span> j) out <span class="ot">&lt;-</span> <span class="fu">c</span>(out, <span class="fu">paste</span>(i, <span class="st">"--"</span>, j))</span>
+<span id="cb2-18"><a href="#cb2-18" aria-label="18"></a>  }</span>
+<span id="cb2-19"><a href="#cb2-19" aria-label="19"></a>  out</span>
+<span id="cb2-20"><a href="#cb2-20" aria-label="20"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -589,22 +598,22 @@ Figure&nbsp;7.3: Common effect
 <span class="header-section-number">7.3.1</span> Pattern 1: a chain</h3>
 <p>In a chain, a third variable <code>Z</code> sits between <code>X</code> and <code>Y</code>. In other words, <code>Z</code> is a mediator in the causal relationship between <code>X</code> and <code>Y</code>. As an example, teacher pressure lowers motivation, and motivation drives behaviour.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">set.seed</span>(<span class="dv">6</span>)</span>
-<span id="cb3-2"><a href="#cb3-2"></a>n <span class="ot">&lt;-</span> <span class="dv">5000</span>   <span class="co"># large, so that sampling noise does not obscure the pattern</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a>a <span class="ot">&lt;-</span> <span class="fl">0.6</span>    <span class="co"># strength of every arrow, on a correlation scale</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a></span>
-<span id="cb3-5"><a href="#cb3-5"></a>chain <span class="ot">&lt;-</span> <span class="fu">local</span>({</span>
-<span id="cb3-6"><a href="#cb3-6"></a>  X <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n)</span>
-<span id="cb3-7"><a href="#cb3-7"></a>  Z <span class="ot">&lt;-</span> a <span class="sc">*</span> X <span class="sc">+</span> <span class="fu">rnorm</span>(n, <span class="at">sd =</span> <span class="fu">sqrt</span>(<span class="dv">1</span> <span class="sc">-</span> a<span class="sc">^</span><span class="dv">2</span>))</span>
-<span id="cb3-8"><a href="#cb3-8"></a>  Y <span class="ot">&lt;-</span> a <span class="sc">*</span> Z <span class="sc">+</span> <span class="fu">rnorm</span>(n, <span class="at">sd =</span> <span class="fu">sqrt</span>(<span class="dv">1</span> <span class="sc">-</span> a<span class="sc">^</span><span class="dv">2</span>))</span>
-<span id="cb3-9"><a href="#cb3-9"></a>  <span class="fu">data.frame</span>(<span class="at">X =</span> X, <span class="at">Z =</span> Z, <span class="at">Y =</span> Y)</span>
-<span id="cb3-10"><a href="#cb3-10"></a>})</span>
-<span id="cb3-11"><a href="#cb3-11"></a></span>
-<span id="cb3-12"><a href="#cb3-12"></a><span class="fu">cor</span>(chain<span class="sc">$</span>X, chain<span class="sc">$</span>Y)                                  <span class="co"># related?</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-label="1"></a><span class="fu">set.seed</span>(<span class="dv">6</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-label="2"></a>n <span class="ot">&lt;-</span> <span class="dv">5000</span>   <span class="co"># large, so that sampling noise does not obscure the pattern</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-label="3"></a>a <span class="ot">&lt;-</span> <span class="fl">0.6</span>    <span class="co"># strength of every arrow, on a correlation scale</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-label="4"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-label="5"></a>chain <span class="ot">&lt;-</span> <span class="fu">local</span>({</span>
+<span id="cb3-6"><a href="#cb3-6" aria-label="6"></a>  X <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-label="7"></a>  Z <span class="ot">&lt;-</span> a <span class="sc">*</span> X <span class="sc">+</span> <span class="fu">rnorm</span>(n, <span class="at">sd =</span> <span class="fu">sqrt</span>(<span class="dv">1</span> <span class="sc">-</span> a<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb3-8"><a href="#cb3-8" aria-label="8"></a>  Y <span class="ot">&lt;-</span> a <span class="sc">*</span> Z <span class="sc">+</span> <span class="fu">rnorm</span>(n, <span class="at">sd =</span> <span class="fu">sqrt</span>(<span class="dv">1</span> <span class="sc">-</span> a<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb3-9"><a href="#cb3-9" aria-label="9"></a>  <span class="fu">data.frame</span>(<span class="at">X =</span> X, <span class="at">Z =</span> Z, <span class="at">Y =</span> Y)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-label="10"></a>})</span>
+<span id="cb3-11"><a href="#cb3-11" aria-label="11"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-label="12"></a><span class="fu">cor</span>(chain<span class="sc">$</span>X, chain<span class="sc">$</span>Y)                                  <span class="co"># related?</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.3574731</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">pcor.test</span>(chain<span class="sc">$</span>X, chain<span class="sc">$</span>Y, chain<span class="sc">$</span>Z)<span class="sc">$</span>estimate          <span class="co"># still related given Z?</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-label="1"></a><span class="fu">pcor.test</span>(chain<span class="sc">$</span>X, chain<span class="sc">$</span>Y, chain<span class="sc">$</span>Z)<span class="sc">$</span>estimate          <span class="co"># still related given Z?</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -0.002474125</code></pre>
 </div>
@@ -614,18 +623,18 @@ Figure&nbsp;7.3: Common effect
 <span class="header-section-number">7.3.2</span> Pattern 2: a common cause</h3>
 <p>With a common cause, a third variable <code>Z</code> causes both <code>X</code> and <code>Y</code>, but there is <em>no causal relation</em> between the latter two. In other words, <code>Z</code> is a confounder in the relationship between <code>X</code> and <code>Y</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>fork <span class="ot">&lt;-</span> <span class="fu">local</span>({</span>
-<span id="cb7-2"><a href="#cb7-2"></a>  Z <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n)</span>
-<span id="cb7-3"><a href="#cb7-3"></a>  X <span class="ot">&lt;-</span> a <span class="sc">*</span> Z <span class="sc">+</span> <span class="fu">rnorm</span>(n, <span class="at">sd =</span> <span class="fu">sqrt</span>(<span class="dv">1</span> <span class="sc">-</span> a<span class="sc">^</span><span class="dv">2</span>))</span>
-<span id="cb7-4"><a href="#cb7-4"></a>  Y <span class="ot">&lt;-</span> a <span class="sc">*</span> Z <span class="sc">+</span> <span class="fu">rnorm</span>(n, <span class="at">sd =</span> <span class="fu">sqrt</span>(<span class="dv">1</span> <span class="sc">-</span> a<span class="sc">^</span><span class="dv">2</span>))</span>
-<span id="cb7-5"><a href="#cb7-5"></a>  <span class="fu">data.frame</span>(<span class="at">X =</span> X, <span class="at">Z =</span> Z, <span class="at">Y =</span> Y)</span>
-<span id="cb7-6"><a href="#cb7-6"></a>})</span>
-<span id="cb7-7"><a href="#cb7-7"></a></span>
-<span id="cb7-8"><a href="#cb7-8"></a><span class="fu">cor</span>(fork<span class="sc">$</span>X, fork<span class="sc">$</span>Y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-label="1"></a>fork <span class="ot">&lt;-</span> <span class="fu">local</span>({</span>
+<span id="cb7-2"><a href="#cb7-2" aria-label="2"></a>  Z <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-label="3"></a>  X <span class="ot">&lt;-</span> a <span class="sc">*</span> Z <span class="sc">+</span> <span class="fu">rnorm</span>(n, <span class="at">sd =</span> <span class="fu">sqrt</span>(<span class="dv">1</span> <span class="sc">-</span> a<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb7-4"><a href="#cb7-4" aria-label="4"></a>  Y <span class="ot">&lt;-</span> a <span class="sc">*</span> Z <span class="sc">+</span> <span class="fu">rnorm</span>(n, <span class="at">sd =</span> <span class="fu">sqrt</span>(<span class="dv">1</span> <span class="sc">-</span> a<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb7-5"><a href="#cb7-5" aria-label="5"></a>  <span class="fu">data.frame</span>(<span class="at">X =</span> X, <span class="at">Z =</span> Z, <span class="at">Y =</span> Y)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-label="6"></a>})</span>
+<span id="cb7-7"><a href="#cb7-7" aria-label="7"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-label="8"></a><span class="fu">cor</span>(fork<span class="sc">$</span>X, fork<span class="sc">$</span>Y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.3558507</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">pcor.test</span>(fork<span class="sc">$</span>X, fork<span class="sc">$</span>Y, fork<span class="sc">$</span>Z)<span class="sc">$</span>estimate</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-label="1"></a><span class="fu">pcor.test</span>(fork<span class="sc">$</span>X, fork<span class="sc">$</span>Y, fork<span class="sc">$</span>Z)<span class="sc">$</span>estimate</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.007863247</code></pre>
 </div>
@@ -636,18 +645,18 @@ Figure&nbsp;7.3: Common effect
 <span class="header-section-number">7.3.3</span> Pattern 3: a common effect</h3>
 <p>When there is a common effect, two variables <code>X</code> and <code>Y</code> both cause a third variable <code>Z</code>, where <code>Z</code> is referred to as a <em>collider</em>. Note that the arrows are pointed the opposite way as what we saw in pattern 2. As an example, natural talent and working hard both contribute to getting a good exam grade; but the former two do not causally impact one another.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>collider <span class="ot">&lt;-</span> <span class="fu">local</span>({</span>
-<span id="cb11-2"><a href="#cb11-2"></a>  X <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n)</span>
-<span id="cb11-3"><a href="#cb11-3"></a>  Y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n)</span>
-<span id="cb11-4"><a href="#cb11-4"></a>  Z <span class="ot">&lt;-</span> a <span class="sc">*</span> X <span class="sc">+</span> a <span class="sc">*</span> Y <span class="sc">+</span> <span class="fu">rnorm</span>(n, <span class="at">sd =</span> <span class="fu">sqrt</span>(<span class="dv">1</span> <span class="sc">-</span> <span class="dv">2</span> <span class="sc">*</span> a<span class="sc">^</span><span class="dv">2</span>))</span>
-<span id="cb11-5"><a href="#cb11-5"></a>  <span class="fu">data.frame</span>(<span class="at">X =</span> X, <span class="at">Z =</span> Z, <span class="at">Y =</span> Y)</span>
-<span id="cb11-6"><a href="#cb11-6"></a>})</span>
-<span id="cb11-7"><a href="#cb11-7"></a></span>
-<span id="cb11-8"><a href="#cb11-8"></a><span class="fu">cor</span>(collider<span class="sc">$</span>X, collider<span class="sc">$</span>Y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-label="1"></a>collider <span class="ot">&lt;-</span> <span class="fu">local</span>({</span>
+<span id="cb11-2"><a href="#cb11-2" aria-label="2"></a>  X <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-label="3"></a>  Y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-label="4"></a>  Z <span class="ot">&lt;-</span> a <span class="sc">*</span> X <span class="sc">+</span> a <span class="sc">*</span> Y <span class="sc">+</span> <span class="fu">rnorm</span>(n, <span class="at">sd =</span> <span class="fu">sqrt</span>(<span class="dv">1</span> <span class="sc">-</span> <span class="dv">2</span> <span class="sc">*</span> a<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb11-5"><a href="#cb11-5" aria-label="5"></a>  <span class="fu">data.frame</span>(<span class="at">X =</span> X, <span class="at">Z =</span> Z, <span class="at">Y =</span> Y)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-label="6"></a>})</span>
+<span id="cb11-7"><a href="#cb11-7" aria-label="7"></a></span>
+<span id="cb11-8"><a href="#cb11-8" aria-label="8"></a><span class="fu">cor</span>(collider<span class="sc">$</span>X, collider<span class="sc">$</span>Y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.0155854</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">pcor.test</span>(collider<span class="sc">$</span>X, collider<span class="sc">$</span>Y, collider<span class="sc">$</span>Z)<span class="sc">$</span>estimate</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-label="1"></a><span class="fu">pcor.test</span>(collider<span class="sc">$</span>X, collider<span class="sc">$</span>Y, collider<span class="sc">$</span>Z)<span class="sc">$</span>estimate</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -0.5466282</code></pre>
 </div>
@@ -657,18 +666,18 @@ Figure&nbsp;7.3: Common effect
 </section><section id="the-three-traces-side-by-side" class="level3" data-number="7.3.4"><h3 data-number="7.3.4" class="anchored" data-anchor-id="the-three-traces-side-by-side">
 <span class="header-section-number">7.3.4</span> The three traces side by side</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>trace <span class="ot">&lt;-</span> <span class="cf">function</span>(d) {</span>
-<span id="cb15-2"><a href="#cb15-2"></a>  <span class="fu">c</span>(<span class="at">r_XY =</span> <span class="fu">cor</span>(d<span class="sc">$</span>X, d<span class="sc">$</span>Y),</span>
-<span id="cb15-3"><a href="#cb15-3"></a>    <span class="at">r_XY_given_Z =</span> <span class="fu">pcor.test</span>(d<span class="sc">$</span>X, d<span class="sc">$</span>Y, d<span class="sc">$</span>Z)<span class="sc">$</span>estimate)</span>
-<span id="cb15-4"><a href="#cb15-4"></a>}</span>
-<span id="cb15-5"><a href="#cb15-5"></a></span>
-<span id="cb15-6"><a href="#cb15-6"></a>patterns <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb15-7"><a href="#cb15-7"></a>  <span class="at">pattern =</span> <span class="fu">c</span>(<span class="st">"Chain:         X -&gt; Z -&gt; Y"</span>,</span>
-<span id="cb15-8"><a href="#cb15-8"></a>              <span class="st">"Common cause:  X &lt;- Z -&gt; Y"</span>,</span>
-<span id="cb15-9"><a href="#cb15-9"></a>              <span class="st">"Common effect: X -&gt; Z &lt;- Y"</span>),</span>
-<span id="cb15-10"><a href="#cb15-10"></a>  <span class="fu">rbind</span>(<span class="fu">trace</span>(chain), <span class="fu">trace</span>(fork), <span class="fu">trace</span>(collider))</span>
-<span id="cb15-11"><a href="#cb15-11"></a>)</span>
-<span id="cb15-12"><a href="#cb15-12"></a><span class="fu">print</span>(patterns, <span class="at">digits =</span> <span class="dv">2</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-label="1"></a>trace <span class="ot">&lt;-</span> <span class="cf">function</span>(d) {</span>
+<span id="cb15-2"><a href="#cb15-2" aria-label="2"></a>  <span class="fu">c</span>(<span class="at">r_XY =</span> <span class="fu">cor</span>(d<span class="sc">$</span>X, d<span class="sc">$</span>Y),</span>
+<span id="cb15-3"><a href="#cb15-3" aria-label="3"></a>    <span class="at">r_XY_given_Z =</span> <span class="fu">pcor.test</span>(d<span class="sc">$</span>X, d<span class="sc">$</span>Y, d<span class="sc">$</span>Z)<span class="sc">$</span>estimate)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-label="4"></a>}</span>
+<span id="cb15-5"><a href="#cb15-5" aria-label="5"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-label="6"></a>patterns <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb15-7"><a href="#cb15-7" aria-label="7"></a>  <span class="at">pattern =</span> <span class="fu">c</span>(<span class="st">"Chain:         X -&gt; Z -&gt; Y"</span>,</span>
+<span id="cb15-8"><a href="#cb15-8" aria-label="8"></a>              <span class="st">"Common cause:  X &lt;- Z -&gt; Y"</span>,</span>
+<span id="cb15-9"><a href="#cb15-9" aria-label="9"></a>              <span class="st">"Common effect: X -&gt; Z &lt;- Y"</span>),</span>
+<span id="cb15-10"><a href="#cb15-10" aria-label="10"></a>  <span class="fu">rbind</span>(<span class="fu">trace</span>(chain), <span class="fu">trace</span>(fork), <span class="fu">trace</span>(collider))</span>
+<span id="cb15-11"><a href="#cb15-11" aria-label="11"></a>)</span>
+<span id="cb15-12"><a href="#cb15-12" aria-label="12"></a><span class="fu">print</span>(patterns, <span class="at">digits =</span> <span class="dv">2</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                    pattern  r_XY r_XY_given_Z
  Chain:         X -&gt; Z -&gt; Y 0.357      -0.0025
@@ -686,10 +695,14 @@ Figure&nbsp;7.3: Common effect
 You find that X and Y are correlated, and that the correlation disappears when you account for Z. Which pattern is it? <select class="webex-select"><option value="blank"></option>
 <option value="answer">Either one; the data cannot distinguish them</option>
 <option value="">A chain</option>
-<option value="">A common cause</option></select><br>You find that X and Y are uncorrelated, but become correlated once you account for Z. Which pattern is it? <select class="webex-select"><option value="blank"></option>
+<option value="">A common cause</option></select>
+
+You find that X and Y are uncorrelated, but become correlated once you account for Z. Which pattern is it? <select class="webex-select"><option value="blank"></option>
 <option value="">A common cause</option>
 <option value="">A chain</option>
-<option value="answer">A common effect</option></select><br>Accounting for a common effect can create an association where there was none. <select class="webex-select"><option value="blank"></option>
+<option value="answer">A common effect</option></select>
+
+Accounting for a common effect can create an association where there was none. <select class="webex-select"><option value="blank"></option>
 <option value="answer">TRUE</option>
 <option value="NA">FALSE</option></select></p>
 </span>
@@ -719,38 +732,38 @@ You find that X and Y are correlated, and that the correlation disappears when y
 <li><p><code>BH</code> (sports behaviour).</p></li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb17-2"><a href="#cb17-2"></a>n <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
-<span id="cb17-3"><a href="#cb17-3"></a>vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"AM"</span>, <span class="st">"TS"</span>, <span class="st">"BI"</span>, <span class="st">"BH"</span>)</span>
-<span id="cb17-4"><a href="#cb17-4"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.10</span> <span class="co"># significance level of independence tests</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-label="1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-label="2"></a>n <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-label="3"></a>vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"AM"</span>, <span class="st">"TS"</span>, <span class="st">"BI"</span>, <span class="st">"BH"</span>)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-label="4"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.10</span> <span class="co"># significance level of independence tests</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Below we create a simple function for running the PC, algorithm. We can see that the <code>pc</code> function only requires the correlation matrix and sample size rather than the raw data (see the <code>suffStat</code> line).</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>run_pc <span class="ot">&lt;-</span> <span class="cf">function</span>(data, <span class="at">alpha =</span> <span class="fl">0.10</span>) {</span>
-<span id="cb18-2"><a href="#cb18-2"></a>  pcalg<span class="sc">::</span><span class="fu">pc</span>(<span class="at">suffStat =</span> <span class="fu">list</span>(<span class="at">C =</span> <span class="fu">cor</span>(data), <span class="at">n =</span> <span class="fu">nrow</span>(data)),</span>
-<span id="cb18-3"><a href="#cb18-3"></a>     <span class="at">indepTest =</span> gaussCItest,</span>
-<span id="cb18-4"><a href="#cb18-4"></a>     <span class="at">alpha     =</span> alpha,</span>
-<span id="cb18-5"><a href="#cb18-5"></a>     <span class="at">labels    =</span> <span class="fu">names</span>(data))</span>
-<span id="cb18-6"><a href="#cb18-6"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-label="1"></a>run_pc <span class="ot">&lt;-</span> <span class="cf">function</span>(data, <span class="at">alpha =</span> <span class="fl">0.10</span>) {</span>
+<span id="cb18-2"><a href="#cb18-2" aria-label="2"></a>  pcalg<span class="sc">::</span><span class="fu">pc</span>(<span class="at">suffStat =</span> <span class="fu">list</span>(<span class="at">C =</span> <span class="fu">cor</span>(data), <span class="at">n =</span> <span class="fu">nrow</span>(data)),</span>
+<span id="cb18-3"><a href="#cb18-3" aria-label="3"></a>     <span class="at">indepTest =</span> gaussCItest,</span>
+<span id="cb18-4"><a href="#cb18-4" aria-label="4"></a>     <span class="at">alpha     =</span> alpha,</span>
+<span id="cb18-5"><a href="#cb18-5" aria-label="5"></a>     <span class="at">labels    =</span> <span class="fu">names</span>(data))</span>
+<span id="cb18-6"><a href="#cb18-6" aria-label="6"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <section id="world-1-a-structure-containing-a-common-effect" class="level3" data-number="7.4.1"><h3 data-number="7.4.1" class="anchored" data-anchor-id="world-1-a-structure-containing-a-common-effect">
 <span class="header-section-number">7.4.1</span> World 1: a structure containing a common effect</h3>
 <p>Let us first create a fictional structure that we call World 1, containing a common effect, with the causal relations: <code>AM -&gt; BI</code>, <code>TS -&gt; BI</code>, <code>BI -&gt; BH</code>. Motivation and teacher pressure both cause intention, and intention causes behaviour. Note that <code>BI</code> is a common effect of <code>AM</code> and <code>TS</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>world1 <span class="ot">&lt;-</span> <span class="fu">local</span>({</span>
-<span id="cb19-2"><a href="#cb19-2"></a>  TS <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n)</span>
-<span id="cb19-3"><a href="#cb19-3"></a>  AM <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n)</span>
-<span id="cb19-4"><a href="#cb19-4"></a>  BI <span class="ot">&lt;-</span> <span class="fl">0.6</span> <span class="sc">*</span> TS <span class="sc">+</span> <span class="fl">0.6</span> <span class="sc">*</span> AM <span class="sc">+</span> <span class="fu">rnorm</span>(n)</span>
-<span id="cb19-5"><a href="#cb19-5"></a>  BH <span class="ot">&lt;-</span> <span class="fl">0.6</span> <span class="sc">*</span> BI <span class="sc">+</span> <span class="fu">rnorm</span>(n)</span>
-<span id="cb19-6"><a href="#cb19-6"></a>  <span class="fu">data.frame</span>(<span class="at">AM =</span> AM, <span class="at">TS =</span> TS, <span class="at">BI =</span> BI, <span class="at">BH =</span> BH)</span>
-<span id="cb19-7"><a href="#cb19-7"></a>})</span>
-<span id="cb19-8"><a href="#cb19-8"></a></span>
-<span id="cb19-9"><a href="#cb19-9"></a>fit1 <span class="ot">&lt;-</span> <span class="fu">run_pc</span>(<span class="at">data =</span> world1)</span>
-<span id="cb19-10"><a href="#cb19-10"></a><span class="fu">edges_of</span>(fit1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-label="1"></a>world1 <span class="ot">&lt;-</span> <span class="fu">local</span>({</span>
+<span id="cb19-2"><a href="#cb19-2" aria-label="2"></a>  TS <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-label="3"></a>  AM <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-label="4"></a>  BI <span class="ot">&lt;-</span> <span class="fl">0.6</span> <span class="sc">*</span> TS <span class="sc">+</span> <span class="fl">0.6</span> <span class="sc">*</span> AM <span class="sc">+</span> <span class="fu">rnorm</span>(n)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-label="5"></a>  BH <span class="ot">&lt;-</span> <span class="fl">0.6</span> <span class="sc">*</span> BI <span class="sc">+</span> <span class="fu">rnorm</span>(n)</span>
+<span id="cb19-6"><a href="#cb19-6" aria-label="6"></a>  <span class="fu">data.frame</span>(<span class="at">AM =</span> AM, <span class="at">TS =</span> TS, <span class="at">BI =</span> BI, <span class="at">BH =</span> BH)</span>
+<span id="cb19-7"><a href="#cb19-7" aria-label="7"></a>})</span>
+<span id="cb19-8"><a href="#cb19-8" aria-label="8"></a></span>
+<span id="cb19-9"><a href="#cb19-9" aria-label="9"></a>fit1 <span class="ot">&lt;-</span> <span class="fu">run_pc</span>(<span class="at">data =</span> world1)</span>
+<span id="cb19-10"><a href="#cb19-10" aria-label="10"></a><span class="fu">edges_of</span>(fit1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "AM -&gt; BI" "TS -&gt; BI" "BI -&gt; BH"</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">plot</span>(fit1, <span class="at">main =</span> <span class="st">"World 1: what PC recovered"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-label="1"></a><span class="fu">plot</span>(fit1, <span class="at">main =</span> <span class="st">"World 1: what PC recovered"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="causal_discovery_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
@@ -763,20 +776,20 @@ You find that X and Y are correlated, and that the correlation disappears when y
 <span class="header-section-number">7.4.2</span> World 2: a pure chain</h3>
 <p>Let’s now consider another fictional causal structure, called World 2, with the causal relations: <code>TS -&gt; AM -&gt; BI -&gt; BH</code>. These comprise the same four variables, but now with a chain structure rather than a common effect.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>world2 <span class="ot">&lt;-</span> <span class="fu">local</span>({</span>
-<span id="cb22-2"><a href="#cb22-2"></a>  TS <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n)</span>
-<span id="cb22-3"><a href="#cb22-3"></a>  AM <span class="ot">&lt;-</span> <span class="fl">0.6</span> <span class="sc">*</span> TS <span class="sc">+</span> <span class="fu">rnorm</span>(n)</span>
-<span id="cb22-4"><a href="#cb22-4"></a>  BI <span class="ot">&lt;-</span> <span class="fl">0.6</span> <span class="sc">*</span> AM <span class="sc">+</span> <span class="fu">rnorm</span>(n)</span>
-<span id="cb22-5"><a href="#cb22-5"></a>  BH <span class="ot">&lt;-</span> <span class="fl">0.6</span> <span class="sc">*</span> BI <span class="sc">+</span> <span class="fu">rnorm</span>(n)</span>
-<span id="cb22-6"><a href="#cb22-6"></a>  <span class="fu">data.frame</span>(<span class="at">AM =</span> AM, <span class="at">TS =</span> TS, <span class="at">BI =</span> BI, <span class="at">BH =</span> BH)</span>
-<span id="cb22-7"><a href="#cb22-7"></a>})</span>
-<span id="cb22-8"><a href="#cb22-8"></a></span>
-<span id="cb22-9"><a href="#cb22-9"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">run_pc</span>(<span class="at">data =</span> world2)</span>
-<span id="cb22-10"><a href="#cb22-10"></a><span class="fu">edges_of</span>(fit2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-label="1"></a>world2 <span class="ot">&lt;-</span> <span class="fu">local</span>({</span>
+<span id="cb22-2"><a href="#cb22-2" aria-label="2"></a>  TS <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-label="3"></a>  AM <span class="ot">&lt;-</span> <span class="fl">0.6</span> <span class="sc">*</span> TS <span class="sc">+</span> <span class="fu">rnorm</span>(n)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-label="4"></a>  BI <span class="ot">&lt;-</span> <span class="fl">0.6</span> <span class="sc">*</span> AM <span class="sc">+</span> <span class="fu">rnorm</span>(n)</span>
+<span id="cb22-5"><a href="#cb22-5" aria-label="5"></a>  BH <span class="ot">&lt;-</span> <span class="fl">0.6</span> <span class="sc">*</span> BI <span class="sc">+</span> <span class="fu">rnorm</span>(n)</span>
+<span id="cb22-6"><a href="#cb22-6" aria-label="6"></a>  <span class="fu">data.frame</span>(<span class="at">AM =</span> AM, <span class="at">TS =</span> TS, <span class="at">BI =</span> BI, <span class="at">BH =</span> BH)</span>
+<span id="cb22-7"><a href="#cb22-7" aria-label="7"></a>})</span>
+<span id="cb22-8"><a href="#cb22-8" aria-label="8"></a></span>
+<span id="cb22-9"><a href="#cb22-9" aria-label="9"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">run_pc</span>(<span class="at">data =</span> world2)</span>
+<span id="cb22-10"><a href="#cb22-10" aria-label="10"></a><span class="fu">edges_of</span>(fit2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "AM -- TS" "AM -- BI" "BH -- BI"</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">plot</span>(fit2, <span class="at">main =</span> <span class="st">"World 2: what PC recovered"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-label="1"></a><span class="fu">plot</span>(fit2, <span class="at">main =</span> <span class="st">"World 2: what PC recovered"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="causal_discovery_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
@@ -789,13 +802,13 @@ You find that X and Y are correlated, and that the correlation disappears when y
 <span class="header-section-number">7.4.3</span> How many structures fit equally well?</h3>
 <p>Let us figure out how many causal structures can explain the correlations that were found in the data simulated based on the structures of World 1 and World 2.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>n_structures <span class="ot">&lt;-</span> <span class="cf">function</span>(fit) <span class="fu">nrow</span>(pcalg<span class="sc">::</span><span class="fu">pdag2allDags</span>(<span class="fu">as</span>(fit, <span class="st">"matrix"</span>))<span class="sc">$</span>dags)</span>
-<span id="cb25-2"><a href="#cb25-2"></a></span>
-<span id="cb25-3"><a href="#cb25-3"></a><span class="fu">n_structures</span>(fit1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-label="1"></a>n_structures <span class="ot">&lt;-</span> <span class="cf">function</span>(fit) <span class="fu">nrow</span>(pcalg<span class="sc">::</span><span class="fu">pdag2allDags</span>(<span class="fu">as</span>(fit, <span class="st">"matrix"</span>))<span class="sc">$</span>dags)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-label="2"></a></span>
+<span id="cb25-3"><a href="#cb25-3" aria-label="3"></a><span class="fu">n_structures</span>(fit1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="fu">n_structures</span>(fit2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-label="1"></a><span class="fu">n_structures</span>(fit2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4</code></pre>
 </div>
@@ -809,10 +822,14 @@ You find that X and Y are correlated, and that the correlation disappears when y
 PC recovered World 1 exactly because <select class="webex-select"><option value="blank"></option>
 <option value="">the sample size was large</option>
 <option value="">chains are harder to simulate</option>
-<option value="answer">the true structure contained a common effect, which leaves a unique trace</option></select><br>In World 2, PC left the edges undirected because <select class="webex-select"><option value="blank"></option>
+<option value="answer">the true structure contained a common effect, which leaves a unique trace</option></select>
+
+In World 2, PC left the edges undirected because <select class="webex-select"><option value="blank"></option>
 <option value="">the algorithm ran out of tests</option>
 <option value="answer">chains pointing in either direction imply the same correlations</option>
-<option value="">the associations were too weak</option></select><br>A graph with undirected edges means the analysis failed. <select class="webex-select"><option value="blank"></option>
+<option value="">the associations were too weak</option></select>
+
+A graph with undirected edges means the analysis failed. <select class="webex-select"><option value="blank"></option>
 <option value="NA">TRUE</option>
 <option value="answer">FALSE</option></select></p>
 </span>
@@ -849,11 +866,11 @@ PC recovered World 1 exactly because <select class="webex-select"><option value=
 </ul>
 <p>These are imperfect matches for the theoretical concepts, but for the purpose of a tutorial - that is fine. All four are mean scores aggregrated across questionnaire items, with higher values indicating higher levels of the corresponding construct.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>data_raw <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"zhao_2025.rds"</span>)</span>
-<span id="cb29-2"><a href="#cb29-2"></a>vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"AM"</span>, <span class="st">"TS"</span>, <span class="st">"BI"</span>, <span class="st">"BH"</span>)</span>
-<span id="cb29-3"><a href="#cb29-3"></a>df <span class="ot">&lt;-</span> data_raw[, vars] <span class="co"># select four variables for this tutorial</span></span>
-<span id="cb29-4"><a href="#cb29-4"></a></span>
-<span id="cb29-5"><a href="#cb29-5"></a><span class="fu">print</span>(<span class="fu">descriptives</span>(df), <span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-label="1"></a>data_raw <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"zhao_2025.rds"</span>)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-label="2"></a>vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"AM"</span>, <span class="st">"TS"</span>, <span class="st">"BI"</span>, <span class="st">"BH"</span>)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-label="3"></a>df <span class="ot">&lt;-</span> data_raw[, vars] <span class="co"># select four variables for this tutorial</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-label="4"></a></span>
+<span id="cb29-5"><a href="#cb29-5" aria-label="5"></a><span class="fu">print</span>(<span class="fu">descriptives</span>(df), <span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  name    type   n missing unique mean median mode mode_value  sd  v min max
 1   AM numeric 290       0     31  4.6    4.6  4.6         NA 1.4 NA   1   7
@@ -866,7 +883,7 @@ PC recovered World 1 exactly because <select class="webex-select"><option value=
 3     6 -0.48    -1.68  3.5      6.2
 4     6 -0.22    -0.76  2.8      5.0</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="fu">print</span>(<span class="fu">cor</span>(df), <span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-label="1"></a><span class="fu">print</span>(<span class="fu">cor</span>(df), <span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      AM    TS    BI   BH
 AM  1.00 -0.25  0.51  0.3
@@ -879,18 +896,18 @@ BH  0.30 -0.10  0.40  1.0</code></pre>
 <span class="header-section-number">7.5.1</span> Step 1: Write down your theory</h3>
 <p>Before looking at any output of the algorithm, we should commit and make our hypothesized/theoretical DAG explicit. Shortly discuss what you think is the DAG is in this substantive setting and edit the code (<code>theory</code> line) below accordingly.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a>theory <span class="ot">&lt;-</span> <span class="fu">dagitty</span>(<span class="st">'dag {</span></span>
-<span id="cb33-2"><a href="#cb33-2"></a><span class="st">  TS -&gt; AM</span></span>
-<span id="cb33-3"><a href="#cb33-3"></a><span class="st">  AM -&gt; BH</span></span>
-<span id="cb33-4"><a href="#cb33-4"></a><span class="st">  BI -&gt; BH</span></span>
-<span id="cb33-5"><a href="#cb33-5"></a><span class="st">}'</span>)</span>
-<span id="cb33-6"><a href="#cb33-6"></a></span>
-<span id="cb33-7"><a href="#cb33-7"></a><span class="fu">coordinates</span>(theory) <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb33-8"><a href="#cb33-8"></a>  <span class="at">x =</span> <span class="fu">c</span>(<span class="at">TS =</span> <span class="dv">0</span>, <span class="at">AM =</span> <span class="dv">1</span>, <span class="at">BI =</span> <span class="dv">2</span>, <span class="at">BH =</span> <span class="dv">2</span>),</span>
-<span id="cb33-9"><a href="#cb33-9"></a>  <span class="at">y =</span> <span class="fu">c</span>(<span class="at">TS =</span> <span class="dv">0</span>, <span class="at">AM =</span> <span class="dv">0</span>, <span class="at">BI =</span> <span class="dv">0</span>, <span class="at">BH =</span> <span class="dv">1</span>)</span>
-<span id="cb33-10"><a href="#cb33-10"></a>)</span>
-<span id="cb33-11"><a href="#cb33-11"></a></span>
-<span id="cb33-12"><a href="#cb33-12"></a><span class="fu">plot</span>(theory)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-label="1"></a>theory <span class="ot">&lt;-</span> <span class="fu">dagitty</span>(<span class="st">'dag {</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-label="2"></a><span class="st">  TS -&gt; AM</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-label="3"></a><span class="st">  AM -&gt; BH</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-label="4"></a><span class="st">  BI -&gt; BH</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-label="5"></a><span class="st">}'</span>)</span>
+<span id="cb33-6"><a href="#cb33-6" aria-label="6"></a></span>
+<span id="cb33-7"><a href="#cb33-7" aria-label="7"></a><span class="fu">coordinates</span>(theory) <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb33-8"><a href="#cb33-8" aria-label="8"></a>  <span class="at">x =</span> <span class="fu">c</span>(<span class="at">TS =</span> <span class="dv">0</span>, <span class="at">AM =</span> <span class="dv">1</span>, <span class="at">BI =</span> <span class="dv">2</span>, <span class="at">BH =</span> <span class="dv">2</span>),</span>
+<span id="cb33-9"><a href="#cb33-9" aria-label="9"></a>  <span class="at">y =</span> <span class="fu">c</span>(<span class="at">TS =</span> <span class="dv">0</span>, <span class="at">AM =</span> <span class="dv">0</span>, <span class="at">BI =</span> <span class="dv">0</span>, <span class="at">BH =</span> <span class="dv">1</span>)</span>
+<span id="cb33-10"><a href="#cb33-10" aria-label="10"></a>)</span>
+<span id="cb33-11"><a href="#cb33-11" aria-label="11"></a></span>
+<span id="cb33-12"><a href="#cb33-12" aria-label="12"></a><span class="fu">plot</span>(theory)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="causal_discovery_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
@@ -902,7 +919,7 @@ BH  0.30 -0.10  0.40  1.0</code></pre>
 <span class="header-section-number">7.5.2</span> Step 2: Ask what your theory predicts</h3>
 <p>At this point, we want to see what predictions our theory actually makes (i.e., what causal implications it has).</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a>dagitty<span class="sc">::</span><span class="fu">impliedConditionalIndependencies</span>(theory)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-label="1"></a>dagitty<span class="sc">::</span><span class="fu">impliedConditionalIndependencies</span>(theory)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>AM _||_ BI
 BH _||_ TS | AM
@@ -915,7 +932,7 @@ BI _||_ TS</code></pre>
 <span class="header-section-number">7.5.3</span> Step 3: Test the predictions</h3>
 <p>Let us now test our predictions on the data using the <code>localTests()</code> function.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="fu">round</span>(dagitty<span class="sc">::</span><span class="fu">localTests</span>(theory, df, <span class="at">type =</span> <span class="st">"cis"</span>), <span class="dv">3</span>) <span class="co"># cis: linear conditional independence</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-label="1"></a><span class="fu">round</span>(dagitty<span class="sc">::</span><span class="fu">localTests</span>(theory, df, <span class="at">type =</span> <span class="st">"cis"</span>), <span class="dv">3</span>) <span class="co"># cis: linear conditional independence</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="caption-top table table-sm table-striped small">
@@ -959,8 +976,8 @@ BI _||_ TS</code></pre>
 <span class="header-section-number">7.5.4</span> Step 4: What could PC recover if your theory were true?</h3>
 <p>Suppose your theory is exactly right, all of PC’s assumptions hold (see “What PC assumes” below) and the sample size is infinite. Even then, PC can only recover your DAG up to its Markov equivalence class (MEC), as we saw in Part 2. Let’s now determine this MEC based on our theoretical DAG.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a>theory_cpdag <span class="ot">&lt;-</span> dagitty<span class="sc">::</span><span class="fu">equivalenceClass</span>(theory)</span>
-<span id="cb37-2"><a href="#cb37-2"></a>theory_cpdag</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-label="1"></a>theory_cpdag <span class="ot">&lt;-</span> dagitty<span class="sc">::</span><span class="fu">equivalenceClass</span>(theory)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-label="2"></a>theory_cpdag</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>pdag {
 AM [pos="1.000,0.000"]
@@ -972,7 +989,7 @@ AM -&gt; BH
 BI -&gt; BH
 }</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="fu">plot</span>(theory_cpdag)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-label="1"></a><span class="fu">plot</span>(theory_cpdag)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="causal_discovery_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
@@ -985,18 +1002,18 @@ BI -&gt; BH
 <span class="header-section-number">7.5.5</span> Step 5: Let the data propose a structure</h3>
 <p>Now run PC on the same data and compare.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a>suffStat <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">C =</span> <span class="fu">cor</span>(df), <span class="at">n =</span> <span class="fu">nrow</span>(df))</span>
-<span id="cb40-2"><a href="#cb40-2"></a></span>
-<span id="cb40-3"><a href="#cb40-3"></a>pc_fit <span class="ot">&lt;-</span> <span class="fu">pc</span>(<span class="at">suffStat  =</span> suffStat,</span>
-<span id="cb40-4"><a href="#cb40-4"></a>             <span class="at">indepTest =</span> gaussCItest,</span>
-<span id="cb40-5"><a href="#cb40-5"></a>             <span class="at">alpha     =</span> alpha,</span>
-<span id="cb40-6"><a href="#cb40-6"></a>             <span class="at">labels    =</span> vars)</span>
-<span id="cb40-7"><a href="#cb40-7"></a></span>
-<span id="cb40-8"><a href="#cb40-8"></a><span class="fu">edges_of</span>(pc_fit)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-label="1"></a>suffStat <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">C =</span> <span class="fu">cor</span>(df), <span class="at">n =</span> <span class="fu">nrow</span>(df))</span>
+<span id="cb40-2"><a href="#cb40-2" aria-label="2"></a></span>
+<span id="cb40-3"><a href="#cb40-3" aria-label="3"></a>pc_fit <span class="ot">&lt;-</span> <span class="fu">pc</span>(<span class="at">suffStat  =</span> suffStat,</span>
+<span id="cb40-4"><a href="#cb40-4" aria-label="4"></a>             <span class="at">indepTest =</span> gaussCItest,</span>
+<span id="cb40-5"><a href="#cb40-5" aria-label="5"></a>             <span class="at">alpha     =</span> alpha,</span>
+<span id="cb40-6"><a href="#cb40-6" aria-label="6"></a>             <span class="at">labels    =</span> vars)</span>
+<span id="cb40-7"><a href="#cb40-7" aria-label="7"></a></span>
+<span id="cb40-8"><a href="#cb40-8" aria-label="8"></a><span class="fu">edges_of</span>(pc_fit)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "AM -- TS" "AM -&gt; BI" "AM -- BH" "TS -&gt; BI" "BH -&gt; BI"</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a><span class="fu">plot</span>(pc_fit, <span class="at">main =</span> <span class="st">"Structure inferred by PC"</span>) <span class="co"># bidrectional arrows imply that the arrow is unoriented (not a cyclic relationship!)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-label="1"></a><span class="fu">plot</span>(pc_fit, <span class="at">main =</span> <span class="st">"Structure inferred by PC"</span>) <span class="co"># bidrectional arrows imply that the arrow is unoriented (not a cyclic relationship!)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="causal_discovery_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
@@ -1295,15 +1312,50 @@ window.onload = function() {
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
     if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-      const a = window.document.createElement('a');
-      a.classList.add('top-right');
-      a.classList.add('quarto-color-scheme-toggle');
-      a.href = "";
-      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const toggle = window.document.createElement('button');
+      toggle.type = "button";
+      toggle.setAttribute("role", "switch");
+      toggle.setAttribute("aria-checked", "false");
+      toggle.classList.add('top-right');
+      toggle.classList.add('quarto-color-scheme-toggle');
+      toggle.setAttribute("aria-label", "Toggle dark mode");
+      toggle.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
       const i = window.document.createElement("i");
       i.classList.add('bi');
-      a.appendChild(i);
-      window.document.body.appendChild(a);
+      toggle.appendChild(i);
+      // Put the toggle in a landmark of its own, so that landmark navigation
+      // can reach it.
+      //
+      // The container is always a fresh direct child of body, and the toggle is
+      // never moved into page furniture that the theme or the author controls.
+      // The toggle is positioned against the page, so any ancestor that
+      // establishes a containing block captures it: a positioned element or a
+      // grid for position: absolute, and transform, filter, will-change or
+      // contain for position: fixed. A direct child of body has none of these
+      // to inherit, and the shift when one appears is silent and visual.
+      //
+      // ARIA says a document should have at most one banner, and axe reports a
+      // duplicate whether or not the banners carry distinct labels. So use a
+      // header when the page has no banner yet, and a named region otherwise.
+      //
+      // A header is a banner wherever it sits, unless it is inside sectioning
+      // content, so this cannot just look at the children of body: a custom
+      // page layout wraps the title block header in a plain div. An explicit
+      // role="banner" always counts.
+      const sectioning = 'article, aside, main, nav, section, [role="article"], [role="complementary"], [role="main"], [role="navigation"], [role="region"]';
+      const hasBanner = Array.from(
+        window.document.querySelectorAll('header:not([role]), [role="banner"]')
+      ).some(function(el) {
+        return el.hasAttribute("role") || el.closest(sectioning) === null;
+      });
+      const container = window.document.createElement(hasBanner ? "div" : "header");
+      if (hasBanner) {
+        container.setAttribute("role", "region");
+        container.setAttribute("aria-label", "Toggle dark mode");
+      }
+      container.classList.add('quarto-color-scheme-toggle-container');
+      container.appendChild(toggle);
+      window.document.body.appendChild(container);
     }
     setColorSchemeToggle(hasAlternateSentinel())
     const icon = "";
@@ -1382,7 +1434,8 @@ window.onload = function() {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
       // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
       for (var i=0; i<links.length; i++) {
         const link = links[i];
         if (!isInternal(link.href)) {
@@ -1391,8 +1444,69 @@ window.onload = function() {
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+          if (!link.classList.contains('no-external-icon')) {
+          }
         }
       }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
       const config = {
         allowHTML: true,
@@ -1406,6 +1520,7 @@ window.onload = function() {
         interactiveBorder: 10,
         theme: 'quarto',
         placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
       };
       if (contentFn) {
         config.content = contentFn;
@@ -1568,44 +1683,54 @@ window.onload = function() {
           const lineIds = lines.map((line) => {
             return targetCell + "-" + line;
           })
-          let top = null;
-          let height = null;
-          let parent = null;
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
           if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
             }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
             }
+            placeBand(gutterDiv, el, lastEl);
             selectedAnnoteEl = annoteEl;
           }
         };
@@ -1703,7 +1828,9 @@ window.onload = function() {
       }
     }
   });
-  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+  </script><script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
+  </script><nav class="page-navigation" aria-label="Page"><div class="nav-page nav-page-previous">
       <a href="./ml_informed.html" class="pagination-link" aria-label="Machine Learning-Informed Theory Construction">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Machine Learning-Informed Theory Construction</span></span>
       </a>          

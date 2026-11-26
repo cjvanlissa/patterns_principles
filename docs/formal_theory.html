@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.11.9">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="description" content="Book Description">
 <title>5&nbsp; Formal Theory Specification – Patterns to Principles</title>
@@ -10,10 +10,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -89,18 +92,19 @@ div.csl-indent {
 <link href="./favicon.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-33269adcf1721b81efc5ea7fcfe7f0ee.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-5a2acb6f4ed5aeb23a104ba421924b87.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-33269adcf1721b81efc5ea7fcfe7f0ee.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b1528b1cba7e9f63f59baa7408a6f56.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-3db608c3aac2db220582703da11e8ac9.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b1528b1cba7e9f63f59baa7408a6f56.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-1bb825c67a2efe62597e07348eb8bcba.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-cc91bfdb7c5dfa564528353fdb34f86f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-1bb825c67a2efe62597e07348eb8bcba.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-f1af5b8e9e1153ad751e191c3b49cb96.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-9b96e713486b37b48f2ddbd7c4cbd36f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-f1af5b8e9e1153ad751e191c3b49cb96.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -132,7 +136,7 @@ div.csl-indent {
 <link rel="stylesheet" href="include/glossary.css">
 <link rel="stylesheet" href="include/style.css">
 </head>
-<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-sidebar floating quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -155,6 +159,7 @@ div.csl-indent {
       for (let i=0; i < toggles.length; i++) {
         const toggle = toggles[i];
         if (toggle) {
+          toggle.setAttribute("aria-checked", alternate ? "true" : "false");
           if (alternate) {
             toggle.classList.add("alternate");
           } else {
@@ -184,13 +189,19 @@ div.csl-indent {
       manageTransitions('#quarto-margin-sidebar .nav-link', true);
       // Switch the toggles
       setColorSchemeToggle(alternate)
-      // Hack to workaround the fact that safari doesn't
-      // properly recolor the scrollbar when toggling (#1455)
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455).
+    // Not run on load: stylesheets are set before first paint there, and
+    // scrolling would undo the scroll to a URL fragment (#14973).
+    // The one pixel nudge keeps the reader where they were.
+    const refreshSafariScrollbar = () => {
       if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
         manageTransitions("body", false);
-        window.scrollTo(0, 1);
+        const scrollY = window.scrollY;
+        window.scrollTo(0, scrollY > 0 ? scrollY - 1 : 1);
         setTimeout(() => {
-          window.scrollTo(0, 0);
+          window.scrollTo(0, scrollY);
           manageTransitions("body", true);
         }, 40);
       }
@@ -284,6 +295,7 @@ div.csl-indent {
       // Read the current dark / light value
       let toAlternate = !hasAlternateSentinel();
       toggleColorMode(toAlternate);
+      refreshSafariScrollbar();
       setStyleSentinel(toAlternate);
       toggleGiscusIfUsed(toAlternate, darkModeDefault);
       window.dispatchEvent(new Event('resize'));
@@ -297,12 +309,12 @@ div.csl-indent {
   </script>
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav" aria-label="Toolbar"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./formal_theory.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Formal Theory Specification</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./formal_theory.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Formal Theory Specification</span></a></li></ol></nav>
+        <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
@@ -310,13 +322,13 @@ div.csl-indent {
     </div>
   </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto" aria-label="Site"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Patterns to Principles</a> 
         <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/cjvanlissa/patterns_principles" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
     <a href="./Patterns-to-Principles.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <button type="button" role="switch" aria-checked="false" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode" aria-label="Toggle dark mode"><i class="bi"></i></button>
 </div>
     </div>
       </div>
@@ -389,13 +401,10 @@ div.csl-indent {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Appendices</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-controls="quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-1-label">Appendices</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+      <ul id="quarto-sidebar-section-1" aria-labelledby="quarto-sidebar-section-1-label" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./setup.html" class="sidebar-item-text sidebar-link">
@@ -409,7 +418,7 @@ div.csl-indent {
 </nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active"><h2 id="toc-title">Table of contents</h2>
    
   <ul>
 <li><a href="#weekly-readings" id="toc-weekly-readings" class="nav-link active" data-scroll-target="#weekly-readings"><span class="header-section-number">5.1</span> Weekly Readings</a></li>
@@ -424,7 +433,7 @@ div.csl-indent {
   </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<main class="content" id="quarto-document-content" tabindex="-1"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
 <h1 class="title">
 <span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Formal Theory Specification</span>
 </h1>
@@ -464,30 +473,30 @@ div.csl-indent {
 <span class="header-section-number">5.2.1.2</span> Generate an Initial Verbal Theory</h4>
 <p>In <a href="https://cjvanlissa.github.io/patterns_principles/strategic_ambiguity.html">Week 3</a>, we specified SDT as an Directed Acyclic Graph (DAG). The vignette <a href="https://cjvanlissa.github.io/theorytools/articles/formalizing_sdt.html">Formalizing Self-Determination Theory</a> describes how this FAIR theory (See <a href="https://cjvanlissa.github.io/patterns_principles/fair_theory.html">Week 8</a> for more details) was created based on the original Self-Determination Theory <span class="citation" data-cites="deciSelfDeterminationTheory2012">(<a href="references.html#ref-deciSelfDeterminationTheory2012" role="doc-biblioref">Deci &amp; Ryan, 2012</a>)</span>. A DAG is a diagram that specifies the causal relations proposed by a theory. Such diagrams can be used to derive hypotheses, select control variables for causal inference, and conduct simulation studies (as we will do in this tutorial).</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(theorytools)</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(dagitty)</span>
-<span id="cb1-3"><a href="#cb1-3"></a>sdt <span class="ot">&lt;-</span> <span class="fu">dagitty</span>(<span class="st">"</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="st">dag {</span></span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="st">external_event</span></span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="st">healthy_development</span></span>
-<span id="cb1-7"><a href="#cb1-7"></a><span class="st">integration</span></span>
-<span id="cb1-8"><a href="#cb1-8"></a><span class="st">intrinsic_motivation</span></span>
-<span id="cb1-9"><a href="#cb1-9"></a><span class="st">locus_of_causality</span></span>
-<span id="cb1-10"><a href="#cb1-10"></a><span class="st">needs</span></span>
-<span id="cb1-11"><a href="#cb1-11"></a><span class="st">wellbeing</span></span>
-<span id="cb1-12"><a href="#cb1-12"></a><span class="st">external_event -&gt; intrinsic_motivation</span></span>
-<span id="cb1-13"><a href="#cb1-13"></a><span class="st">external_event -&gt; locus_of_causality</span></span>
-<span id="cb1-14"><a href="#cb1-14"></a><span class="st">external_event -&gt; needs</span></span>
-<span id="cb1-15"><a href="#cb1-15"></a><span class="st">integration -&gt; healthy_development</span></span>
-<span id="cb1-16"><a href="#cb1-16"></a><span class="st">integration -&gt; wellbeing</span></span>
-<span id="cb1-17"><a href="#cb1-17"></a><span class="st">intrinsic_motivation -&gt; healthy_development</span></span>
-<span id="cb1-18"><a href="#cb1-18"></a><span class="st">intrinsic_motivation -&gt; wellbeing</span></span>
-<span id="cb1-19"><a href="#cb1-19"></a><span class="st">locus_of_causality -&gt; intrinsic_motivation</span></span>
-<span id="cb1-20"><a href="#cb1-20"></a><span class="st">needs -&gt; integration</span></span>
-<span id="cb1-21"><a href="#cb1-21"></a><span class="st">needs -&gt; intrinsic_motivation</span></span>
-<span id="cb1-22"><a href="#cb1-22"></a><span class="st">needs -&gt; wellbeing</span></span>
-<span id="cb1-23"><a href="#cb1-23"></a><span class="st">}"</span>)</span>
-<span id="cb1-24"><a href="#cb1-24"></a>sdt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-label="1"></a><span class="fu">library</span>(theorytools)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-label="2"></a><span class="fu">library</span>(dagitty)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-label="3"></a>sdt <span class="ot">&lt;-</span> <span class="fu">dagitty</span>(<span class="st">"</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-label="4"></a><span class="st">dag {</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-label="5"></a><span class="st">external_event</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-label="6"></a><span class="st">healthy_development</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-label="7"></a><span class="st">integration</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-label="8"></a><span class="st">intrinsic_motivation</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-label="9"></a><span class="st">locus_of_causality</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-label="10"></a><span class="st">needs</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-label="11"></a><span class="st">wellbeing</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-label="12"></a><span class="st">external_event -&gt; intrinsic_motivation</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-label="13"></a><span class="st">external_event -&gt; locus_of_causality</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-label="14"></a><span class="st">external_event -&gt; needs</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-label="15"></a><span class="st">integration -&gt; healthy_development</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-label="16"></a><span class="st">integration -&gt; wellbeing</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-label="17"></a><span class="st">intrinsic_motivation -&gt; healthy_development</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-label="18"></a><span class="st">intrinsic_motivation -&gt; wellbeing</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-label="19"></a><span class="st">locus_of_causality -&gt; intrinsic_motivation</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-label="20"></a><span class="st">needs -&gt; integration</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-label="21"></a><span class="st">needs -&gt; intrinsic_motivation</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-label="22"></a><span class="st">needs -&gt; wellbeing</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-label="23"></a><span class="st">}"</span>)</span>
+<span id="cb1-24"><a href="#cb1-24" aria-label="24"></a>sdt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>dag {
 external_event
@@ -513,7 +522,7 @@ needs -&gt; wellbeing
 </div>
 <p>We can also plot this DAG:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">plot</span>(sdt)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-label="1"></a><span class="fu">plot</span>(sdt)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="formal_theory_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
@@ -538,14 +547,14 @@ needs -&gt; wellbeing
 <p>We will construct a very basic formalization for the section of SDT that you have selected.</p>
 <p>First, we will simplify the DAG. You can do this by hand; suppose we are interested in studying the effect of intrinsic motivation on well-being. We do not need the entire theory to hypothesize about this specific relationship. We can simplify the DAG to derive a restricted version of the theory that includes all variables that might confound the relationship of interest between intrinsic motivation and well-being:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>sdt_pruned <span class="ot">&lt;-</span> <span class="fu">dagitty</span>(<span class="st">"</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="st">dag {</span></span>
-<span id="cb4-3"><a href="#cb4-3"></a><span class="st">intrinsic_motivation -&gt; wellbeing</span></span>
-<span id="cb4-4"><a href="#cb4-4"></a><span class="st">external_event -&gt; intrinsic_motivation</span></span>
-<span id="cb4-5"><a href="#cb4-5"></a><span class="st">needs -&gt; intrinsic_motivation</span></span>
-<span id="cb4-6"><a href="#cb4-6"></a><span class="st">needs -&gt; wellbeing</span></span>
-<span id="cb4-7"><a href="#cb4-7"></a><span class="st">}"</span>)</span>
-<span id="cb4-8"><a href="#cb4-8"></a>sdt_pruned</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-label="1"></a>sdt_pruned <span class="ot">&lt;-</span> <span class="fu">dagitty</span>(<span class="st">"</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-label="2"></a><span class="st">dag {</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-label="3"></a><span class="st">intrinsic_motivation -&gt; wellbeing</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-label="4"></a><span class="st">external_event -&gt; intrinsic_motivation</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-label="5"></a><span class="st">needs -&gt; intrinsic_motivation</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-label="6"></a><span class="st">needs -&gt; wellbeing</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-label="7"></a><span class="st">}"</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-label="8"></a>sdt_pruned</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>dag {
 external_event
@@ -562,19 +571,19 @@ needs -&gt; wellbeing
 <p>Do the same for the phenomenon you identified. When you have done so, we can now create some code to generate a synthetic dataset based on this simplified DAG, using the <code>simulate_data()</code> function. This function samples random values for exogenous variables and computes endogenous variables as functions of their predictors (linear functions, by default). By default, regression coefficients are randomly sampled in the range <code>[-0.6, +0.6]</code> unless specific values are provided by the user. You might improve the model by choosing more realistic parameter values, for example, using the conventional values for null (0), small (.2), or medium (.4) effect sizes. By default, normal distributions are assumed for exogenous variables and residual error, unless other distributions are specified.</p>
 <p>Here, we first generate the code, then examine it in the console, then write it to a file, and finally, run that file to create the simulated data.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>sim_code <span class="ot">&lt;-</span> <span class="fu">simulate_data</span>(sdt_pruned, <span class="at">n =</span> <span class="dv">100</span>, <span class="at">run =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb6-2"><a href="#cb6-2"></a>sim_code</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-label="1"></a>sim_code <span class="ot">&lt;-</span> <span class="fu">simulate_data</span>(sdt_pruned, <span class="at">n =</span> <span class="dv">100</span>, <span class="at">run =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-label="2"></a>sim_code</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "# Set random seed"                                                          
- [2] "set.seed(909829150)"                                                        
+ [2] "set.seed(1311191922)"                                                       
  [3] "# Set simulation parameters"                                                
  [4] "n &lt;- 100"                                                                   
  [5] "# Simulate exogenous nodes"                                                 
  [6] "external_event &lt;- rnorm(n = n)"                                             
  [7] "needs &lt;- rnorm(n = n)"                                                      
  [8] "# Simulate endogenous nodes"                                                
- [9] "intrinsic_motivation &lt;- 0.14 * external_event - 0.47 * needs + rnorm(n = n)"
-[10] "wellbeing &lt;- 0.13 * intrinsic_motivation - 0.54 * needs + rnorm(n = n)"     
+ [9] "intrinsic_motivation &lt;- 0.08 * external_event + 0.15 * needs + rnorm(n = n)"
+[10] "wellbeing &lt;- 0.41 * needs + 0.59 * intrinsic_motivation + rnorm(n = n)"     
 [11] "df &lt;- data.frame("                                                          
 [12] "external_event = external_event,"                                           
 [13] "intrinsic_motivation = intrinsic_motivation,"                               
@@ -582,8 +591,8 @@ needs -&gt; wellbeing
 [15] "wellbeing = wellbeing"                                                      
 [16] ")"                                                                          </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">writeLines</span>(sim_code, <span class="st">"formal_model.R"</span>)</span>
-<span id="cb8-2"><a href="#cb8-2"></a><span class="fu">source</span>(<span class="st">"formal_model.R"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-label="1"></a><span class="fu">writeLines</span>(sim_code, <span class="st">"formal_model.R"</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-label="2"></a><span class="fu">source</span>(<span class="st">"formal_model.R"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Put this code into a separate R-file. When you run it all, it will create an object called <code>df</code>, which is a table with 100 observations for all variables. Each exogenous variable (causes) is generated by drawing random samples from a normal distribution. Each endogenous variable (effects) is generated by multiplying those exogenous variables with a regression coefficient; larger values mean that the exogenous variable has a larger effect. Then, random noise is added, which represents variability due to other causes not part of your model. If you want this random variability to be smaller, change the <code>sd</code> argument of the <code><a href="https://rdrr.io/r/stats/Normal.html">rnorm()</a></code> function.</p>
 </section><section id="evaluating-the-initial-theory" class="level4" data-number="5.2.1.4"><h4 data-number="5.2.1.4" class="anchored" data-anchor-id="evaluating-the-initial-theory">
@@ -601,26 +610,26 @@ needs -&gt; wellbeing
 <span class="header-section-number">5.2.1.4.2</span> Univariate Distribution</h5>
 <p>For example, to obtain a summary of all variables in the dataset:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>desc <span class="ot">&lt;-</span> worcs<span class="sc">::</span><span class="fu">descriptives</span>(df)</span>
-<span id="cb9-2"><a href="#cb9-2"></a><span class="fu">print</span>(desc, <span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-label="1"></a>desc <span class="ot">&lt;-</span> worcs<span class="sc">::</span><span class="fu">descriptives</span>(df)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-label="2"></a><span class="fu">print</span>(desc, <span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>                  name    type   n missing unique   mean median   mode
-1       external_event numeric 100       0    100 -0.029 -0.034 -0.034
-2 intrinsic_motivation numeric 100       0    100  0.041  0.087  0.087
-3                needs numeric 100       0    100  0.255  0.300  0.300
-4            wellbeing numeric 100       0    100 -0.105 -0.041 -0.041
-  mode_value  sd  v  min max range   skew skew_2se  kurt kurt_2se
-1         NA 1.0 NA -2.3 2.8   5.1  0.217     0.45 -0.28    -0.30
-2         NA 1.0 NA -2.5 2.6   5.2 -0.150    -0.31 -0.55    -0.58
-3         NA 1.0 NA -3.0 3.4   6.4  0.129     0.27  0.89     0.93
-4         NA 1.2 NA -2.7 2.4   5.1  0.034     0.07 -0.59    -0.62</code></pre>
+<pre><code>                  name    type   n missing unique    mean median  mode
+1       external_event numeric 100       0    100  0.1737   0.16  0.16
+2 intrinsic_motivation numeric 100       0    100 -0.0037  -0.13 -0.13
+3                needs numeric 100       0    100  0.1219   0.17  0.17
+4            wellbeing numeric 100       0    100 -0.1420  -0.19 -0.19
+  mode_value   sd  v  min max range   skew skew_2se  kurt kurt_2se
+1         NA 1.02 NA -2.1 2.3   4.4 -0.118    -0.24 -0.52    -0.54
+2         NA 0.98 NA -1.9 2.6   4.5  0.382     0.79 -0.20    -0.21
+3         NA 0.99 NA -2.3 2.7   5.0 -0.079    -0.16 -0.12    -0.13
+4         NA 1.29 NA -3.3 2.9   6.3 -0.110    -0.23 -0.15    -0.16</code></pre>
 </div>
 </div>
 <p>This gives you information such as the <strong>minimum, maximum, median, mean</strong>.</p>
 <p>Use these statistics to look for interesting properties of the data. For example: Does a variable have a particularly high or low mean? Is there a lot of variation between observations? Are some categories much more common than others?</p>
 <p>You can also use <strong>base R plots</strong> to visually examine the univariate distribution of an individual variable. For a continuous variable, you can examine its distribution with a density plot:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(df<span class="sc">$</span>intrinsic_motivation))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-label="1"></a><span class="fu">plot</span>(<span class="fu">density</span>(df<span class="sc">$</span>intrinsic_motivation))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="formal_theory_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
@@ -633,30 +642,32 @@ needs -&gt; wellbeing
 <span class="header-section-number">5.2.1.4.3</span> Relationship between Two Variables</h5>
 <p>You can test the effect of one variable on another by running a bivariate regression, e.g.:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(intrinsic_motivation<span class="sc">~</span>external_event, df))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-label="1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(intrinsic_motivation<span class="sc">~</span>external_event, df))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
 lm(formula = intrinsic_motivation ~ external_event, data = df)
 
 Residuals:
-     Min       1Q   Median       3Q      Max 
--2.59677 -0.77220  0.01555  0.83281  2.43071 
+    Min      1Q  Median      3Q     Max 
+-1.8236 -0.6835 -0.1048  0.5890  2.4236 
 
 Coefficients:
-               Estimate Std. Error t value Pr(&gt;|t|)
-(Intercept)     0.04327    0.10347   0.418    0.677
-external_event  0.09094    0.10277   0.885    0.378
+               Estimate Std. Error t value Pr(&gt;|t|)  
+(Intercept)    -0.04019    0.09702  -0.414   0.6796  
+external_event  0.21030    0.09439   2.228   0.0282 *
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 1.034 on 98 degrees of freedom
-Multiple R-squared:  0.007927,  Adjusted R-squared:  -0.002196 
-F-statistic: 0.783 on 1 and 98 DF,  p-value: 0.3784</code></pre>
+Residual standard error: 0.9563 on 98 degrees of freedom
+Multiple R-squared:  0.04821,   Adjusted R-squared:  0.0385 
+F-statistic: 4.964 on 1 and 98 DF,  p-value: 0.02817</code></pre>
 </div>
 </div>
 <p>If the value of <code>Pr(&gt;|t|)</code> for <code>external_event</code> is smaller than .05, the effect is statistically significant. If the value of <code>Estimate</code> is positive, then the effect is positive - if it is negative, then the effect is negative.</p>
 <p>To plot the relationship between two continuous variables, you can use a scatterplot:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">plot</span>(df<span class="sc">$</span>needs, df<span class="sc">$</span>intrinsic_motivation)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-label="1"></a><span class="fu">plot</span>(df<span class="sc">$</span>needs, df<span class="sc">$</span>intrinsic_motivation)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="formal_theory_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
@@ -666,8 +677,8 @@ F-statistic: 0.783 on 1 and 98 DF,  p-value: 0.3784</code></pre>
 </div>
 <p>You can add the regression line into this plot to make the direction of the relationship easier to see:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">plot</span>(df<span class="sc">$</span>needs, df<span class="sc">$</span>intrinsic_motivation)</span>
-<span id="cb15-2"><a href="#cb15-2"></a><span class="fu">abline</span>(<span class="fu">lm</span>(intrinsic_motivation <span class="sc">~</span> needs, df))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-label="1"></a><span class="fu">plot</span>(df<span class="sc">$</span>needs, df<span class="sc">$</span>intrinsic_motivation)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-label="2"></a><span class="fu">abline</span>(<span class="fu">lm</span>(intrinsic_motivation <span class="sc">~</span> needs, df))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="formal_theory_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
@@ -679,28 +690,28 @@ F-statistic: 0.783 on 1 and 98 DF,  p-value: 0.3784</code></pre>
 <span class="header-section-number">5.2.1.4.4</span> Interaction Effects</h5>
 <p>You can test whether the effect of one variable on another is contingent on the value of a third variable by running multiple regression regression with an interaction effect, e.g.:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(intrinsic_motivation<span class="sc">~</span>external_event<span class="sc">*</span>needs, df))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-label="1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(intrinsic_motivation<span class="sc">~</span>external_event<span class="sc">*</span>needs, df))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
 lm(formula = intrinsic_motivation ~ external_event * needs, data = df)
 
 Residuals:
-     Min       1Q   Median       3Q      Max 
--2.68475 -0.61178  0.02609  0.73268  2.39967 
+    Min      1Q  Median      3Q     Max 
+-1.8494 -0.6021 -0.1051  0.5403  2.4297 
 
 Coefficients:
-                     Estimate Std. Error t value Pr(&gt;|t|)   
-(Intercept)           0.11543    0.10508   1.099  0.27473   
-external_event        0.13547    0.10163   1.333  0.18570   
-needs                -0.28770    0.10158  -2.832  0.00563 **
-external_event:needs  0.01676    0.08405   0.199  0.84233   
+                     Estimate Std. Error t value Pr(&gt;|t|)  
+(Intercept)          -0.06503    0.09569  -0.680   0.4984  
+external_event        0.24134    0.09294   2.597   0.0109 *
+needs                 0.11227    0.09541   1.177   0.2422  
+external_event:needs -0.23111    0.09498  -2.433   0.0168 *
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 1.001 on 96 degrees of freedom
-Multiple R-squared:  0.0889,    Adjusted R-squared:  0.06043 
-F-statistic: 3.123 on 3 and 96 DF,  p-value: 0.0295</code></pre>
+Residual standard error: 0.9338 on 96 degrees of freedom
+Multiple R-squared:  0.111, Adjusted R-squared:  0.08319 
+F-statistic: 3.994 on 3 and 96 DF,  p-value: 0.009975</code></pre>
 </div>
 </div>
 <p>If the value of <code>Pr(&gt;|t|)</code> for <code>external_event:needs</code> is smaller than .05, the interaction effect is statistically significant. That means that the effect of <code>external_event</code> on <code>intrinsic_motivation</code> depends on the value of <code>needs</code>.</p>
@@ -713,17 +724,17 @@ F-statistic: 3.123 on 3 and 96 DF,  p-value: 0.0295</code></pre>
 <span class="header-section-number">5.2.2.1</span> Generating a binary variable</h4>
 <p>You can generate a binary variable using <code><a href="https://rdrr.io/r/stats/Binomial.html">rbinom()</a></code>. For example, if you want to conceptualize <code>external_event</code> as the presence or absence of a reward, you could simulate a variable where approximately 50% of observations have a value of 0 and 50% have a value of 1:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>external_event <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="at">n =</span> n, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-label="1"></a>external_event <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="at">n =</span> n, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="generating-an-interaction-effect" class="level4" data-number="5.2.2.2"><h4 data-number="5.2.2.2" class="anchored" data-anchor-id="generating-an-interaction-effect">
 <span class="header-section-number">5.2.2.2</span> Generating an interaction effect</h4>
 <p>To make the effect of <code>external_event</code> on <code>intrinsic_motivation</code> depend on <code>needs</code> (e.g., does this external event satisfy needs?), add an interaction term to the equation that predicts <code>intrinsic_motivation</code>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>intrinsic_motivation <span class="ot">&lt;-</span> </span>
-<span id="cb19-2"><a href="#cb19-2"></a>  <span class="fl">0.56</span> <span class="sc">*</span> external_event <span class="sc">+</span> </span>
-<span id="cb19-3"><a href="#cb19-3"></a>  <span class="fl">0.59</span> <span class="sc">*</span> needs <span class="sc">+</span></span>
-<span id="cb19-4"><a href="#cb19-4"></a>  <span class="fl">0.80</span> <span class="sc">*</span> external_event <span class="sc">*</span> needs <span class="sc">+</span></span>
-<span id="cb19-5"><a href="#cb19-5"></a>  <span class="fu">rnorm</span>(<span class="at">n =</span> n)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-label="1"></a>intrinsic_motivation <span class="ot">&lt;-</span> </span>
+<span id="cb19-2"><a href="#cb19-2" aria-label="2"></a>  <span class="fl">0.56</span> <span class="sc">*</span> external_event <span class="sc">+</span> </span>
+<span id="cb19-3"><a href="#cb19-3" aria-label="3"></a>  <span class="fl">0.59</span> <span class="sc">*</span> needs <span class="sc">+</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-label="4"></a>  <span class="fl">0.80</span> <span class="sc">*</span> external_event <span class="sc">*</span> needs <span class="sc">+</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-label="5"></a>  <span class="fu">rnorm</span>(<span class="at">n =</span> n)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The 0.80 specifies the strength of the interaction.</p>
 <p>In this example, the effect of external_event on intrinsic_motivation becomes stronger as needs increases.</p>
@@ -731,11 +742,11 @@ F-statistic: 3.123 on 3 and 96 DF,  p-value: 0.0295</code></pre>
 <span class="header-section-number">5.2.2.3</span> Generating a quadratic effect</h4>
 <p>To create a nonlinear relationship, include a squared version of a variable:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>intrinsic_motivation <span class="ot">&lt;-</span> </span>
-<span id="cb20-2"><a href="#cb20-2"></a>  <span class="fl">0.56</span> <span class="sc">*</span> external_event <span class="sc">+</span></span>
-<span id="cb20-3"><a href="#cb20-3"></a>  <span class="fl">0.59</span> <span class="sc">*</span> needs <span class="sc">-</span></span>
-<span id="cb20-4"><a href="#cb20-4"></a>  <span class="fl">0.70</span> <span class="sc">*</span> needs<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span></span>
-<span id="cb20-5"><a href="#cb20-5"></a>  <span class="fu">rnorm</span>(<span class="at">n =</span> n)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-label="1"></a>intrinsic_motivation <span class="ot">&lt;-</span> </span>
+<span id="cb20-2"><a href="#cb20-2" aria-label="2"></a>  <span class="fl">0.56</span> <span class="sc">*</span> external_event <span class="sc">+</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-label="3"></a>  <span class="fl">0.59</span> <span class="sc">*</span> needs <span class="sc">-</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-label="4"></a>  <span class="fl">0.70</span> <span class="sc">*</span> needs<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-label="5"></a>  <span class="fu">rnorm</span>(<span class="at">n =</span> n)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The negative coefficient on needs^2 creates an inverted n-shaped relationship: intrinsic motivation initially increases with needs, but at sufficiently high levels of needs it begins to decrease.</p>
 <p>A positive quadratic coefficient instead produces a u-shaped relationship.</p>
@@ -989,15 +1000,50 @@ window.onload = function() {
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
     if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-      const a = window.document.createElement('a');
-      a.classList.add('top-right');
-      a.classList.add('quarto-color-scheme-toggle');
-      a.href = "";
-      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const toggle = window.document.createElement('button');
+      toggle.type = "button";
+      toggle.setAttribute("role", "switch");
+      toggle.setAttribute("aria-checked", "false");
+      toggle.classList.add('top-right');
+      toggle.classList.add('quarto-color-scheme-toggle');
+      toggle.setAttribute("aria-label", "Toggle dark mode");
+      toggle.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
       const i = window.document.createElement("i");
       i.classList.add('bi');
-      a.appendChild(i);
-      window.document.body.appendChild(a);
+      toggle.appendChild(i);
+      // Put the toggle in a landmark of its own, so that landmark navigation
+      // can reach it.
+      //
+      // The container is always a fresh direct child of body, and the toggle is
+      // never moved into page furniture that the theme or the author controls.
+      // The toggle is positioned against the page, so any ancestor that
+      // establishes a containing block captures it: a positioned element or a
+      // grid for position: absolute, and transform, filter, will-change or
+      // contain for position: fixed. A direct child of body has none of these
+      // to inherit, and the shift when one appears is silent and visual.
+      //
+      // ARIA says a document should have at most one banner, and axe reports a
+      // duplicate whether or not the banners carry distinct labels. So use a
+      // header when the page has no banner yet, and a named region otherwise.
+      //
+      // A header is a banner wherever it sits, unless it is inside sectioning
+      // content, so this cannot just look at the children of body: a custom
+      // page layout wraps the title block header in a plain div. An explicit
+      // role="banner" always counts.
+      const sectioning = 'article, aside, main, nav, section, [role="article"], [role="complementary"], [role="main"], [role="navigation"], [role="region"]';
+      const hasBanner = Array.from(
+        window.document.querySelectorAll('header:not([role]), [role="banner"]')
+      ).some(function(el) {
+        return el.hasAttribute("role") || el.closest(sectioning) === null;
+      });
+      const container = window.document.createElement(hasBanner ? "div" : "header");
+      if (hasBanner) {
+        container.setAttribute("role", "region");
+        container.setAttribute("aria-label", "Toggle dark mode");
+      }
+      container.classList.add('quarto-color-scheme-toggle-container');
+      container.appendChild(toggle);
+      window.document.body.appendChild(container);
     }
     setColorSchemeToggle(hasAlternateSentinel())
     const icon = "";
@@ -1076,7 +1122,8 @@ window.onload = function() {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
       // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
       for (var i=0; i<links.length; i++) {
         const link = links[i];
         if (!isInternal(link.href)) {
@@ -1085,8 +1132,69 @@ window.onload = function() {
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+          if (!link.classList.contains('no-external-icon')) {
+          }
         }
       }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
       const config = {
         allowHTML: true,
@@ -1100,6 +1208,7 @@ window.onload = function() {
         interactiveBorder: 10,
         theme: 'quarto',
         placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
       };
       if (contentFn) {
         config.content = contentFn;
@@ -1262,44 +1371,54 @@ window.onload = function() {
           const lineIds = lines.map((line) => {
             return targetCell + "-" + line;
           })
-          let top = null;
-          let height = null;
-          let parent = null;
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
           if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
             }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
             }
+            placeBand(gutterDiv, el, lastEl);
             selectedAnnoteEl = annoteEl;
           }
         };
@@ -1397,7 +1516,9 @@ window.onload = function() {
       }
     }
   });
-  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+  </script><script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
+  </script><nav class="page-navigation" aria-label="Page"><div class="nav-page nav-page-previous">
       <a href="./latent_theory.html" class="pagination-link" aria-label="Latent Theory in Published Papers">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Latent Theory in Published Papers</span></span>
       </a>          
