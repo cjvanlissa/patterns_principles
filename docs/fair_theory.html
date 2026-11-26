@@ -2,15 +2,21 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.27">
+<meta name="generator" content="quarto-1.11.9">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="description" content="Book Description">
 <title>8&nbsp; FAIR Theory – Patterns to Principles</title>
 <style>
-code{white-space: pre-wrap;}
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -66,19 +72,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./favicon.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-b754b9fd3853d7e56faef54c29c5d52b.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-de8274a4d1ecc1e6aaeaf6e5564b5074.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-b754b9fd3853d7e56faef54c29c5d52b.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b1528b1cba7e9f63f59baa7408a6f56.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-3db608c3aac2db220582703da11e8ac9.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b1528b1cba7e9f63f59baa7408a6f56.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-723f635be0d8452843512940e206a87f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-e6767f561e935f06639ad4135469d1bc.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-723f635be0d8452843512940e206a87f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-f1af5b8e9e1153ad751e191c3b49cb96.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-9b96e713486b37b48f2ddbd7c4cbd36f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-f1af5b8e9e1153ad751e191c3b49cb96.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -110,7 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="include/glossary.css">
 <link rel="stylesheet" href="include/style.css">
 </head>
-<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-sidebar floating quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -133,6 +139,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       for (let i=0; i < toggles.length; i++) {
         const toggle = toggles[i];
         if (toggle) {
+          toggle.setAttribute("aria-checked", alternate ? "true" : "false");
           if (alternate) {
             toggle.classList.add("alternate");
           } else {
@@ -162,13 +169,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       manageTransitions('#quarto-margin-sidebar .nav-link', true);
       // Switch the toggles
       setColorSchemeToggle(alternate)
-      // Hack to workaround the fact that safari doesn't
-      // properly recolor the scrollbar when toggling (#1455)
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455).
+    // Not run on load: stylesheets are set before first paint there, and
+    // scrolling would undo the scroll to a URL fragment (#14973).
+    // The one pixel nudge keeps the reader where they were.
+    const refreshSafariScrollbar = () => {
       if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
         manageTransitions("body", false);
-        window.scrollTo(0, 1);
+        const scrollY = window.scrollY;
+        window.scrollTo(0, scrollY > 0 ? scrollY - 1 : 1);
         setTimeout(() => {
-          window.scrollTo(0, 0);
+          window.scrollTo(0, scrollY);
           manageTransitions("body", true);
         }, 40);
       }
@@ -262,6 +275,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       // Read the current dark / light value
       let toAlternate = !hasAlternateSentinel();
       toggleColorMode(toAlternate);
+      refreshSafariScrollbar();
       setStyleSentinel(toAlternate);
       toggleGiscusIfUsed(toAlternate, darkModeDefault);
       window.dispatchEvent(new Event('resize'));
@@ -275,12 +289,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav" aria-label="Toolbar"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./fair_theory.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">FAIR Theory</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./fair_theory.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">FAIR Theory</span></a></li></ol></nav>
+        <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
@@ -288,13 +302,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
   </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto" aria-label="Site"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Patterns to Principles</a> 
         <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/cjvanlissa/patterns_principles" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
     <a href="./Patterns-to-Principles.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <button type="button" role="switch" aria-checked="false" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode" aria-label="Toggle dark mode"><i class="bi"></i></button>
 </div>
     </div>
       </div>
@@ -367,13 +381,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Appendices</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-controls="quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-1-label">Appendices</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+      <ul id="quarto-sidebar-section-1" aria-labelledby="quarto-sidebar-section-1-label" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./setup.html" class="sidebar-item-text sidebar-link">
@@ -387,7 +398,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active"><h2 id="toc-title">Table of contents</h2>
    
   <ul>
 <li><a href="#weekly-readings" id="toc-weekly-readings" class="nav-link active" data-scroll-target="#weekly-readings"><span class="header-section-number">8.1</span> Weekly Readings</a></li>
@@ -420,7 +431,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<main class="content" id="quarto-document-content" tabindex="-1"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
 <h1 class="title">
 <span class="chapter-number">8</span>&nbsp; <span class="chapter-title">FAIR Theory</span>
 </h1>
@@ -445,7 +456,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="header-section-number">8.2</span> Tutorial</h2>
 <p>This tutorial helps you make your theory FAIR. You will find an R-script for the steps described in this tutorial in the file <code>fair_theory.R</code>, in the <code>patterns_principles_exercises</code> folder. Use one computer to complete this tutorial together as a group. You will need to install some software in the process, so it’s easier to just do that on one system.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(theorytools)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-label="1"></a><span class="fu">library</span>(theorytools)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <section id="learning-goals" class="level3" data-number="8.2.1"><h3 data-number="8.2.1" class="anchored" data-anchor-id="learning-goals">
 <span class="header-section-number">8.2.1</span> Learning Goals</h3>
@@ -474,74 +485,74 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="header-section-number">8.2.2</span> Running Example: SDT</h3>
 <p>As an example, we will use a specification of Self-Determination Theory (SDT). Here, we use a DAG - but you can archive anything you like, although it is recommended to use plain text files, which are machine- and human-readable without special software. Note that I’ve added an example of specifying a functional form for one of the links in the DAG; you can see <a href="https://cjvanlissa.github.io/theorytools/articles/augmented_dags.html">more examples of this kind of annotation here</a>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>theory <span class="ot">&lt;-</span> <span class="st">'</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="st">dag {</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="st">external_event</span></span>
-<span id="cb2-4"><a href="#cb2-4"></a><span class="st">healthy_development</span></span>
-<span id="cb2-5"><a href="#cb2-5"></a><span class="st">integration</span></span>
-<span id="cb2-6"><a href="#cb2-6"></a><span class="st">intrinsic_motivation</span></span>
-<span id="cb2-7"><a href="#cb2-7"></a><span class="st">locus_of_causality</span></span>
-<span id="cb2-8"><a href="#cb2-8"></a><span class="st">needs</span></span>
-<span id="cb2-9"><a href="#cb2-9"></a><span class="st">wellbeing</span></span>
-<span id="cb2-10"><a href="#cb2-10"></a><span class="st">external_event -&gt; intrinsic_motivation [form="external_event:needs"]</span></span>
-<span id="cb2-11"><a href="#cb2-11"></a><span class="st">external_event -&gt; locus_of_causality</span></span>
-<span id="cb2-12"><a href="#cb2-12"></a><span class="st">external_event -&gt; needs</span></span>
-<span id="cb2-13"><a href="#cb2-13"></a><span class="st">integration -&gt; healthy_development</span></span>
-<span id="cb2-14"><a href="#cb2-14"></a><span class="st">integration -&gt; wellbeing</span></span>
-<span id="cb2-15"><a href="#cb2-15"></a><span class="st">intrinsic_motivation -&gt; healthy_development</span></span>
-<span id="cb2-16"><a href="#cb2-16"></a><span class="st">intrinsic_motivation -&gt; wellbeing</span></span>
-<span id="cb2-17"><a href="#cb2-17"></a><span class="st">locus_of_causality -&gt; intrinsic_motivation</span></span>
-<span id="cb2-18"><a href="#cb2-18"></a><span class="st">needs -&gt; integration</span></span>
-<span id="cb2-19"><a href="#cb2-19"></a><span class="st">needs -&gt; intrinsic_motivation  [form="external_event:needs"]</span></span>
-<span id="cb2-20"><a href="#cb2-20"></a><span class="st">needs -&gt; wellbeing</span></span>
-<span id="cb2-21"><a href="#cb2-21"></a><span class="st">}'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-label="1"></a>theory <span class="ot">&lt;-</span> <span class="st">'</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-label="2"></a><span class="st">dag {</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-label="3"></a><span class="st">external_event</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-label="4"></a><span class="st">healthy_development</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-label="5"></a><span class="st">integration</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-label="6"></a><span class="st">intrinsic_motivation</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-label="7"></a><span class="st">locus_of_causality</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-label="8"></a><span class="st">needs</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-label="9"></a><span class="st">wellbeing</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-label="10"></a><span class="st">external_event -&gt; intrinsic_motivation [form="external_event:needs"]</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-label="11"></a><span class="st">external_event -&gt; locus_of_causality</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-label="12"></a><span class="st">external_event -&gt; needs</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-label="13"></a><span class="st">integration -&gt; healthy_development</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-label="14"></a><span class="st">integration -&gt; wellbeing</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-label="15"></a><span class="st">intrinsic_motivation -&gt; healthy_development</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-label="16"></a><span class="st">intrinsic_motivation -&gt; wellbeing</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-label="17"></a><span class="st">locus_of_causality -&gt; intrinsic_motivation</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-label="18"></a><span class="st">needs -&gt; integration</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-label="19"></a><span class="st">needs -&gt; intrinsic_motivation  [form="external_event:needs"]</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-label="20"></a><span class="st">needs -&gt; wellbeing</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-label="21"></a><span class="st">}'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="creating-a-project-folder" class="level3" data-number="8.2.3"><h3 data-number="8.2.3" class="anchored" data-anchor-id="creating-a-project-folder">
 <span class="header-section-number">8.2.3</span> Creating a Project Folder</h3>
 <p>Create an empty project folder, which will become the theory archive. If we want to create a new folder called <code>sdt</code> in the existing folder <code>~/theories/</code>, we can call:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>project_path <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="st">"~/theories"</span>, <span class="st">"sdt"</span>)</span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="fu">dir.create</span>(project_path)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-label="1"></a>project_path <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="st">"~/theories"</span>, <span class="st">"sdt"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-label="2"></a><span class="fu">dir.create</span>(project_path)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="adding-a-shareable-theory-file-to-the-repository" class="level3" data-number="8.2.4"><h3 data-number="8.2.4" class="anchored" data-anchor-id="adding-a-shareable-theory-file-to-the-repository">
 <span class="header-section-number">8.2.4</span> Adding a Shareable Theory File to the Repository</h3>
 <p>Your theory should be represented as a digital artifact, such as a structured plain-text document or a machine-readable file (e.g., ‘DOT’, ‘JSON’, ‘YAML’, ‘R’ code). You can simply write the text vector above to a plain text file, like so:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">writeLines</span>(theory, <span class="fu">file.path</span>(project_path, <span class="st">"theory.txt"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-label="1"></a><span class="fu">writeLines</span>(theory, <span class="fu">file.path</span>(project_path, <span class="st">"theory.txt"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="documenting-reusability-with-a-license" class="level3" data-number="8.2.5"><h3 data-number="8.2.5" class="anchored" data-anchor-id="documenting-reusability-with-a-license">
 <span class="header-section-number">8.2.5</span> Documenting Reusability with a LICENSE</h3>
 <p>A license ensures that others know how they can legally reuse your work. We recommend a CC0 (Creative Commons Zero) license for FAIR theory, which waives all copyright protection and places your work in the public domain. This recommendation is based on the fact that copyright protection does not cover ideas, and the assumption that FAIR theory is created to maximize reuse. Other licenses are available, see <a href="https://choosealicense.com/non-software/">https://choosealicense.com</a>. You can add a license file to your repository like so:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>worcs<span class="sc">::</span><span class="fu">add_license_file</span>(<span class="at">path =</span> project_path, <span class="at">license =</span> <span class="st">"cc0"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-label="1"></a>worcs<span class="sc">::</span><span class="fu">add_license_file</span>(<span class="at">path =</span> project_path, <span class="at">license =</span> <span class="st">"cc0"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="documenting-interoperability-with-a-readme-file" class="level3" data-number="8.2.6"><h3 data-number="8.2.6" class="anchored" data-anchor-id="documenting-interoperability-with-a-readme-file">
 <span class="header-section-number">8.2.6</span> Documenting Interoperability with a README File</h3>
 <p>A README file describes the repository’s contents and purpose, making it easier for others to understand your theory’s potential for interoperability and reuse. The <code>theorytools</code> package contains a function to generate a README file with appropriate sections for FAIR theory, which can be used like so:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>theorytools<span class="sc">::</span><span class="fu">add_readme_fair_theory</span>(<span class="at">title =</span> <span class="st">"Self-Determination Theory"</span>,</span>
-<span id="cb6-2"><a href="#cb6-2"></a>                                    <span class="at">path =</span> project_path)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-label="1"></a>theorytools<span class="sc">::</span><span class="fu">add_readme_fair_theory</span>(<span class="at">title =</span> <span class="st">"Self-Determination Theory"</span>,</span>
+<span id="cb6-2"><a href="#cb6-2" aria-label="2"></a>                                    <span class="at">path =</span> project_path)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We encourage users to edit the resulting <code>README.md</code> file, in particular, to add relevant information about X-interoperability. For guidance on writing a README file for theory, see <a href="https://cjvanlissa.github.io/theorytools/articles/readme.html">this vignette</a>.</p>
 </section><section id="adding-zenodo-metadata-to-the-repository" class="level3" data-number="8.2.7"><h3 data-number="8.2.7" class="anchored" data-anchor-id="adding-zenodo-metadata-to-the-repository">
 <span class="header-section-number">8.2.7</span> Adding ‘Zenodo’ Metadata to the Repository</h3>
 <p>In a later step, we will archive the theory on ‘Zenodo’. Creating a <code>.zenodo.json</code> file with metadata about your theory allows the project to be indexed automatically. This can be done by running:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">add_zenodo_json_theory</span>(</span>
-<span id="cb7-2"><a href="#cb7-2"></a>  <span class="at">path =</span> project_path,</span>
-<span id="cb7-3"><a href="#cb7-3"></a>  <span class="at">title =</span> <span class="st">"Self-Determination Theory"</span>,</span>
-<span id="cb7-4"><a href="#cb7-4"></a>  <span class="at">keywords =</span> <span class="fu">c</span>(<span class="st">"motivation"</span>)</span>
-<span id="cb7-5"><a href="#cb7-5"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-label="1"></a><span class="fu">add_zenodo_json_theory</span>(</span>
+<span id="cb7-2"><a href="#cb7-2" aria-label="2"></a>  <span class="at">path =</span> project_path,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-label="3"></a>  <span class="at">title =</span> <span class="st">"Self-Determination Theory"</span>,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-label="4"></a>  <span class="at">keywords =</span> <span class="fu">c</span>(<span class="st">"motivation"</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-label="5"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="version-controlling-the-project-folder" class="level3" data-number="8.2.8"><h3 data-number="8.2.8" class="anchored" data-anchor-id="version-controlling-the-project-folder">
 <span class="header-section-number">8.2.8</span> Version Controlling The Project Folder</h3>
 <p>We will use ‘Git’ to version control the project folder. This means that changes to the files are explicitly tracked, and the entire history of the theory-project is logged. One student in your group should install ‘Git’ on their computer, <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">as explained here</a>. You can verify that ‘Git’ is installed and working by running:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>worcs<span class="sc">::</span><span class="fu">check_git</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-label="1"></a>worcs<span class="sc">::</span><span class="fu">check_git</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>If this function shows a green checkmark, you can initialize version control in your project repository by running:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>gert<span class="sc">::</span><span class="fu">git_init</span>(<span class="at">path =</span> project_path)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-label="1"></a>gert<span class="sc">::</span><span class="fu">git_init</span>(<span class="at">path =</span> project_path)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="connecting-to-a-remote-github-repository" class="level3" data-number="8.2.9"><h3 data-number="8.2.9" class="anchored" data-anchor-id="connecting-to-a-remote-github-repository">
 <span class="header-section-number">8.2.9</span> Connecting to a Remote (‘GitHub’) Repository</h3>
@@ -549,22 +560,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Before proceeding, ensure that one of your group members <a href="https://github.com/">has a ‘GitHub’ account</a>. To authorize ‘R’ to interact with your ‘GitHub’ account, run <code><a href="https://usethis.r-lib.org/reference/github-token.html">usethis::create_github_token()</a></code>, which takes you to a website to create a personal access token (PAT). Copy it, then run <code><a href="https://gitcreds.r-lib.org/reference/gitcreds_get.html">gitcreds::gitcreds_set()</a></code> and paste the PAT when asked. If you still experience problems try <code><a href="https://usethis.r-lib.org/reference/github-token.html">usethis::gh_token_help()</a></code> for help.</p>
 <p>To check that you are ready to proceed, run:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>worcs<span class="sc">::</span><span class="fu">check_github</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-label="1"></a>worcs<span class="sc">::</span><span class="fu">check_github</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>If you see a green checkmark, you can create a new repository on ‘GitHub’ directly from ‘R’:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>worcs<span class="sc">::</span><span class="fu">git_remote_create</span>(<span class="st">"fair_sdt"</span>, <span class="at">private =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-label="1"></a>worcs<span class="sc">::</span><span class="fu">git_remote_create</span>(<span class="st">"fair_sdt"</span>, <span class="at">private =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>This command will create a new public repository on ‘GitHub’ and link it to your local repository. The <code>private = FALSE</code> argument ensures the repository is public by default.</p>
 <p>Either way, assuming the name of that repository is <code>fair_sdt</code>, you can connect it to your project folder as follows:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>worcs<span class="sc">::</span><span class="fu">git_remote_connect</span>(project_path, <span class="at">remote_repo =</span> <span class="st">"fair_sdt"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-label="1"></a>worcs<span class="sc">::</span><span class="fu">git_remote_connect</span>(project_path, <span class="at">remote_repo =</span> <span class="st">"fair_sdt"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="pushing-these-changes-to-the-remote-repository" class="level3" data-number="8.2.10"><h3 data-number="8.2.10" class="anchored" data-anchor-id="pushing-these-changes-to-the-remote-repository">
 <span class="header-section-number">8.2.10</span> Pushing These Changes to the Remote Repository</h3>
 <p>Version control requires adding files to be tracked to the repository. The <code>worcs</code> function <code><a href="https://cjvanlissa.github.io/worcs/reference/git_update.html">worcs::git_update()</a></code> does this automatically, acting like a kind of “quick-save” or “save all” function:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>worcs<span class="sc">::</span><span class="fu">git_update</span>(<span class="st">"First commit of my theory"</span>, <span class="at">repo =</span> project_path)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-label="1"></a>worcs<span class="sc">::</span><span class="fu">git_update</span>(<span class="st">"First commit of my theory"</span>, <span class="at">repo =</span> project_path)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="check-your-github-repository" class="level3" data-number="8.2.11"><h3 data-number="8.2.11" class="anchored" data-anchor-id="check-your-github-repository">
 <span class="header-section-number">8.2.11</span> Check Your ‘GitHub’ Repository</h3>
@@ -631,13 +642,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="header-section-number">8.2.15</span> Create a New Release</h3>
 <p>To archive a repository on ‘Zenodo’, you must create a new release. You can do this using the following code:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>worcs<span class="sc">::</span><span class="fu">git_release_publish</span>(<span class="at">repo =</span> project_path)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-label="1"></a>worcs<span class="sc">::</span><span class="fu">git_release_publish</span>(<span class="at">repo =</span> project_path)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>If you have not previously published any releases, this function will assume that you want to use semantic versioning for both the release tag and the release title. This means that the first release will be labeled with version number “0.1.0”. Each subsequent release will automatically increment the trailing digit, i.e.: “0.1.1”, “0.1.2”. If you make a major change to the theory, you may want to manually increment the middle digit like so:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>worcs<span class="sc">::</span><span class="fu">git_release_publish</span>(<span class="at">repo =</span> project_path,</span>
-<span id="cb15-2"><a href="#cb15-2"></a>                           <span class="at">tag_name =</span> <span class="st">"0.2.0"</span>,</span>
-<span id="cb15-3"><a href="#cb15-3"></a>                           <span class="at">release_name =</span> <span class="st">"0.2.0"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-label="1"></a>worcs<span class="sc">::</span><span class="fu">git_release_publish</span>(<span class="at">repo =</span> project_path,</span>
+<span id="cb15-2"><a href="#cb15-2" aria-label="2"></a>                           <span class="at">tag_name =</span> <span class="st">"0.2.0"</span>,</span>
+<span id="cb15-3"><a href="#cb15-3" aria-label="3"></a>                           <span class="at">release_name =</span> <span class="st">"0.2.0"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="verify-on-zenodo" class="level3" data-number="8.2.16"><h3 data-number="8.2.16" class="anchored" data-anchor-id="verify-on-zenodo">
 <span class="header-section-number">8.2.16</span> Verify on ‘Zenodo’</h3>
@@ -942,15 +953,50 @@ window.onload = function() {
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
     if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-      const a = window.document.createElement('a');
-      a.classList.add('top-right');
-      a.classList.add('quarto-color-scheme-toggle');
-      a.href = "";
-      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const toggle = window.document.createElement('button');
+      toggle.type = "button";
+      toggle.setAttribute("role", "switch");
+      toggle.setAttribute("aria-checked", "false");
+      toggle.classList.add('top-right');
+      toggle.classList.add('quarto-color-scheme-toggle');
+      toggle.setAttribute("aria-label", "Toggle dark mode");
+      toggle.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
       const i = window.document.createElement("i");
       i.classList.add('bi');
-      a.appendChild(i);
-      window.document.body.appendChild(a);
+      toggle.appendChild(i);
+      // Put the toggle in a landmark of its own, so that landmark navigation
+      // can reach it.
+      //
+      // The container is always a fresh direct child of body, and the toggle is
+      // never moved into page furniture that the theme or the author controls.
+      // The toggle is positioned against the page, so any ancestor that
+      // establishes a containing block captures it: a positioned element or a
+      // grid for position: absolute, and transform, filter, will-change or
+      // contain for position: fixed. A direct child of body has none of these
+      // to inherit, and the shift when one appears is silent and visual.
+      //
+      // ARIA says a document should have at most one banner, and axe reports a
+      // duplicate whether or not the banners carry distinct labels. So use a
+      // header when the page has no banner yet, and a named region otherwise.
+      //
+      // A header is a banner wherever it sits, unless it is inside sectioning
+      // content, so this cannot just look at the children of body: a custom
+      // page layout wraps the title block header in a plain div. An explicit
+      // role="banner" always counts.
+      const sectioning = 'article, aside, main, nav, section, [role="article"], [role="complementary"], [role="main"], [role="navigation"], [role="region"]';
+      const hasBanner = Array.from(
+        window.document.querySelectorAll('header:not([role]), [role="banner"]')
+      ).some(function(el) {
+        return el.hasAttribute("role") || el.closest(sectioning) === null;
+      });
+      const container = window.document.createElement(hasBanner ? "div" : "header");
+      if (hasBanner) {
+        container.setAttribute("role", "region");
+        container.setAttribute("aria-label", "Toggle dark mode");
+      }
+      container.classList.add('quarto-color-scheme-toggle-container');
+      container.appendChild(toggle);
+      window.document.body.appendChild(container);
     }
     setColorSchemeToggle(hasAlternateSentinel())
     const icon = "";
@@ -1029,7 +1075,8 @@ window.onload = function() {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
       // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
       for (var i=0; i<links.length; i++) {
         const link = links[i];
         if (!isInternal(link.href)) {
@@ -1038,8 +1085,69 @@ window.onload = function() {
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+          if (!link.classList.contains('no-external-icon')) {
+          }
         }
       }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
       const config = {
         allowHTML: true,
@@ -1053,6 +1161,7 @@ window.onload = function() {
         interactiveBorder: 10,
         theme: 'quarto',
         placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
       };
       if (contentFn) {
         config.content = contentFn;
@@ -1215,44 +1324,54 @@ window.onload = function() {
           const lineIds = lines.map((line) => {
             return targetCell + "-" + line;
           })
-          let top = null;
-          let height = null;
-          let parent = null;
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
           if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
             }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
             }
+            placeBand(gutterDiv, el, lastEl);
             selectedAnnoteEl = annoteEl;
           }
         };
@@ -1350,7 +1469,9 @@ window.onload = function() {
       }
     }
   });
-  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+  </script><script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
+  </script><nav class="page-navigation" aria-label="Page"><div class="nav-page nav-page-previous">
       <a href="./causal_discovery.html" class="pagination-link" aria-label="Causal Discovery">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Causal Discovery</span></span>
       </a>          
