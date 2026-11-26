@@ -2,14 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.8.27">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="description" content="Book Description">
 <title>8&nbsp; FAIR Theory – Patterns to Principles</title>
 <style>
-/* Default styles provided by pandoc.
-** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -69,18 +66,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./favicon.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-33269adcf1721b81efc5ea7fcfe7f0ee.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-5a2acb6f4ed5aeb23a104ba421924b87.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-33269adcf1721b81efc5ea7fcfe7f0ee.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-b754b9fd3853d7e56faef54c29c5d52b.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-de8274a4d1ecc1e6aaeaf6e5564b5074.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-b754b9fd3853d7e56faef54c29c5d52b.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-1bb825c67a2efe62597e07348eb8bcba.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-cc91bfdb7c5dfa564528353fdb34f86f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-1bb825c67a2efe62597e07348eb8bcba.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-723f635be0d8452843512940e206a87f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-e6767f561e935f06639ad4135469d1bc.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-723f635be0d8452843512940e206a87f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -616,11 +614,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="callout-body-container callout-body">
 <p>You will now archive your project. This costs Zenodo some money and storage space. To be considerate, we will not <strong>really</strong> archive our project, but instead just practice archiving it in a “sandbox” environment.</p>
-<p>You can access the sandbox environment by navigating to <a href="http://sandbox.zenodo.org/" class="uri">http://sandbox.zenodo.org/</a>.</p>
+<p>You can access the sandbox environment by navigating to <a href="http://sandbox.zenodo.org/" class="uri">http://sandbox.zenodo.org/</a>. You may have to log in again by clicking on “Log in” at the top right of your screen (use the “Sign in with GitHub” option; other log in options do not work for the Sandbox).</p>
 <p>The links below already use the sandbox environment. If you ever need to properly archive something in the future, simply remove <code>sandbox.</code> from the link addresses.</p>
 </div>
 </div>
-<p>If you have got this far, this means that ‘Zenodo’ is now authorized to configure the repository webhooks that it needs to archive the repository and issue it a DOI. To do this, on the ‘Zenodo’ website navigate to the <a href="https://sandbox.zenodo.org/account/settings/github/">‘GitHub’ repository listing page</a> and simply “flip the switch” next to your repository. If your repository <strong>does not show up</strong> in the list, you may need to press the ‘Synchronize now’ button. At the time of writing, we noticed that it can take quite a while (hours?) for ‘Zenodo’ to detect new ‘GitHub’ repositories. If so, take a break or come back to this last step tomorrow!</p>
+<p>If you have got this far, this means that ‘Zenodo’ is now authorized to configure the repository webhooks that it needs to archive the repository and issue it a DOI. To do this, on the ‘Zenodo’ website navigate to the <a href="https://sandbox.zenodo.org/account/settings/vcs/github/">‘GitHub’ repository listing page</a> and simply “flip the switch” next to your repository. If your repository <strong>does not show up</strong> in the list, you may need to press the ‘Synchronize now’ button. At the time of writing, we noticed that it can take quite a while (hours?) for ‘Zenodo’ to detect new ‘GitHub’ repositories. If so, take a break or come back to this last step tomorrow!</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -690,7 +688,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>After publishing a release, ‘Zenodo’ will archive the repository and mint a DOI. Verify this by checking the ‘Zenodo’ entry for your repository, where the DOI will be displayed. Include this DOI in any citations or references to your theory to enhance its discoverability and reusability.</p>
 <p>The ‘GitHub’/‘Zenodo’ integration will assign one “mother-DOI” to the project, which will always resolve to the latest version, as well as a unique DOI to each version/release of the FAIR theory. This enables users to refer to and cite either the theory in general or specific versions of the theory. The list of authors for the citation is automatically determined by the ‘GitHub’ user account names used by the repository - this can be edited on ‘Zenodo’, as explained above. DOIs used in ‘Zenodo’ are registered through the <a href="https://www.datacite.org/">DataCite</a> service.</p>
 <blockquote class="blockquote">
-<p><strong>Pro-tip</strong>: Check the <code>Citation</code> field on the ‘Zenodo’ page, and copy-paste it into the README file of your ‘GitHub’ repo to make cross-linking even easier (or refer users to the ‘Zenodo’ page to find the citation, which obviates the need to manually update this information). Click the DOI badge in the <code>Details</code> field to get instructions on how to add a clear highlighted DOI badge to your ‘GitHub’ repository, for users to see and make use of your DOI:</p>
+<p><strong>Pro-tip</strong>: Check the <code>Citation</code> field on the ‘Zenodo’ page, and copy-paste it into the README file of your ‘GitHub’ repo to make cross-linking even easier (or refer users to the ‘Zenodo’ page to find the citation, which obviates the need to manually update this information). Click the DOI badge in the <code>Details</code> field to get instructions on how to add a clear highlighted DOI badge to your ‘GitHub’ repository, for users to see and make use of your DOI (copy the contents of the “Markdown” option and paste it at the top of the README file).</p>
 </blockquote>
 </section><section id="congratulations" class="level3" data-number="8.2.19"><h3 data-number="8.2.19" class="anchored" data-anchor-id="congratulations">
 <span class="header-section-number">8.2.19</span> CONGRATULATIONS!</h3>
