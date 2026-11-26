@@ -237,13 +237,13 @@ knitr::include_graphics("https://github.com/OpenScienceMOOC/Module-5-Open-Resear
 
 You will now archive your project. This costs Zenodo some money and storage space. To be considerate, we will not **really** archive our project, but instead just practice archiving it in a "sandbox" environment.
 
-You can access the sandbox environment by navigating to <http://sandbox.zenodo.org/>.
+You can access the sandbox environment by navigating to <http://sandbox.zenodo.org/>. You may have to log in again by clicking on "Log in" at the top right of your screen (use the "Sign in with GitHub" option;  other log in options do not work for the Sandbox).
 
 The links below already use the sandbox environment. If you ever need to properly archive something in the future, simply remove `sandbox.` from the link addresses.
 
 :::
 
-If you have got this far, this means that 'Zenodo' is now authorized to configure the repository webhooks that it needs to archive the repository and issue it a DOI. To do this, on the 'Zenodo' website navigate to the ['GitHub' repository listing page](https://sandbox.zenodo.org/account/settings/github/) and simply "flip the switch" next to your repository.
+If you have got this far, this means that 'Zenodo' is now authorized to configure the repository webhooks that it needs to archive the repository and issue it a DOI. To do this, on the 'Zenodo' website navigate to the ['GitHub' repository listing page](https://sandbox.zenodo.org/account/settings/vcs/github/) and simply "flip the switch" next to your repository.
 If your repository **does not show up** in the list, you may need to press the 'Synchronize now' button.
 At the time of writing, we noticed that it can take quite a while (hours?) for 'Zenodo' to detect new 'GitHub' repositories.
 If so, take a break or come back to this last step tomorrow!
@@ -315,7 +315,7 @@ After publishing a release, 'Zenodo' will archive the repository and mint a DOI.
 
 The 'GitHub'/'Zenodo' integration will assign one "mother-DOI" to the project, which will always resolve to the latest version, as well as a unique DOI to each version/release of the FAIR theory. This enables users to refer to and cite either the theory in general or specific versions of the theory. The list of authors for the citation is automatically determined by the 'GitHub' user account names used by the repository - this can be edited on 'Zenodo', as explained above. DOIs used in 'Zenodo' are registered through the [DataCite](https://www.datacite.org/) service.
 
-> **Pro-tip**: Check the `Citation` field on the 'Zenodo' page, and copy-paste it into the README file of your 'GitHub' repo to make cross-linking even easier (or refer users to the 'Zenodo' page to find the citation, which obviates the need to manually update this information). Click the DOI badge in the `Details` field to get instructions on how to add a clear highlighted DOI badge to your 'GitHub' repository, for users to see and make use of your DOI:
+> **Pro-tip**: Check the `Citation` field on the 'Zenodo' page, and copy-paste it into the README file of your 'GitHub' repo to make cross-linking even easier (or refer users to the 'Zenodo' page to find the citation, which obviates the need to manually update this information). Click the DOI badge in the `Details` field to get instructions on how to add a clear highlighted DOI badge to your 'GitHub' repository, for users to see and make use of your DOI (copy the contents of the "Markdown" option and paste it at the top of the README file). 
 
 ### CONGRATULATIONS!
 
